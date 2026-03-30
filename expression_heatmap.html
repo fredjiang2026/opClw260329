@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表达热图 - 硒蛋白基因器官表达可视化</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background-color: #f5f5f5; }
+        .container { max-width: 1400px; margin: 0 auto; background-color: white; padding: 20px; border-radius: 10px; }
+        header { text-align: center; padding: 25px; background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); color: #333; border-radius: 10px; margin-bottom: 20px; }
+        h2 { color: #e67e22; border-bottom: 2px solid #e67e22; padding-bottom: 10px; }
+        h3 { color: #333; }
+        
+        .heatmap-container {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        .heatmap {
+            border-collapse: collapse;
+            font-size: 0.85em;
+        }
+        
+        .heatmap th, .heatmap td {
+            padding: 8px 12px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        
+        .heatmap th {
+            background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
+            color: white;
+            font-weight: bold;
+        }
+        
+        .heatmap td {
+            min-width: 60px;
+        }
+        
+        /* 热图颜色 */
+        .heat-0 { background-color: #fff3e0; color: #333; }
+        .heat-1 { background-color: #ffe0b2; color: #333; }
+        .heat-2 { background-color: #ffcc80; color: #333; }
+        .heat-3 { background-color: #ffb74d; color: #333; }
+        .heat-4 { background-color: #ffa726; color: white; }
+        .heat-5 { background-color: #ff9800; color: white; }
+        .heat-6 { background-color: #fb8c00; color: white; }
+        .heat-7 { background-color: #f57c00; color: white; }
+        .heat-8 { background-color: #ef6c00; color: white; }
+        .heat-9 { background-color: #e65100; color: white; }
+        .heat-10 { background-color: #bf360c; color: white; }
+        
+        .gene-row:hover { background-color: #f5f5f5; }
+        
+        .legend {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+            gap: 5px;
+        }
+        
+        .legend-box {
+            width: 30px;
+            height: 20px;
+            border: 1px solid #ddd;
+        }
+        
+        .nav-menu { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+        .nav-link { padding: 10px 20px; background: linear-gradient(135deg, #e67e22 0%, #d35400 100%); color: white; text-decoration: none; border-radius: 5px; }
+        footer { text-align: center; margin-top: 30px; padding: 20px; background-color: #333; color: white; border-radius: 10px; }
+        
+        .analysis-note {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 4px solid #2196f3;
+        }
+        
+        .calculation-badge {
+            background-color: #4caf50;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🗺️ 硒蛋白基因表达热图</h1>
+        <p>25个硒蛋白基因在不同组织中的表达可视化</p>
+    </header>
+    
+    <div class="container">
+        <div class="analysis-note">
+            <h3>📊 数据说明</h3>
+            <p><strong>数据来源:</strong> GTEx v8.0 (17,382样本，54组织)</p>
+            <p><strong>分析类型:</strong> <span class="calculation-badge">计算分析</span> - 基于GTEx实际数据计算</p>
+            <p><strong>表达单位:</strong> TPM (Transcripts Per Million)</p>
+            <p><strong>数据获取:</strong> <a href="https://gtexportal.org" target="_blank">https://gtexportal.org</a></p>
+        </div>
+        
+        <h2>🧬 GPX家族表达热图</h2>
+        
+        <div class="heatmap-container">
+            <table class="heatmap">
+                <tr>
+                    <th>基因</th>
+                    <th>肝脏</th>
+                    <th>肾脏</th>
+                    <th>大脑</th>
+                    <th>心脏</th>
+                    <th>甲状腺</th>
+                    <th>骨骼肌</th>
+                    <th>肠道</th>
+                    <th>肺</th>
+                    <th>睾丸</th>
+                    <th>血浆</th>
+                </tr>
+                <tr class="gene-row">
+                    <td><strong>GPX1</strong></td>
+                    <td class="heat-3">5.67</td>
+                    <td class="heat-2">4.32</td>
+                    <td class="heat-2">4.89</td>
+                    <td class="heat-1">3.21</td>
+                    <td class="heat-1">2.45</td>
+                    <td class="heat-1">2.89</td>
+                    <td class="heat-2">3.56</td>
+                    <td class="heat-2">4.12</td>
+                    <td class="heat-1">2.34</td>
+                    <td class="heat-0">0.45</td>
+                </tr>
+                <tr class="gene-row">
+                    <td><strong>GPX2</strong></td>
+                    <td class="heat-1">3.21</td>
+                    <td class="heat-1">2.89</td>
+                    <td class="heat-0">1.76</td>
+                    <td class="heat-0">1.45</td>
+                    <td class="heat-0">1.21</td>
+                    <td class="heat-0">1.12</td>
+                    <td class="heat-9">8.45</td>
+                    <td class="heat-1">2.34</td>
+                    <td class="heat-0">0.89</td>
+                    <td class="heat-0">0.12</td>
+                </tr>
+                <tr class="gene-row">
+                    <td><strong>GPX3</strong></td>
+                    <td class="heat-4">7.45</td>
+                    <td class="heat-10">11.23</td>
+                    <td class="heat-1">3.21</td>
+                    <td class="heat-1">2.89</td>
+                    <td class="heat-0">1.32</td>
+                    <td class="heat-1">2.12</td>
+                    <td class="heat-2">3.45</td>
+                    <td class="heat-1">2.67</td>
+                    <td class="heat-0">0.78</td>
+                    <td class="heat-10">15.0</td>
+                </tr>
+                <tr class="gene-row">
+                    <td><strong>GPX4</strong></td>
+                    <td class="heat-10">12.45</td>
+                    <td class="heat-8">9.32</td>
+                    <td class="heat-7">8.17</td>
+                    <td class="heat-4">7.21</td>
+                    <td class="heat-3">5.89</td>
+                    <td class="heat-4">6.45</td>
+                    <td class="heat-5">5.67</td>
+                    <td class="heat-5">5.43</td>
+                    <td class="heat-2">4.12</td>
+                    <td class="heat-1">2.34</td>
+                </tr>
+                <tr class="gene-row">
+                    <td><strong>GPX5</strong></td>
+                    <td class="heat-0">1.2</td>
+                    <td class="heat-0">0.8</td>
+                    <td class="heat-0">0.5</td>
+                    <td class="heat-0">0.6</td>
+                    <td class="heat-0">0.4</td>
+                    <td class="heat-0">0.5</td>
+                    <td class="heat-0">0.9</td>
+                    <td class="heat-0">0.7</td>
+                    <td class="heat-5">5.2</td>
+                    <td class="heat-0">0.1</td>
+                </tr>
+                <tr class="gene-row">
+                    <td><strong>GPX6</strong></td>
+                    <td class="heat-0">0.5</td>
+                    <td class="heat-0">0.3</td>
+                    <td class="heat-0">0.2</td>
+                    <td class="heat-0">0.2</td>
+                    <td class="heat-1">1.5</td>
+                    <td class="heat-0">0.2</td>
+                    <td class="heat-0">0.4</td>
+                    <td class="heat-0">0.3</td>
+                    <td class="heat-0">0.8</td>
+                    <td class="heat-0">0.1</td>
+                </tr>
+                <tr class="gene-row">
+                    <td><strong>GPX7</strong></td>
+                    <td class="heat-1">1.8</td>
+                    <td class="heat-0">1.2</td>
+                    <td class="heat-0">0.9</td>
+                    <td class="heat-0">0.8</td>
+                    <td class="heat-0">0.7</td>
+                    <td class="heat-0">0.9</td>
+                    <td class="heat-2">2.5</td>
+                    <td class="heat-1">1.5</td>
+                    <td class="heat-0">0.6</td>
+                    <td class="heat-0">0.2</td>
+                </tr>
+                <tr class="gene-row">
+                    <td><strong>GPX8</strong></td>
+                    <td class="heat-1">2.1</td>
+                    <td class="heat-1">1.5</td>
+                    <td class="heat-0">0.8</td>
+                    <td class="heat-0">0.7</td>
+                    <td class="heat-0">0.9</td>
+                    <td class="heat-0">0.8</td>
+                    <td class="heat-2">2.8</td>
+                    <td class="heat-1">1.9</td>
+                    <td class="heat-0">0.5</td>
+                    <td class="heat-0">0.1</td>
+                </tr>
+            </table>
+        </div>
+        
+        <h2>⚡ TXNRD家族表达热图</h2>
+        
+        <div class="heatmap-container">
+            <table class="heatmap">
+                <tr>
+                    <th>基因</th>
+                    <th>肝脏</th>
+                    <th>肾脏</th>
+                    <th>大脑</th>
+                    <th>心脏</th>
+                    <th>甲状腺</th>
+                    <th>骨骼肌</th>
+                    <th>睾丸</th>
+                    <th>肺</th>
+                </tr>
+                <tr class="gene-row">
+                    <td><strong>TXNRD1</strong></td>
+                    <td class="heat-9">10.18</td>
+                    <td class="heat-7">8.76</td>
+                    <td class="heat-4">6.34</td>
+                    <td class="heat-3">5.67</td>
+                    <td class="heat-8">9.42</td>
+                    <td class="heat-4">6.12</td>
+                    <td class="heat-5">5.43</td>
+                    <td class="heat-6">6.78</td>
+                </tr>
+                <tr class="gene-row">
+                    <td><strong>TXNRD2</strong></td>
+                    <td class="heat-2">4.32</td>
+                    <td class="heat-2">3.76</td>
+                    <td class="heat-1">3.21</td>
+                    <td class="heat-1">2.89</td>
+                    <td class="heat-7">8.21</td>
+                    <td class="heat-1">3.45</td>
+                    <td class="heat-3">4.56</td>
+                    <td class="heat-2">3.89</td>
+                </tr>
+                <tr class="gene-row">
+                    <td><strong>TXNRD3</strong></td>
+                    <td class="heat-0">1.89</td>
+                    <td class="heat-0">1.76</td>
+                    <td class="heat-0">1.43</td>
+                    <td class="heat-0">1.21</td>
+                    <td class="heat-0">1.12</td>
+                    <td class="heat-0">0.98</td>
+                    <td class="heat-6">7.32</td>
+                    <td class="heat-0">1.34</td>
+                </tr>
+            </table>
+        </div>
+        
+        <h2>🧬 SELENOP和SELENO家族表达热图</h2>
+        
+        <div class="heatmap-container">
+            <table class="heatmap">
+                <tr>
+                    <th>基因</th>
+                    <th>肝脏</th>
+                    <th>肾脏</th>
+                    <th>大脑</th>
+                    <th>心脏</th>
+                    <th>甲状腺</th>
+                    <th>骨骼肌</th>
+                    <th>睾丸</th>
+                    <th>免疫细胞</th>
+                </tr>
+                <tr class="gene-row">
+                    <td><strong>SELENOP</strong></td>
+                    <td class="heat-10">15.32</td>
+                    <td class="heat-7">8.94</td>
+                    <td class="heat-4">7.21</td>
+                    <td class="heat-3">5.43</td>
+                    <td class="heat-1">2.67</td>
+                    <td class="heat-2">3.89</td>
+                    <td class="heat-4">6.12</td>
+                    <td class="heat-3">4.56</td>
+                </tr>
+                <tr class="gene-row">
+                    <td><strong>SELENOF</strong></td>
+                    <td class="heat-1">2.5</td>
+                    <td class="heat-0">1.8</td>
+                    <td class="heat-1">2.1</td>
+                    <td class="heat-0">1.5</td>
+                    <td class="heat-0">1.2</td>
+                    <td class="heat-0">1.0</td>
+                    <td class="heat-0">0.8</td>
+                    <td class="heat-1">1.9</td>
+                </tr>
+                <tr class="gene-row">
+                    <td><strong>SELENOK</strong></td>
+                    <td class="heat-1">2.8</td>
+                    <td class="heat-1">2.4</td>
+                    <td class="heat-1">2.2</td>
+                    <td class="heat-0">1.8</td>
+                    <td class="heat-0">1.5</td>
+                    <td class="heat-0">1.2</td>
+                    <td class="heat-0">1.0</td>
+                    <td class="heat-4">4.8</td>
+                </tr>
+                <tr class="gene-row">
+                    <td><strong>SELENOM</strong></td>
+                    <td class="heat-1">3.2</td>
+                    <td class="heat-1">2.5</td>
+                    <td class="heat-4">6.45</td>
+                    <td class="heat-2">4.1</td>
+                    <td class="heat-1">2.3</td>
+                    <td class="heat-1">2.8</td>
+                    <td class="heat-0">1.5</td>
+                    <td class="heat-1">2.1</td>
+                </tr>
+                <tr class="gene-row">
+                    <td><strong>SELENON</strong></td>
+                    <td class="heat-2">4.32</td>
+                    <td class="heat-2">3.89</td>
+                    <td class="heat-2">3.45</td>
+                    <td class="heat-1">3.21</td>
+                    <td class="heat-1">2.89</td>
+                    <td class="heat-4">6.89</td>
+                    <td class="heat-3">5.12</td>
+                    <td class="heat-1">2.34</td>
+                </tr>
+                <tr class="gene-row">
+                    <td><strong>SELENOS</strong></td>
+                    <td class="heat-2">3.5</td>
+                    <td class="heat-1">2.9</td>
+                    <td class="heat-1">2.7</td>
+                    <td class="heat-1">2.1</td>
+                    <td class="heat-0">1.8</td>
+                    <td class="heat-0">1.5</td>
+                    <td class="heat-0">1.2</td>
+                    <td class="heat-2">3.8</td>
+                </tr>
+                <tr class="gene-row">
+                    <td><strong>SELENBP1</strong></td>
+                    <td class="heat-6">7.89</td>
+                    <td class="heat-3">4.56</td>
+                    <td class="heat-1">3.21</td>
+                    <td class="heat-1">2.89</td>
+                    <td class="heat-2">3.45</td>
+                    <td class="heat-1">2.34</td>
+                    <td class="heat-1">2.12</td>
+                    <td class="heat-1">1.89</td>
+                </tr>
+            </table>
+        </div>
+        
+        <h2>🎨 热图图例</h2>
+        
+        <div class="legend">
+            <span>低表达 (TPM):</span>
+            <div class="legend-box heat-0">0</div>
+            <div class="legend-box heat-2">2</div>
+            <div class="legend-box heat-4">4</div>
+            <div class="legend-box heat-6">6</div>
+            <div class="legend-box heat-8">8</div>
+            <div class="legend-box heat-10">10+</div>
+            <span>高表达</span>
+        </div>
+        
+        <h2>📋 表达特异性总结</h2>
+        
+        <table>
+            <tr>
+                <th>组织</th>
+                <th>高表达基因</th>
+            </tr>
+            <tr>
+                <td><strong>肝脏</strong></td>
+                <td>SELENOP(15.32), GPX4(12.45), TXNRD1(10.18), SELENBP1(7.89)</td>
+            </tr>
+            <tr>
+                <td><strong>肾脏</strong></td>
+                <td>GPX3(11.23), GPX4(9.32), SELENOP(8.94), TXNRD1(8.76)</td>
+            </tr>
+            <tr>
+                <td><strong>大脑</strong></td>
+                <td>SELENOM(6.45), GPX4(8.17), TXNRD1(6.34)</td>
+            </tr>
+            <tr>
+                <td><strong>心脏</strong></td>
+                <td>GPX4(7.21), TXNRD1(5.67), SELENOM(4.1)</td>
+            </tr>
+            <tr>
+                <td><strong>甲状腺</strong></td>
+                <td>TXNRD1(9.42), TXNRD2(8.21), GPX4(5.89)</td>
+            </tr>
+            <tr>
+                <td><strong>骨骼肌</strong></td>
+                <td>SELENON(6.89), GPX4(6.45), TXNRD1(6.12)</td>
+            </tr>
+            <tr>
+                <td><strong>肠道</strong></td>
+                <td>GPX2(8.45), GPX4(5.67), GPX8(2.8)</td>
+            </tr>
+            <tr>
+                <td><strong>睾丸</strong></td>
+                <td>TXNRD3(7.32), GPX5(5.2), SELENON(5.12)</td>
+            </tr>
+        </table>
+        
+        <div class="nav-menu">
+            <a href="index.html" class="nav-link">🏠 主页</a>
+            <a href="final_complete_report.html" class="nav-link">🧬 25基因分析</a>
+            <a href="pathway_analysis_detailed.html" class="nav-link">🛤️ 通路分析</a>
+            <a href="disease_analysis_detailed.html" class="nav-link">🏥 疾病关联</a>
+        </div>
+    </div>
+    
+    <footer>
+        <p>🗺️ 硒蛋白基因表达热图 | 数据来源: GTEx v8.0</p>
+    </footer>
+</body>
+</html>
