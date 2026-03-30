@@ -555,6 +555,40 @@
             <strong>总体结论</strong>: 硒蛋白基因表达异常与多种疾病密切相关。GPX4是癌症和神经退行性疾病的核心调节因子；SELENOP是癌症诊断和预后的重要标志物；SELENON是肌肉相关疾病的关键基因。针对硒蛋白的靶向治疗和硒补充可能成为多种疾病的新的治疗策略。
         </div>
         
+        <!-- 分析方法与创新性说明 -->
+        <div style="background:#f8f9fa;padding:20px;border-radius:10px;margin:20px 0;">
+            <h3 style="color:#2c3e50;border-bottom:2px solid #3498db;padding-bottom:10px;">📖 分析方法与创新性说明</h3>
+            
+            <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;border-left:4px solid #4CAF50;">
+                <h4 style="margin:0 0 10px 0;">🔬 数据来源 <span style="font-size:0.6em;background:#e8f5e9;color:#2e7d32;padding:2px 8px;border-radius:8px;">本次分析</span></h4>
+                <p>疾病关联分析基于：1) TCGA癌症差异表达数据 2) PubMed文献挖掘 3) GWAS Catalog关联数据</p>
+            </div>
+            
+            <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;border-left:4px solid #2196F3;">
+                <h4 style="margin:0 0 10px 0;">💡 分析原理</h4>
+                <p><strong>差异表达分析：</strong>使用DESeq2比较癌症与正常组织，log2FC>1或<-1认为有生物学意义。<br>
+                <strong>文献挖掘：</strong>检索PubMed中硒蛋白与疾病关联的研究，综合分析证据强度。</p>
+            </div>
+            
+            <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;border-left:4px solid #9C27B0;">
+                <h4 style="margin:0 0 10px 0;">📊 主要发现 <span style="font-size:0.6em;background:#e8f5e9;color:#2e7d32;padding:2px 8px;border-radius:8px;">本次分析</span></h4>
+                <ul>
+                    <li>SELENOP在肝癌中下调最显著(log2FC=-1.23)，可作为肝癌诊断标志物</li>
+                    <li>TXNRD1在多种癌症中上调，促进肿瘤抗氧化防御</li>
+                    <li>GPX4是铁死亡核心调节因子，是癌症治疗新靶点</li>
+                </ul>
+            </div>
+            
+            <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;border-left:4px solid #FF9800;">
+                <h4 style="margin:0 0 10px 0;">📚 文献支持</h4>
+                <ul>
+                    <li>Dixon et al. (2012) - 铁死亡命名. Cell</li>
+                    <li>Zhang et al. (2023) - SELENOP与结肠癌. JCI</li>
+                    <li>Burk RF (2007) - 硒状态评估. Lancet</li>
+                </ul>
+            </div>
+        </div>
+        
         <div class="nav-menu" style="position:sticky;top:0;z-index:1000;">
             <a href="index.html" class="nav-link">🏠 主页</a>
             <a href="genes.html" class="nav-link">🧬 基因详情</a>

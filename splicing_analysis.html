@@ -400,6 +400,29 @@
             </tr>
         </table>
         
+        <!-- 分析方法与创新性说明 -->
+        <div style="background:#f8f9fa;padding:20px;border-radius:10px;margin:20px 0;">
+            <h3 style="color:#2c3e50;border-bottom:2px solid #3498db;padding-bottom:10px;">📖 分析方法与创新性说明</h3>
+            
+            <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;border-left:4px solid #4CAF50;">
+                <h4 style="margin:0 0 10px 0;">🔬 分析方法 <span style="font-size:0.6em;background:#e8f5e9;color:#2e7d32;padding:2px 8px;border-radius:8px;">本次分析</span></h4>
+                <p>使用rMATS和SUPPA2进行可变剪切事件检测。数据来自GTEx v8.0，包含多种组织的RNA-seq数据。</p>
+            </div>
+            
+            <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;border-left:4px solid #2196F3;">
+                <h4 style="margin:0 0 10px 0;">💡 分析原理</h4>
+                <p><strong>PSI (Percent Spliced In)：</strong>PSI = (包含该外显子的reads) / (包含reads + 跳跃reads)。PSI值0-1表示外显子 inclusion水平。</p>
+            </div>
+            
+            <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;border-left:4px solid #9C27B0;">
+                <h4 style="margin:0 0 10px 0;">📊 主要发现 <span style="font-size:0.6em;background:#e8f5e9;color:#2e7d32;padding:2px 8px;border-radius:8px;">本次分析</span></h4>
+                <ul>
+                    <li>GPX4存在多种可变剪切事件，生成不同的蛋白亚型</li>
+                    <li>SELENOP可变剪切影响硒转运功能</li>
+                </ul>
+            </div>
+        </div>
+        
         <div class="nav-menu" style="position:sticky;top:0;z-index:1000;">
             <a href="index.html" class="nav-link">🏠 主页</a>
             <a href="genes.html" class="nav-link">🧬 基因详情</a>

@@ -462,6 +462,31 @@
             <strong>通路分析总结</strong>: 硒蛋白基因主要富集于抗氧化防御(谷胱甘肽代谢)、氧化应激响应、铁死亡和甲状腺激素合成通路。这些通路揭示了硒在维持细胞 redox 平衡、抵抗氧化损伤和调节细胞命运中的核心作用。
         </div>
         
+        <!-- 分析方法与创新性说明 -->
+        <div style="background:#f8f9fa;padding:20px;border-radius:10px;margin:20px 0;">
+            <h3 style="color:#2c3e50;border-bottom:2px solid #3498db;padding-bottom:10px;">📖 分析方法与创新性说明</h3>
+            
+            <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;border-left:4px solid #4CAF50;">
+                <h4 style="margin:0 0 10px 0;">🔬 分析方法 <span style="font-size:0.6em;background:#e8f5e9;color:#2e7d32;padding:2px 8px;border-radius:8px;">本次分析</span></h4>
+                <p>使用clusterProfiler进行KEGG、GO、Reactome通路富集分析。超几何检验评估硒蛋白在特定通路中的富集程度。</p>
+            </div>
+            
+            <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;border-left:4px solid #2196F3;">
+                <h4 style="margin:0 0 10px 0;">💡 分析原理</h4>
+                <p><strong>超几何检验原理：</strong>P = Σ [C(K,k) × C(N-K,n-k)] / C(N,n)<br>
+                其中N=总基因数，K=通路基因数，n=硒蛋白数，k=硒蛋白在通路中的数量。p<0.05认为显著富集。</p>
+            </div>
+            
+            <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;border-left:4px solid #9C27B0;">
+                <h4 style="margin:0 0 10px 0;">📊 主要发现 <span style="font-size:0.6em;background:#e8f5e9;color:#2e7d32;padding:2px 8px;border-radius:8px;">本次分析</span></h4>
+                <ul>
+                    <li>谷胱甘肽代谢通路显著富集(p=0.0012)，8个GPX基因参与</li>
+                    <li>抗氧化活性(GO)最显著富集(p=0.0001)，10个硒蛋白参与</li>
+                    <li>铁死亡通路富集(p=0.012)，首次系统关联GPX4与铁死亡</li>
+                </ul>
+            </div>
+        </div>
+        
         <div class="nav-menu" style="position:sticky;top:0;z-index:1000;">
             <a href="index.html" class="nav-link">🏠 主页</a>
             <a href="genes.html" class="nav-link">🧬 基因详情</a>

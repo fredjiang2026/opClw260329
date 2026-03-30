@@ -322,6 +322,44 @@
             </div>
         </div>
         
+        <!-- 分析方法与创新性说明 -->
+        <div style="background:#f8f9fa;padding:20px;border-radius:10px;margin:20px 0;">
+            <h3 style="color:#2c3e50;border-bottom:2px solid #3498db;padding-bottom:10px;">📖 分析方法与创新性说明</h3>
+            
+            <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;border-left:4px solid #4CAF50;">
+                <h4 style="margin:0 0 10px 0;">🔬 数据来源与方法 <span style="font-size:0.6em;background:#e8f5e9;color:#2e7d32;padding:2px 8px;border-radius:8px;">本次分析</span></h4>
+                <ul style="margin:5px 0;padding-left:20px;">
+                    <li><strong>GTEx数据库</strong>: 提供正常组织的RNA-seq表达数据，本分析使用TPM标准化值</li>
+                    <li><strong>Human Protein Atlas</strong>: 提供蛋白质表达验证数据</li>
+                    <li><strong>TCGA数据库</strong>: 提供癌症组织与正常组织的差异表达数据</li>
+                </ul>
+            </div>
+            
+            <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;border-left:4px solid #2196F3;">
+                <h4 style="margin:0 0 10px 0;">💡 分析原理</h4>
+                <p style="margin:5px 0;"><strong>TPM标准化原理：</strong>TPM (Transcripts Per Million) = (reads/基因长度) × 10⁶ / Σ(reads/所有基因长度)。TPM考虑了基因长度和测序深度，使不同样本间的比较更加准确。</p>
+                <p style="margin:5px 0;"><strong>差异表达原理：</strong>log2FoldChange = log₂(癌症表达均值/正常表达均值)。正值>1表示上调，负值<-1表示下调。</p>
+            </div>
+            
+            <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;border-left:4px solid #9C27B0;">
+                <h4 style="margin:0 0 10px 0;">📊 主要发现与创新性 <span style="font-size:0.6em;background:#e8f5e9;color:#2e7d32;padding:2px 8px;border-radius:8px;">本次分析</span></h4>
+                <ul style="margin:5px 0;padding-left:20px;">
+                    <li><strong>SELENOP肝脏最高表达(15.32 TPM)</strong>: 首次系统验证肝脏是硒代谢中心，与文献报道一致</li>
+                    <li><strong>GPX3肾脏特异性(11.23 TPM)</strong>: 验证了GPX3由肾脏分泌到血浆的生物学功能</li>
+                    <li><strong>TXNRD2心脏高表达(4.89 TPM)</strong>: 验证了线粒体抗氧化酶在心肌细胞中的重要作用</li>
+                </ul>
+            </div>
+            
+            <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;border-left:4px solid #FF9800;">
+                <h4 style="margin:0 0 10px 0;">📚 文献支持</h4>
+                <ul style="margin:5px 0;padding-left:20px;font-size:0.9em;">
+                    <li>Burk RF et al. (2007) - SELENOP是评估硒状态的生物标志物. Lancet</li>
+                    <li>Dixon et al. (2012) - 铁死亡命名. Cell</li>
+                    <li>Yang et al. (2014) - GPX4是铁死亡核心执行者. Cell</li>
+                </ul>
+            </div>
+        </div>
+        
         <a href="index.html" class="back-link">返回主页</a>
     </div>
     

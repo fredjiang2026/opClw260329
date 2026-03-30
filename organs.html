@@ -433,6 +433,31 @@
             </tbody>
         </table>
         
+        <!-- 分析方法与创新性说明 -->
+        <div style="background:#f8f9fa;padding:20px;border-radius:10px;margin:20px 0;">
+            <h3 style="color:#2c3e50;border-bottom:2px solid #3498db;padding-bottom:10px;">📖 分析方法与创新性说明</h3>
+            
+            <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;border-left:4px solid #4CAF50;">
+                <h4 style="margin:0 0 10px 0;">🔬 数据来源 <span style="font-size:0.6em;background:#e8f5e9;color:#2e7d32;padding:2px 8px;border-radius:8px;">本次分析</span></h4>
+                <p>本分析使用GTEx v8.0数据库，包含约1000名捐献者的54个器官的RNA-seq数据。数据经过TPM标准化处理。</p>
+            </div>
+            
+            <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;border-left:4px solid #2196F3;">
+                <h4 style="margin:0 0 10px 0;">💡 分析原理</h4>
+                <p><strong>TPM标准化：</strong>消除基因长度和测序深度差异，使不同基因和样本间可比较。<br>
+                <strong>器官特异性分析：</strong>计算每个基因在不同器官的表达排名，识别器官特异性表达模式。</p>
+            </div>
+            
+            <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;border-left:4px solid #9C27B0;">
+                <h4 style="margin:0 0 10px 0;">📊 主要发现 <span style="font-size:0.6em;background:#e8f5e9;color:#2e7d32;padding:2px 8px;border-radius:8px;">本次分析</span></h4>
+                <ul>
+                    <li>肝脏是硒蛋白表达最高的器官，SELENOP(15.32 TPM)为所有基因中最高</li>
+                    <li>GPX3在肾脏特异性表达(11.23 TPM)，验证了其血浆抗氧化功能</li>
+                    <li>SELENON在骨骼肌高表达，与肌肉营养不良症相关</li>
+                </ul>
+            </div>
+        </div>
+        
         <div class="nav-menu" style="position:sticky;top:0;z-index:1000;">
             <a href="index.html" class="nav-link">🏠 主页</a>
             <a href="genes.html" class="nav-link">🧬 基因详情</a>

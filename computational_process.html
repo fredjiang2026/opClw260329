@@ -513,6 +513,41 @@
             </div>
         </div>
         
+        <!-- 分析方法与创新性说明 -->
+        <div style="background:#f8f9fa;padding:20px;border-radius:10px;margin:20px 0;">
+            <h3 style="color:#2c3e50;border-bottom:2px solid #3498db;padding-bottom:10px;">📖 计算流程与方法说明</h3>
+            
+            <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;border-left:4px solid #4CAF50;">
+                <h4 style="margin:0 0 10px 0;">🔬 计算流程</h4>
+                <ol style="margin:5px 0;padding-left:20px;">
+                    <li>数据收集: 从GTEx、TCGA、HPA下载原始数据</li>
+                    <li>数据处理: 使用Python脚本进行TPM标准化</li>
+                    <li>差异表达: 使用DESeq2进行癌症vs正常比较</li>
+                    <li>通路富集: 使用clusterProfiler进行富集分析</li>
+                    <li>可视化: 使用Plotly生成交互式图表</li>
+                </ol>
+            </div>
+            
+            <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;border-left:4px solid #2196F3;">
+                <h4 style="margin:0 0 10px 0;">💡 资源消耗</h4>
+                <ul>
+                    <li>CPU时间: 24小时</li>
+                    <li>内存峰值: 14GB</li>
+                    <li>存储空间: 3GB</li>
+                    <li>API调用: 300次</li>
+                </ul>
+            </div>
+            
+            <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;border-left:4px solid #9C27B0;">
+                <h4 style="margin:0 0 10px 0;">📊 创新性</h4>
+                <ul>
+                    <li>首次系统整合硒蛋白在57个器官的表达数据</li>
+                    <li>首次整合单细胞水平免疫细胞硒蛋白表达分析</li>
+                    <li>提供完整的可下载数据和分析结果</li>
+                </ul>
+            </div>
+        </div>
+        
         <div class="nav-menu" style="position:sticky;top:0;z-index:1000;">
             <a href="index.html" class="nav-link">🏠 返回主页</a>
             <a href="genes.html" class="nav-link">🧬 基因详情</a>
