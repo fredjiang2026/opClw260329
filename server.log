@@ -1,0 +1,8 @@
+127.0.0.1 - - [31/Mar/2026 04:05:50] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 04:10:52] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 04:10:55] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 04:10:55] "GET /genes.html HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 04:10:55] "GET /data/gtex_selenoprotein_expression.csv HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 04:10:55] "GET /data/tcga_selenoprotein_expression.csv HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 04:22:06] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 04:22:06] "GET /genes.html HTTP/1.1" 200 -

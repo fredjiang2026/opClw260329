@@ -1,0 +1,26 @@
+gene_id,symbol,name,chromosome,function,category
+ENSG00000118445,SELENOP,Selenoprotein P,5,Selenium transport,transport
+ENSG00000118432,GPX4,Glutathione Peroxidase 4,19,Phospholipid hydroperoxide peroxidase,antioxidant
+ENSG00000133671,TXNRD1,Thioredoxin Reductase 1,12,NADPH-dependent thioredoxin reductase,antioxidant
+ENSG00000198094,TXNRD2,Thioredoxin Reductase 2,22,Mitochondrial thioredoxin reductase,antioxidant
+ENSG00000118246,GPX1,Glutathione Peroxidase 1,3,Hydrogen peroxide peroxidase,antioxidant
+ENSG00000123303,GPX2,Glutathione Peroxidase 2,14,Gastrointestinal-specific peroxidase,antioxidant
+ENSG00000211455,GPX3,Glutathione Peroxidase 3,5,Plasma glutathione peroxidase,antioxidant
+ENSG00000113303,GPX5,Glutathione Peroxidase 3,14,Epididymis-specific peroxidase,antioxidant
+ENSG00000123207,SELENOF,Selenoprotein F,19,ER resident selenoprotein,ER stress
+ENSG00000150873,SELENON,Selenoprotein N,1,Muscle and brain selenoprotein,muscle
+ENSG00000163218,SELENOT,Selenoprotein T,3,ER calcium-binding selenoprotein,ER stress
+ENSG00000151337,SELENOS,Selenoprotein S,16,ER-associated selenoprotein,ER stress
+ENSG00000143153,SELENOK,Selenoprotein K,3,ER membrane selenoprotein,ER stress
+ENSG00000198242,SELENOM,Selenoprotein M,22,ER selenoprotein with thioredoxin-like domain,ER stress
+ENSG00000165233,SELENBP1,Selenoprotein BP1,1,Selenium binding protein,storage
+ENSG00000166165,SELK,Selenoprotein K,3,ER membrane protein,ER stress
+ENSG00000186715,SELV,Selenoprotein V,19,Testis-specific selenoprotein,reproductive
+ENSG00000138050,SELH,Selenoprotein H,19,Mitochondrial selenoprotein,antioxidant
+ENSG00000154678,SELP,Selenoprotein P,5,Plasma selenium transporter,transport
+ENSG00000163235,SELT,Selenoprotein T,3,ER calcium-binding,ER stress
+ENSG00000197506,SELM,Selenoprotein M,22,Thioredoxin-like fold,ER stress
+ENSG00000172159,SELNF,Selenoprotein NF,19,NF-kB associated,immune
+ENSG00000148399,SELR,Selenoprotein R,13,Methionine sulfoxide reductase,repair
+ENSG00000188493,SELS,Selenoprotein S,16,ER stress response,ER stress
+ENSG00000164220,TXNRD3,Thioredoxin Reductase 3,3,Testis-specific thioredoxin reductase,antioxidant
