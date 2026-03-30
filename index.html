@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>硒相关基因表达分析 | 多器官多细胞表达模式</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mindmap/1.0.0/mindmap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- 头部导航 -->
+        <header class="header">
+            <h1>硒相关基因表达分析平台</h1>
+            <p>探索硒蛋白基因在人体器官与细胞中的表达模式，揭示生理生物学含义</p>
+        </header>
+
+        <!-- 思维导图导航 -->
+        <section class="mindmap-section">
+            <h2>知识导航</h2>
+            <div id="mindmap" class="mindmap-container">
+                <div class="mindmap-node" data-id="selenoproteins">
+                    <h3>硒蛋白家族</h3>
+                    <ul>
+                        <li data-target="gpx">GPX家族</li>
+                        <li data-target="txnrd">TXNRD家族</li>
+                        <li data-target="selenop">SELENOP</li>
+                        <li data-target="selenos">SELENOS</li>
+                        <li data-target="selenon">SELENON</li>
+                    </ul>
+                </div>
+                <div class="mindmap-node" data-id="organ-expression">
+                    <h3>器官表达</h3>
+                    <ul>
+                        <li data-target="brain">大脑</li>
+                        <li data-target="heart">心脏</li>
+                        <li data-target="liver">肝脏</li>
+                        <li data-target="kidney">肾脏</li>
+                        <li data-target="thyroid">甲状腺</li>
+                        <li data-target="muscle">肌肉</li>
+                    </ul>
+                </div>
+                <div class="mindmap-node" data-id="cell-types">
+                    <h3>细胞类型</h3>
+                    <ul>
+                        <li data-target="neurons">神经元</li>
+                        <li data-target="immune">免疫细胞</li>
+                        <li data-target="epithelial">上皮细胞</li>
+                        <li data-target="fibroblasts">成纤维细胞</li>
+                        <li data-target="endothelial">内皮细胞</li>
+                        <li data-target="adipocytes">脂肪细胞</li>
+                    </ul>
+                </div>
+                <div class="mindmap-node" data-id="biological-functions">
+                    <h3>生物学功能</h3>
+                    <ul>
+                        <li data-target="antioxidant">抗氧化</li>
+                        <li data-target="immunoregulation">免疫调节</li>
+                        <li data-target="metabolism">代谢调控</li>
+                        <li data-target="detoxification">解毒功能</li>
+                        <li data-target="cell-protection">细胞保护</li>
+                    </ul>
+                </div>
+                <div class="mindmap-node" data-id="disease-associations">
+                    <h3>疾病关联</h3>
+                    <ul>
+                        <li data-target="cancer">癌症</li>
+                        <li data-target="heart-disease">心脏病</li>
+                        <li data-target="neurodegenerative">神经退行性疾病</li>
+                        <li data-target="autoimmune">自身免疫疾病</li>
+                        <li data-target="metabolic">代谢性疾病</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 表达热图 -->
+        <section class="chart-section">
+            <h2>器官表达热图</h2>
+            <div id="organ-expression-heatmap"></div>
+            <div class="chart-description">
+                <p>硒蛋白基因在不同器官的表达水平（基于GTEx数据库）。颜色表示基因表达强度，从低到高（蓝色到红色）。</p>
+            </div>
+        </section>
+
+        <!-- 通路网络图 -->
+        <section class="chart-section">
+            <h2>硒相关通路网络</h2>
+            <div id="pathway-network"></div>
+            <div class="chart-description">
+                <p>硒蛋白参与的生物学通路网络图。节点代表基因/通路，连线代表相互作用关系。</p>
+            </div>
+        </section>
+
+        <!-- 基因详情 -->
+        <section class="genes-section">
+            <h2>主要硒蛋白基因</h2>
+            <div class="gene-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>基因</th>
+                            <th>名称</th>
+                            <th>主要功能</th>
+                            <th>高表达器官</th>
+                            <th>疾病关联</th>
+                            <th>详细</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>GPX4</td>
+                            <td>谷胱甘肽过氧化物酶4</td>
+                            <td>抗氧化，磷脂过氧化物酶</td>
+                            <td>肝脏、肾脏、大脑</td>
+                            <td>神经退行性疾病、癌症</sfc>
+                            <td><button onclick="showGeneDetail('GPX4')">详情</button></td>
+                        </tr>
+                        <tr>
+                            <td>SELENOP</td>
+                            <td>硒蛋白P</td>
+                            <td>硒转运蛋白</td>
+                            <td>肝脏、血浆、肾脏</td>
+                            <td>硒缺乏症、肝病</td>
+                            <td><button onclick="showGeneDetail('SELENOP')">详情</button></td>
+                        </tr>
+                        <tr>
+                            <td>TXNRD1</td>
+                            <td>硫氧还蛋白还原酶1</td>
+                            <td>抗氧化酶，维持细胞氧化还原状态</td>
+                            <td>肝脏、甲状腺、心脏</td>
+                            <td>癌症、心脏病</td>
+                            <td><button onclick="showGeneDetail('TXNRD1')">详情</button></td>
+                        </tr>
+                        <tr>
+                            <td>SELENOS</td>
+                            <td>硒蛋白S</td>
+                            <td>炎症调节，ER应激响应</td>
+                            <td>肝脏、胰腺、脂肪组织</td>
+                            <td>代谢综合征、炎症性疾病</td>
+                            <td><button onclick="showGeneDetail('SELENOS')">详情</button></td>
+                        </tr>
+                        <tr>
+                            <td>SELENON</td>
+                            <td>硒蛋白N</td>
+                            <td>骨骼肌功能，钙离子调控</td>
+                            <td>骨骼肌、心脏</td>
+                            <td>肌营养不良症</td>
+                            <td><button onclick="showGeneDetail('SELENON')">详情</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 疾病关联图 -->
+        <section class="chart-section">
+            <h2>硒蛋白与疾病关联</h2>
+            <div id="disease-correlation"></div>
+            <div class="chart-description">
+                <p>硒蛋白基因表达与疾病发病率的相关性分析（基于TCGA数据库）。</p>
+            </div>
+        </section>
+
+        <!-- 方法说明 -->
+        <section class="methods-section">
+            <h2>分析方法</h2>
+            <div class="methods-content">
+                <h3>数据来源</h3>
+                <ul>
+                    <li><strong>GTEx数据库</strong>: 54个器官组织的RNA-seq表达数据</li>
+                    <li><strong>Human Protein Atlas</strong>: 器官特异性蛋白质表达数据</li>
+                    <li><strong>TCGA数据库</strong>: 癌症组织表达数据（33种癌症）</li>
+                    <li><strong>Human Cell Atlas</strong>: 单细胞RNA-seq数据</li>
+                </ul>
+                
+                <h3>分析方法</h3>
+                <ul>
+                    <li><strong>表达谱分析</strong>: 使用limma、DESeq2进行基因表达分析</li>
+                    <li><strong>通路分析</strong>: 使用KEGG、Reactome数据库进行通路富集</li>
+                    <li><strong>网络分析</strong>: 使用STRING数据库构建蛋白质相互作用网络</li>
+                    <li><strong>相关性分析</strong>: 计算基因表达与疾病的相关性</li>
+                </ul>
+                
+                <h3>可视化方法</h3>
+                <ul>
+                    <li><strong>Plotly</strong>: 交互式热图、散点图、网络图</li>
+                    <li><strong>D3.js</strong>: 网络可视化、流程图</li>
+                    <li><strong>Mindmap.js</strong>: 知识图谱导航</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 基因详情弹出框 -->
+        <div id="gene-detail-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div id="gene-detail-content"></div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>硒相关基因表达分析项目 | 生物信息学分析平台 | 2026</p>
+            <p>数据来源：GTEx, Human Protein Atlas, TCGA, Human Cell Atlas</p>
+            <p>分析方法：BioSkills 生物信息学技能包</p>
+        </footer>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

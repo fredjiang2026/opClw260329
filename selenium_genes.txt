@@ -1,0 +1,53 @@
+# 硒蛋白家族和相关基因列表
+# 硒蛋白基因 (Selenoproteins)
+
+# 主要硒蛋白基因
+GPX1	谷胱甘肽过氧化物酶1	抗氧化酶
+GPX2	谷胱甘肽过氧化物酶2	肠道抗氧化
+GPX3	谷胱甘肽过氧化物酶3	血浆抗氧化
+GPX4	谷胱甘肽过氧化物酶4	磷脂过氧化物酶
+
+TXNRD1	硫氧还蛋白还原酶1	抗氧化酶
+TXNRD2	硫氧还蛋白还原酶2	线粒体抗氧化酶
+TXNRD3	硫氧还蛋白还原酶3	睾丸特异性
+
+SELENOP	硒蛋白P	硒转运蛋白
+SELENOK	硒蛋白K	免疫调节
+SELENOS	硒蛋白S	炎症调节
+SELENOT	硒蛋白T	细胞保护
+SELENOM	硒蛋白M	细胞增殖
+SELENON	硒蛋白N	骨骼肌
+SELENOI	硒蛋白I	膜蛋白
+SELENOO	硒蛋白O	线粒体功能
+
+# 硒代谢相关基因
+SELENBP1	硒结合蛋白1	硒转运
+SELENBP2	硒结合蛋白2	硒转运
+
+# 硒相关通路基因
+KEAP1	Kelch-like ECH-associated protein 1	氧化应激反应
+NRF2	Nuclear factor erythroid 2-related factor 2	抗氧化反应元件
+ATF4	Activating transcription factor 4	硒蛋白合成调控
+ATF6	Activating transcription factor 6	硒蛋白合成调控
+
+# 硒相关疾病基因
+TRPM6	Transient receptor potential melastatin 6	硒吸收
+TRPM7	Transient receptor potential melastatin 7	硒吸收
+
+# 硒与免疫调节基因
+IL1B	Interleukin 1 beta	炎症反应
+IL6	Interleukin 6	炎症反应
+IFNG	Interferon gamma	免疫调节
+TNF	肿瘤坏死因子	炎症反应
+
+# 硒与癌症相关基因
+TP53	肿瘤蛋白p53	细胞凋亡
+PTEN	磷酸酶和张力蛋白同源物	细胞增殖
+AKT1	AKT丝氨酸/苏氨酸激酶1	细胞存活
+EGFR	表皮生长因子受体	细胞增殖
+
+# 硒与抗氧化基因
+CAT	过氧化氢酶	抗氧化酶
+SOD1	超氧化物歧化酶1	抗氧化酶
+SOD2	超氧化物歧化酶2	抗氧化酶
+NOS2	一氧化氮合成酶2	抗氧化酶
