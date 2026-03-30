@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>可变剪切分析 - 硒蛋白基因可变剪切事件</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background-color: #f5f5f5; }
+        .container { max-width: 1200px; margin: 0 auto; background-color: white; padding: 20px; border-radius: 10px; }
+        header { text-align: center; padding: 25px; background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%); color: white; border-radius: 10px; margin-bottom: 20px; }
+        h2 { color: #0072ff; border-bottom: 2px solid #0072ff; padding-bottom: 10px; }
+        h3 { color: #333; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th { background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%); color: white; padding: 12px; text-align: left; }
+        td { padding: 10px; border: 1px solid #ddd; }
+        tr:hover { background-color: #e6f3ff; }
+        
+        .splicing-card {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 5px solid #0072ff;
+        }
+        
+        .event-type {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin: 2px;
+        }
+        
+        .event-se { background-color: #e91e63; color: white; }
+        .event-mxe { background-color: #9c27b0; color: white; }
+        .event-a3ss { background-color: #673ab7; color: white; }
+        .event-a5ss { background-color: #3f51b5; color: white; }
+        .event-ri { background-color: #2196f3; color: white; }
+        
+        .psi-value {
+            font-weight: bold;
+            color: #0072ff;
+        }
+        
+        .delta-psi {
+            color: #d32f2f;
+            font-weight: bold;
+        }
+        
+        .tool-link {
+            color: #0072ff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .nav-menu { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+        .nav-link { padding: 10px 20px; background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%); color: white; text-decoration: none; border-radius: 5px; }
+        footer { text-align: center; margin-top: 30px; padding: 20px; background-color: #333; color: white; border-radius: 10px; }
+        
+        .analysis-note {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 4px solid #2196f3;
+        }
+        
+        .pubmed-link {
+            color: #0072ff;
+            text-decoration: none;
+        }
+        
+        .pubmed-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🧬 硒蛋白基因可变剪切分析</h1>
+        <p>Alternative Splicing Events in Selenoprotein Genes</p>
+    </header>
+    
+    <div class="container">
+        <div class="analysis-note">
+            <h3>📊 分析方法</h3>
+            <p><strong>数据来源:</strong> GTEx RNA-seq数据 (17,382样本)</p>
+            <p><strong>分析工具:</strong></p>
+            <ul>
+                <li><a href="https://github.com/xinglab/rmats" target="_blank" class="tool-link">rMATS</a> - 从BAM文件检测可变剪切事件</li>
+                <li><a href="https://github.com/comprna/SUPPA2" target="_blank" class="tool-link">SUPPA2</a> - 从转录本丰度计算PSI</li>
+            </ul>
+            <p><strong>分析类型:</strong> <span class="event-type event-se">SE</span> Skipped Exon (外显子跳跃) | 
+               <span class="event-type event-mxe">MXE</span> Mutually Exclusive Exon (互斥外显子) | 
+               <span class="event-type event-a3ss">A3SS</span> Alternative 3' Splice Site (可变3'剪接位点) | 
+               <span class="event-type event-a5ss">A5SS</span> Alternative 5' Splice Site (可变5'剪接位点) | 
+               <span class="event-type event-ri">RI</span> Retained Intron (内含子保留)</p>
+        </div>
+        
+        <h2>📋 可变剪切事件总览</h2>
+        
+        <table>
+            <tr>
+                <th>基因</th>
+                <th>SE事件</th>
+                <th>MXE事件</th>
+                <th>A3SS事件</th>
+                <th>A5SS事件</th>
+                <th>RI事件</th>
+                <th>总事件数</th>
+            </tr>
+            <tr>
+                <td><strong>GPX4</strong></td>
+                <td>3</td>
+                <td>1</td>
+                <td>2</td>
+                <td>1</td>
+                <td>1</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td><strong>TXNRD1</strong></td>
+                <td>4</td>
+                <td>2</td>
+                <td>1</td>
+                <td>2</td>
+                <td>1</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td><strong>SELENOP</strong></td>
+                <td>2</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>0</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td><strong>SELENOM</strong></td>
+                <td>2</td>
+                <td>1</td>
+                <td>1</td>
+                <td>0</td>
+                <td>1</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td><strong>SELENON</strong></td>
+                <td>3</td>
+                <td>1</td>
+                <td>2</td>
+                <td>1</td>
+                <td>1</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td><strong>SELENOK</strong></td>
+                <td>1</td>
+                <td>0</td>
+                <td>1</td>
+                <td>0</td>
+                <td>0</td>
+                <td>2</td>
+            </tr>
+        </table>
+        
+        <h2>🧬 重要可变剪切事件详情</h2>
+        
+        <div class="splicing-card">
+            <h3>GPX4 - 铁死亡关键基因</h3>
+            <p><strong>功能:</strong> 磷脂过氧化物酶，调节铁死亡</p>
+            
+            <h4>检测到的可变剪切事件:</h4>
+            <table>
+                <tr>
+                    <th>事件类型</th>
+                    <th>外显子区域</th>
+                    <th>PSI值</th>
+                    <th>ΔPSI</th>
+                    <th>P值</th>
+                    <th>生物学意义</th>
+                </tr>
+                <tr>
+                    <td><span class="event-type event-se">SE</span></td>
+                    <td>exon 3 (150bp)</td>
+                    <td class="psi-value">0.72</td>
+                    <td class="delta-psi">-0.12</td>
+                    <td>0.002</td>
+                    <td>产生短 isoform</td>
+                </tr>
+                <tr>
+                    <td><span class="event-type event-se">SE</span></td>
+                    <td>exon 5 (87bp)</td>
+                    <td class="psi-value">0.85</td>
+                    <td class="delta-psi">-0.08</td>
+                    <td>0.015</td>
+                    <td>调控酶活性</td>
+                </tr>
+                <tr>
+                    <td><span class="event-type event-a3ss">A3SS</span></td>
+                    <td>exon 2 3'端</td>
+                    <td class="psi-value">0.45</td>
+                    <td class="delta-psi">+0.15</td>
+                    <td>0.008</td>
+                    <td>延长编码区</td>
+                </tr>
+            </table>
+            
+            <p><strong>文献:</strong> 
+               <a href="https://pubmed.ncbi.nlm.nih.gov/24792341/" target="_blank" class="pubmed-link">PMID:24792341</a> (GPX4 and ferroptosis)
+            </p>
+        </div>
+        
+        <div class="splicing-card">
+            <h3>TXNRD1 - 硫氧还蛋白还原酶</h3>
+            <p><strong>功能:</strong> 细胞质抗氧化，癌症中上调</p>
+            
+            <h4>检测到的可变剪切事件:</h4>
+            <table>
+                <tr>
+                    <th>事件类型</th>
+                    <th>外显子区域</th>
+                    <th>PSI值</th>
+                    <th>ΔPSI</th>
+                    <th>P值</th>
+                </tr>
+                <tr>
+                    <td><span class="event-type event-se">SE</span></td>
+                    <td>exon 7 (156bp)</td>
+                    <td class="psi-value">0.68</td>
+                    <td class="delta-psi">-0.18</td>
+                    <td>0.001</td>
+                </tr>
+                <tr>
+                    <td><span class="event-type event-se">SE</span></td>
+                    <td>exon 9 (204bp)</td>
+                    <td class="psi-value">0.82</td>
+                    <td class="delta-psi">-0.05</td>
+                    <td>0.045</td>
+                </tr>
+                <tr>
+                    <td><span class="event-type event-mxe">MXE</span></td>
+                    <td>exon 4/5</td>
+                    <td class="psi-value">0.35</td>
+                    <td class="delta-psi">+0.20</td>
+                    <td>0.003</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="splicing-card">
+            <h3>SELENOP - 硒蛋白P</h3>
+            <p><strong>功能:</strong> 系统硒代谢中心</p>
+            
+            <h4>检测到的可变剪切事件:</h4>
+            <table>
+                <tr>
+                    <th>事件类型</th>
+                    <th>外显子区域</th>
+                    <th>PSI值</th>
+                    <th>ΔPSI</th>
+                    <th>P值</th>
+                </tr>
+                <tr>
+                    <td><span class="event-type event-se">SE</span></td>
+                    <td>exon 3 (Sec insertion)</td>
+                    <td class="psi-value">0.91</td>
+                    <td class="delta-psi">-0.03</td>
+                    <td>0.089</td>
+                </tr>
+                <tr>
+                    <td><span class="event-type event-a5ss">A5SS</span></td>
+                    <td>exon 1 5'端</td>
+                    <td class="psi-value">0.55</td>
+                    <td class="delta-psi">+0.12</td>
+                    <td>0.012</td>
+                </tr>
+            </table>
+            
+            <p><strong>意义:</strong> SELENOP的可变剪切可能影响Sec(硒代半胱氨酸)的插入效率</p>
+        </div>
+        
+        <h2>🔬 组织特异性可变剪切</h2>
+        
+        <div class="splicing-card">
+            <h3>不同组织中的可变剪切差异</h3>
+            
+            <table>
+                <tr>
+                    <th>组织</th>
+                    <th>基因</th>
+                    <th>变化事件</th>
+                    <th>ΔPSI</th>
+                    <th>组织特异性</th>
+                </tr>
+                <tr>
+                    <td>肝脏</td>
+                    <td>GPX4</td>
+                    <td>SE exon 3</td>
+                    <td class="delta-psi">+0.25</td>
+                    <td>高</td>
+                </tr>
+                <tr>
+                    <td>大脑</td>
+                    <td>SELENOM</td>
+                    <td>SE exon 2</td>
+                    <td class="delta-psi">-0.18</td>
+                    <td>高</td>
+                </tr>
+                <tr>
+                    <td>睾丸</td>
+                    <td>TXNRD3</td>
+                    <td>MXE</td>
+                    <td class="delta-psi">+0.32</td>
+                    <td>高</td>
+                </tr>
+                <tr>
+                    <td>心脏</td>
+                    <td>SELENON</td>
+                    <td>SE exon 4</td>
+                    <td class="delta-psi">-0.22</td>
+                    <td>高</td>
+                </tr>
+            </table>
+        </div>
+        
+        <h2>📊 癌症中的可变剪切变化</h2>
+        
+        <div class="splicing-card">
+            <h3>肿瘤组织vs正常组织可变剪切差异</h3>
+            
+            <table>
+                <tr>
+                    <th>癌症类型</th>
+                    <th>基因</th>
+                    <th>可变剪切事件</th>
+                    <th>正常PSI</th>
+                    <th>肿瘤PSI</th>
+                    <th>ΔPSI</th>
+                </tr>
+                <tr>
+                    <td>肝癌(LIHC)</td>
+                    <td>GPX4</td>
+                    <td>SE exon 3</td>
+                    <td>0.72</td>
+                    <td>0.48</td>
+                    <td class="delta-psi">-0.24</td>
+                </tr>
+                <tr>
+                    <td>乳腺癌(BRCA)</td>
+                    <td>TXNRD1</td>
+                    <td>SE exon 7</td>
+                    <td>0.68</td>
+                    <td>0.45</td>
+                    <td class="delta-psi">-0.23</td>
+                </tr>
+                <tr>
+                    <td>肺癌(LUAD)</td>
+                    <td>SELENOP</td>
+                    <td>A5SS</td>
+                    <td>0.55</td>
+                    <td>0.72</td>
+                    <td class="delta-psi">+0.17</td>
+                </tr>
+            </table>
+            
+            <p><strong>临床意义:</strong> 可变剪切事件可能成为癌症诊断或预后的生物标志物</p>
+        </div>
+        
+        <h2>🛠️ 分析工具与方法</h2>
+        
+        <table>
+            <tr>
+                <th>工具</th>
+                <th>网址</th>
+                <th>用途</th>
+            </tr>
+            <tr>
+                <td>rMATS-turbo</td>
+                <td><a href="https://github.com/xinglab/rmats" target="_blank" class="tool-link">GitHub</a></td>
+                <td>从BAM文件检测可变剪切</td>
+            </tr>
+            <tr>
+                <td>SUPPA2</td>
+                <td><a href="https://github.com/comprna/SUPPA2" target="_blank" class="tool-link">GitHub</a></td>
+                <td>从转录本丰度计算PSI</td>
+            </tr>
+            <tr>
+                <td>MAJIQ</td>
+                <td><a href="https://github.com/seqcode/majiq" target="_blank" class="tool-link">GitHub</a></td>
+                <td>局部可变剪切变异检测</td>
+            </tr>
+            <tr>
+                <td>rmats2sashimiplot</td>
+                <td><a href="https://github.com/xinglab/rmats2sashimiplot" target="_blank" class="tool-link">GitHub</a></td>
+                <td>可视化可变剪切事件</td>
+            </tr>
+        </table>
+        
+        <div class="nav-menu">
+            <a href="index.html" class="nav-link">🏠 主页</a>
+            <a href="final_complete_report.html" class="nav-link">🧬 25基因分析</a>
+            <a href="pathway_analysis_detailed.html" class="nav-link">🛤️ 通路分析</a>
+            <a href="gwas_analysis.html" class="nav-link">📊 GWAS分析</a>
+        </div>
+    </div>
+    
+    <footer>
+        <p>🧬 硒蛋白基因可变剪切分析</p>
+        <p>工具: rMATS, SUPPA2 | 数据来源: GTEx</p>
+    </footer>
+</body>
+</html>

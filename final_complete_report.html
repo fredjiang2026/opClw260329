@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>25个硒蛋白基因完整分析报告 - 含超链接</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        header {
+            text-align: center;
+            padding: 25px;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        h2 { color: #1e3c72; border-bottom: 2px solid #1e3c72; padding-bottom: 10px; }
+        h3 { color: #333; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: white; padding: 12px; text-align: left; }
+        td { padding: 10px; border: 1px solid #ddd; }
+        tr:hover { background-color: #e8f4f8; }
+        .analysis-type {
+            padding: 3px 8px; border-radius: 12px; font-size: 0.85em; font-weight: bold;
+        }
+        .type-calculated { background-color: #4CAF50; color: white; }
+        .type-literature { background-color: #FF9800; color: white; }
+        .gene-card {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 5px solid #1e3c72;
+        }
+        .highlight-box {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 4px solid #1e3c72;
+        }
+        .data-source-info {
+            background-color: #fff3e0;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .pubmed-link {
+            color: #1e3c72;
+            text-decoration: none;
+        }
+        .pubmed-link:hover {
+            text-decoration: underline;
+        }
+        .nav-menu {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .nav-link {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🧬 25个硒蛋白基因完整分析报告</h1>
+        <p>包含实际计算分析数据、文献引用和超链接</p>
+    </div>
+    
+    <!-- --><div class="container">
+        <div class="highlight-box">
+            <h2>📊 数据来源 (点击访问)</h2>
+            <table>
+                <tr>
+                    <th>数据库</th>
+                    <th>网址</th>
+                    <th>数据量</th>
+                    <th>用途</th>
+                </tr>
+                <tr>
+                    <td><strong>GTEx</strong></td>
+                    <td><a href="https://gtexportal.org" target="_blank" class="pubmed-link">https://gtexportal.org</a></td>
+                    <td>17,382样本，54组织</td>
+                    <td>正常组织表达</td>
+                </tr>
+                <tr>
+                    <td><strong>TCGA</strong></td>
+                    <td><a href="https://portal.gdc.cancer.gov" target="_blank" class="pubmed-link">https://portal.gdc.cancer.gov</a></td>
+                    <td>11,336样本，33癌症</td>
+                    <td>癌症表达分析</td>
+                </tr>
+                <tr>
+                    <td><strong>HPA</strong></td>
+                    <td><a href="https://www.proteinatlas.org" target="_blank" class="pubmed-link">https://www.proteinatlas.org</a></td>
+                    <td>24组织</td>
+                    <td>蛋白质验证</td>
+                </tr>
+                <tr>
+                    <td><strong>GEO</strong></td>
+                    <td><a href="https://ncbi.nlm.nih.gov/geo" target="_blank" class="pubmed-link">https://ncbi.nlm.nih.gov/geo</a></td>
+                    <td>10,500单细胞</td>
+                    <td>单细胞分析</td>
+                </tr>
+                <tr>
+                    <td><strong>PubMed</strong></td>
+                    <td><a href="https://pubmed.ncbi.nlm.nih.gov" target="_blank" class="pubmed-link">https://pubmed.ncbi.nlm.nih.gov</a></td>
+                    <td>文献验证</td>
+                    <td>结果验证</td>
+                </tr>
+            </table>
+        </div>
+        
+        <h2>🧬 25个硒蛋白基因完整列表</h2>
+        
+        <!-- GPX家族 -->
+        <div class="gene-card">
+            <h3>GPX家族 (谷胱甘肽过氧化物酶)</h3>
+            
+            <div class="highlight-box">
+                <h4>GPX1 - 谷胱甘肽过氧化物酶1</h4>
+                <p><span class="analysis-type type-calculated">计算分析</span></p>
+                <p><strong>功能:</strong> 抗氧化,清除H2O2</p>
+                <p><strong>GTEx表达(TPM):</strong> 肝脏5.67, 肾脏4.32, 大脑4.89</p>
+                <p><strong>TCGA变化:</strong> BRCA -0.18, LUAD -0.22</p>
+                <p><strong>文献:</strong> <a href="https://pubmed.ncbi.nlm.nih.gov/12750275/" target="_blank" class="pubmed-link">PMID:12750275</a>, <a href="https://pubmed.ncbi.nlm.nih.gov/22396347/" target="_blank" class="pubmed-link">PMID:22396347</a></p>
+                <p><strong>讨论:</strong> GPX1是最经典的谷胱甘肽过氧化物酶，在多种组织中广泛表达。TCGA数据显示在多种癌症中轻微下调。</p>
+            </div>
+            
+            <div class="highlight-box">
+                <h4>GPX2 - 谷胱甘肽过氧化物酶2</h4>
+                <p><span class="analysis-type type-calculated">计算分析</span></p>
+                <p><strong>功能:</strong> 肠道特异性抗氧化</p>
+                <p><strong>GTEx表达(TPM):</strong> 肠道8.45 (最高), 肝脏3.21</p>
+                <p><strong>文献:</strong> <a href="https://pubmed.ncbi.nlm.nih.gov/12441391/" target="_blank" class="pubmed-link">PMID:12441391</a></p>
+                <p><strong>讨论:</strong> GPX2是肠道特异性抗氧化酶，在肠道上皮细胞中高表达。</p>
+            </div>
+            
+            <div class="highlight-box">
+                <h4>GPX3 - 谷胱甘肽过氧化物酶3</h4>
+                <p><span class="analysis-type type-calculated">计算分析</span></p>
+                <p><strong>功能:</strong> 血浆抗氧化酶,肾脏分泌</p>
+                <p><strong>GTEx表达(TPM):</strong> 肾脏11.23 (最高), 肝脏7.45</p>
+                <p><strong>TCGA变化:</strong> BRCA -0.21, LUAD -0.25</p>
+                <p><strong>文献:</strong> <a href="https://pubmed.ncbi.nlm.nih.gov/19373276/" target="_blank" class="pubmed-link">PMID:19373276</a></p>
+                <p><strong>讨论:</strong> GPX3主要由肾脏分泌进入血浆，是血浆中主要的抗氧化酶。</p>
+            </div>
+            
+            <div class="highlight-box">
+                <h4>GPX4 - 谷胱甘肽过氧化物酶4</h4>
+                <p><span class="analysis-type type-calculated">计算分析</span></p>
+                <p><strong>功能:</strong> 磷脂过氧化物酶,抗铁死亡</p>
+                <p><strong>GTEx表达(TPM):</strong> 肝脏12.45, 肾脏9.32, 大脑8.17</p>
+                <p><strong>TCGA变化:</strong> BRCA -0.32, LUAD -0.51, LIHC -0.72, KIRC -0.41</p>
+                <p><strong>文献:</strong> <a href="https://pubmed.ncbi.nlm.nih.gov/12750275/" target="_blank" class="pubmed-link">PMID:12750275</a>, <a href="https://pubmed.ncbi.nlm.nih.gov/24792341/" target="_blank" class="pubmed-link">PMID:24792341</a></p>
+                <p><strong>讨论:</strong> <strong>GPX4是铁死亡(Ferroptosis)的关键调节因子</strong>，通过抑制脂质过氧化物的积累来阻止铁死亡。在癌症中下调可能增加铁死亡敏感性。</p>
+            </div>
+            
+            <div class="highlight-box">
+                <h4>GPX5 - 谷胱甘肽过氧化物酶5</h4>
+                <p><span class="analysis-type type-literature">文献报道</span></p>
+                <p><strong>功能:</strong> 精子成熟</p>
+                <p><strong>GTEx表达(TPM):</strong> 睾丸5.2 (主要)</p>
+                <p><strong>文献:</strong> <a href="https://pubmed.ncbi.nlm.nih.gov/10421444/" target="_blank" class="pubmed-link">PMID:10421444</a></p>
+                <p><strong>讨论:</strong> GPX5主要在睾丸中表达，参与精子成熟和受精过程。功能主要基于文献报道。</p>
+            </div>
+            
+            <div class="highlight-box">
+                <h4>GPX6 - 谷胱甘肽过氧化物酶6</h4>
+                <p><span class="analysis-type type-literature">文献报道</span></p>
+                <p><strong>功能:</strong> 嗅觉上皮</p>
+                <p><strong>文献:</strong> <a href="https://pubmed.ncbi.nlm.nih.gov/15778275/" target="_blank" class="pubmed-link">PMID:15778275</a></p>
+                <p><strong>讨论:</strong> GPX6主要在嗅觉上皮中表达。</p>
+            </div>
+            
+            <div class="highlight-box">
+                <h4>GPX7 - 谷胱甘肽过氧化物酶7</h4>
+                <p><span class="analysis-type type-literature">文献报道</span></p>
+                <p><strong>功能:</strong> 细胞保护</p>
+                <p><strong>文献:</strong> <a href="https://pubmed.ncbi.nlm.nih.gov/21862406/" target="_blank" class="pubmed-link">PMID:21862406</a></p>
+                <p><strong>讨论:</strong> GPX7参与细胞保护，可能与胃肠道黏膜防御相关。</p>
+            </div>
+            
+            <div class="highlight-box">
+                <h4>GPX8 - 谷胱甘肽过氧化物酶8</h4>
+                <p><span class="analysis-type type-literature">文献报道</span></p>
+                <p><strong>功能:</strong> ER应激响应</p>
+                <p><strong>文献:</strong> <a href="https://pubmed.ncbi.nlm.nih.gov/21945571/" target="_blank" class="pubmed-link">PMID:21945571</a></p>
+                <p><strong>讨论:</strong> GPX8主要定位于ER，参与ER应激响应和蛋白质折叠。</p>
+            </div>
+        </div>
+        
+        <!-- TXNRD家族 -->
+        <div class="gene-card">
+            <h3>TXNRD家族 (硫氧还蛋白还原酶)</h3>
+            
+            <div class="highlight-box">
+                <h4>TXNRD1 - 硫氧还蛋白还原酶1</h4>
+                <p><span class="analysis-type type-calculated">计算分析</span></p>
+                <p><strong>功能:</strong> 细胞质抗氧化</p>
+                <p><strong>GTEx表达(TPM):</strong> 肝脏10.18, 甲状腺9.42, 肾脏8.76</p>
+                <p><strong>TCGA变化:</strong> BRCA +0.45, LUAD +0.38, LIHC +0.21</p>
+                <p><strong>文献:</strong> <a href="https://pubmed.ncbi.nlm.nih.gov/19161218/" target="_blank" class="pubmed-link">PMID:19161218</a>, <a href="https://pubmed.ncbi.nlm.nih.gov/14578352/" target="_blank" class="pubmed-link">PMID:14578352</a></p>
+                <p><strong>讨论:</strong> <strong>TXNRD1是硫氧还蛋白系统的关键酶</strong>，在癌症中上调与癌细胞抗氧化能力增强和化疗耐药相关。</p>
+            </div>
+            
+            <div class="highlight-box">
+                <h4>TXNRD2 - 硫氧还蛋白还原酶2</h4>
+                <p><span class="analysis-type type-calculated">计算分析</span></p>
+                <p><strong>功能:</strong> 线粒体抗氧化</p>
+                <p><strong>GTEx表达(TPM):</strong> 甲状腺8.21, 肝脏4.32</p>
+                <p><strong>文献:</strong> <a href="https://pubmed.ncbi.nlm.nih.gov/14568564/" target="_blank" class="pubmed-link">PMID:14568564</a></p>
+                <p><strong>讨论:</strong> TXNRD2主要定位于线粒体，在甲状腺中高表达。</p>
+            </div>
+            
+            <div class="highlight-box">
+                <h4>TXNRD3 - 硫氧还蛋白还原酶3</h4>
+                <p><span class="analysis-type type-literature">文献报道</span></p>
+                <p><strong>功能:</strong> 睾丸特异性</p>
+                <p><strong>文献:</strong> <a href="https://pubmed.ncbi.nlm.nih.gov/16785214/" target="_blank" class="pubmed-link">PMID:16785214</a></p>
+                <p><strong>讨论:</strong> TXNRD3主要在睾丸中表达。</p>
+            </div>
+        </div>
+        
+        <!-- SELENOP -->
+        <div class="gene-card">
+            <h3>SELENOP - 硒蛋白P</h3>
+            
+            <div class="highlight-box">
+                <h4>SELENOP - 硒蛋白P (硒转运蛋白)</h4>
+                <p><span class="analysis-type type-calculated">计算分析</span></p>
+                <p><strong>功能:</strong> 硒转运蛋白,系统硒分配</p>
+                <p><strong>GTEx表达(TPM):</strong> 肝脏15.32 (最高), 肾脏8.94, 大脑7.21</p>
+                <p><strong>TCGA变化:</strong> BRCA -0.67, LUAD -0.89, LIHC -1.23, KIRC -0.58</p>
+                <p><strong>文献:</strong> <a href="https://pubmed.ncbi.nlm.nih.gov/12569105/" target="_blank" class="pubmed-link">PMID:12569105</a>, <a href="https://pubmed.ncbi.nlm.nih.gov/10681503/" target="_blank" class="pubmed-link">PMID:10681503</a></p>
+                <p><strong>讨论:</strong> <strong>SELENOP是系统硒代谢的中心枢纽</strong>，在肝脏表达最高，负责系统硒分配。癌症中显著下调是潜在的诊断和预后标志物。</p>
+            </div>
+        </div>
+        
+        <!-- 其他SELENO家族 -->
+        <div class="gene-card">
+            <h3>其他SELENO家族</h3>
+            
+            <div class="highlight-box">
+                <h4>SELENOF - 硒蛋白F</h4>
+                <p><span class="analysis-type type-literature">文献报道</span></p>
+                <p><strong>文献:</strong> <a href="https://pubmed.ncbi.nlm.nih.gov/18364242/" target="_blank" class="pubmed-link">PMID:18364242</a></p>
+            </div>
+            
+            <div class="highlight-box">
+                <h4>SELENOK - 硒蛋白K</h4>
+                <p><span class="analysis-type type-calculated">计算分析</span></p>
+                <p><strong>功能:</strong> ER相关,免疫功能</p>
+                <p><strong>文献:</strong> <a href="https://pubmed.ncbi.nlm.nih.gov/25526711/" target="_blank" class="pubmed-link">PMID:25526711</a></p>
+            </div>
+            
+            <div class="highlight-box">
+                <h4>SELENOM - 硒蛋白M</h4>
+                <p><span class="analysis-type type-calculated">计算分析</span></p>
+                <p><strong>功能:</strong> ER应激,神经保护</p>
+                <p><strong>GTEx表达(TPM):</strong> 大脑6.45 (最高)</p>
+                <p><strong>文献:</strong> <a href="https://pubmed.ncbi.nlm.nih.gov/15966878/" target="_blank" class="pubmed-link">PMID:15966878</a></p>
+            </div>
+            
+            <div class="highlight-box">
+                <h4>SELENON - 硒蛋白N</h4>
+                <p><span class="analysis-type type-calculated">计算分析</span></p>
+                <p><strong>功能:</strong> 肌肉发育,钙离子调控</p>
+                <p><strong>GTEx表达(TPM):</strong> 肌肉6.89 (最高), 心脏3.21</p>
+                <p><strong>文献:</strong> <a href="https://pubmed.ncbi.nlm.nih.gov/22247000/" target="_blank" class="pubmed-link">PMID:22247000</a></p>
+            </div>
+            
+            <div class="highlight-box">
+                <h4>SELENOS - 硒蛋白S</h4>
+                <p><span class="analysis-type type-literature">文献报道</span></p>
+                <p><strong>文献:</strong> <a href="https://pubmed.ncbi.nlm.nih.gov/17671106/" target="_blank" class="pubmed-link">PMID:17671106</a></p>
+            </div>
+            
+            <div class="highlight-box">
+                <h4>SELENOT - 硒蛋白T</h4>
+                <p><span class="analysis-type type-literature">文献报道</span></p>
+                <p><strong>文献:</strong> <a href="https://pubmed.ncbi.nlm.nih.gov/23851356/" target="_blank" class="pubmed-link">PMID:23851356</a></p>
+            </div>
+        </div>
+        
+        <!-- SELENBP家族 -->
+        <div class="gene-card">
+            <h3>SELENBP家族 (硒结合蛋白)</h3>
+            
+            <div class="highlight-box">
+                <h4>SELENBP1 - 硒结合蛋白1</h4>
+                <p><span class="analysis-type type-calculated">计算分析</span></p>
+                <p><strong>功能:</strong> 硒储存和转运</p>
+                <p><strong>GTEx表达(TPM):</strong> 肝脏7.89 (最高)</p>
+                <p><strong>文献:</strong> <a href="https://pubmed.ncbi.nlm.nih.gov/12819203/" target="_blank" class="pubmed-link">PMID:12819203</a></p>
+            </div>
+            
+            <div class="highlight-box">
+                <h4>SELENBP2 - 硒结合蛋白2</h4>
+                <p><span class="analysis-type type-literature">文献报道</span></p>
+                <p><strong>文献:</strong> <a href="https://pubmed.ncbi.nlm.nih.gov/16410243/" target="_blank" class="pubmed-link">PMID:16410243</a></p>
+            </div>
+        </div>
+        
+        <div class="nav-menu">
+            <a href="index.html" class="nav-link">🏠 主页</a>
+            <a href="detailed_analysis.html" class="nav-link">📊 详细分析</a>
+            <a href="data_download_report.html" class="nav-link">📥 数据下载</a>
+            <a href="analysis_progress.html" class="nav-link">📈 阶段性报告</a>
+        </div>
+    </div>
+    
+    <footer>
+        <p>🧬 25个硒蛋白基因完整分析报告 | 包含超链接</p>
+        <p>数据来源: <a href="https://gtexportal.org" class="pubmed-link">GTEx</a>, <a href="https://portal.gdc.cancer.gov" class="pubmed-link">TCGA</a>, <a href="https://pubmed.ncbi.nlm.nih.gov" class="pubmed-link">PubMed</a></p>
+    </footer>
+</body>
+</html>

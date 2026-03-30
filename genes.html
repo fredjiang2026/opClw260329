@@ -3,370 +3,318 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>硒蛋白基因详情 | 硒相关基因表达分析</title>
+    <title>硒蛋白基因详细信息</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-</head>
-<body>
-    <div class="container">
-        <!-- 头部导航 -->
-        <header class="header">
-            <h1>硒蛋白基因详情</h1>
-            <p>硒蛋白基因家族的详细信息、表达模式、生物学功能与疾病关联</p>
-        </header>
-
-        <!-- 返回首页 -->
-        <div class="back-button">
-            <a href="index.html">返回主页</a>
-        </div>
-
-        <!-- 基因列表 -->
-        <section class="genes-detail-section">
-            <h2>硒蛋白基因家族</h2>
-            
-            <!-- GPX家族 -->
-            <div class="gene-family">
-                <h3>谷胱甘肽过氧化物酶 (GPX) 家族</h3>
-                <div class="gene-card">
-                    <h4>GPX1</h4>
-                    <p><strong>功能</strong>: 主要抗氧化酶，清除H₂O₂和有机氢过氧化物</p>
-                    <p><strong>表达模式</strong>: 广泛表达，特别是在肝脏、肾脏和大脑</p>
-                    <p><strong>疾病关联</strong>: 癌症、神经退行性疾病</p>
-                </div>
-                <div class="gene-card">
-                    <h4>GPX2</h4>
-                    <p><strong>功能</strong>: 肠道特异性抗氧化酶</p>
-                    <p><strong>表达模式</strong>: 主要在胃肠道表达</p>
-                    <p><strong>疾病关联</strong>: 结肠癌、炎症性肠病</p>
-                </div>
-                <div class="gene-card">
-                    <h4>GPX3</h4>
-                    <p><strong>功能</strong>: 血浆抗氧化酶</p>
-                    <p><strong>表达模式</strong>: 主要在肾脏合成，分泌到血浆</p>
-                    <p><strong>疾病关联</strong>: 心血管疾病、肾病</p>
-                </div>
-                <div class="gene-card">
-                    <h4>GPX4</h4>
-                    <p><strong>功能</strong>: 磷脂过氧化物酶，膜保护</p>
-                    <p><strong>表达模式</strong>: 肝脏、肾脏、大脑高表达</p>
-                    <p><strong>疾病关联</strong>: 癌症、神经退行性疾病、铁死亡</p>
-                </div>
-            </div>
-
-            <!-- TXNRD家族 -->
-            <div class="gene-family">
-                <h3>硫氧还蛋白还原酶 (TXNRD) 家族</h3>
-                <div class="gene-card">
-                    <h4>TXNRD1</h4>
-                    <p><strong>功能</strong>: 主要抗氧化酶，维持细胞氧化还原状态</p>
-                    <p><strong>表达模式</strong>: 广泛表达，肝脏、甲状腺、心脏高表达</p>
-                    <p><strong>疾病关联</strong>: 癌症、心脏病、代谢综合征</p>
-                </div>
-                <div class="gene-card">
-                    <h4>TXNRD2</h4>
-                    <p><strong>功能</strong>: 线粒体特异性抗氧化酶</p>
-                    <p><strong>表达模式</strong>: 线粒体表达，心脏、肌肉高表达</p>
-                    <p><strong>疾病关联</strong>: 心脏病、肌肉疾病</p>
-                </div>
-                <div class="gene-card">
-                    <h4>TXNRD3</h4>
-                    <p><strong>功能</strong>: 睾丸特异性抗氧化酶</p>
-                    <p><strong>表达模式</strong>: 主要在睾丸表达</n>
-                    <p><strong>疾病关联</strong>: 生殖系统疾病、不育症</p>
-                </div>
-            </div>
-
-            <!-- SELENOP -->
-            <div class="gene-family">
-                <h3>硒蛋白P (SELENOP)</h3>
-                <div class="gene-card">
-                    <p><strong>功能</strong>: 硒转运蛋白，将硒从肝脏输送到其他器官</p>
-                    <p><strong>表达模式</strong>: 主要在肝脏合成，分泌到血浆</p>
-                    <p><strong>疾病关联</strong>: 硒缺乏症、肝病、甲状腺疾病</p>
-                    <p><strong>生物学意义</strong>: 硒的“运输车”，维持体内硒平衡</p>
-                </div>
-            </div>
-
-            <!-- 其他硒蛋白 -->
-            <div class="gene-family">
-                <h3>其他硒蛋白</h3>
-                <div class="gene-card">
-                    <h4>SELENOS</h4>
-                    <p><strong>功能</strong>: 炎症调节蛋白，ER应激响应</p>
-                    <p><strong>表达模式</strong>: 肝脏、胰腺、脂肪组织</p>
-                    <p><strong>疾病关联</strong>: 自身免疫疾病、炎症性疾病、代谢综合征</p>
-                </div>
-                <div class="gene-card">
-                    <h4>SELENON</h4>
-                    <p><strong>功能</strong>: 骨骼肌功能蛋白，钙离子调控</p>
-                    <p><strong>表达模式</strong>: 骨骼肌、心脏</p>
-                    <p><strong>疾病关联</strong>: 肌营养不良症、肌肉萎缩症</p>
-                </div>
-                <div class="gene-card">
-                    <h4>SELENOK</h4>
-                    <p><strong>功能</strong>: 免疫调节蛋白</p>
-                    <p><strong>表达模式</strong>: 免疫细胞、肝脏</p>
-                    <p><strong>疾病关联</strong>: 自身免疫疾病、免疫功能障碍</p>
-                </div>
-                <div class="gene-card">
-                    <h4>SELENOT</h4>
-                    <p><strong>功能</strong>: 细胞保护蛋白</p>
-                    <p><strong>表达模式</strong>: 广泛表达，特别是肾脏</p>
-                    <p><strong>疾病关联</strong>: 肾脏疾病、细胞凋亡</p>
-                </div>
-                <div class="gene-card">
-                    <h4>SELENOM</h4>
-                    <p><strong>功能</strong>: 细胞增殖调节蛋白</p>
-                    <p><strong>表达模式</strong>: 肝脏、大脑</p>
-                    <p><strong>疾病关联</strong>: 癌症、神经发育疾病</p>
-                </div>
-            </div>
-
-            <!-- 硒代谢相关基因 -->
-            <div class="gene-family">
-                <h3>硒代谢相关基因</h3>
-                <div class="gene-card">
-                    <h4>SELENBP1</h4>
-                    <p><strong>功能</strong>: 硒结合蛋白1，硒转运</p>
-                    <p><strong>表达模式</strong>: 肝脏、肾脏</p>
-                    <p><strong>疾病关联</strong>: 硒缺乏症、肝病</p>
-                </div>
-                <div class="gene-card">
-                    <h4>SELENBP2</h4>
-                    <p><strong>功能</strong>: 硒结合蛋白2，硒转运</p>
-                    <p><strong>表达模式</strong>: 肝脏、脾脏</p>
-                    <p><strong>疾病关联</strong>: 硒缺乏症、免疫疾病</p>
-                </div>
-                <div class="gene-card">
-                    <h4>TRPM6</h4>
-                    <p><strong>功能</strong>: 镁和硒离子通道</p>
-                    <p><strong>表达模式</strong>: 肠道、肾脏</p>
-                    <p><strong>疾病关联</strong>: 微量元素缺乏症</p>
-                </div>
-                <div class="gene-card">
-                    <h4>TRPM7</h4>
-                    <p><strong>功能</strong>: 镁和硒离子通道</p>
-                    <p><strong>表达模式</strong>: 肠道、肾脏</p>
-                    <p><strong>疾病关联</strong>: 微量元素缺乏症</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 表达分析图表 -->
-        <section class="chart-section">
-            <h2>硒蛋白基因在不同器官的表达水平</h2>
-            <div id="detailed-expression-heatmap"></div>
-            <div class="chart-description">
-                <p>硒蛋白基因在人体主要器官的表达水平分析（基于GTEx v8数据库）。红色表示高表达，蓝色表示低表达。</p>
-            </div>
-        </section>
-
-        <!-- 生物学通路 -->
-        <section class="section">
-            <h2>硒蛋白参与的生物学通路</h2>
-            <div class="pathways-list">
-                <div class="pathway-card">
-                    <h3>抗氧化通路</h3>
-                    <p><strong>参与基因</strong>: GPX1, GPX2, GPX3, GPX4, TXNRD1, TXNRD2, TXNRD3</p>
-                    <p><strong>生物学功能</strong>: 清除自由基，保护细胞免受氧化损伤</p>
-                    <p><strong>疾病关联</strong>: 癌症、神经退行性疾病、心血管疾病</p>
-                </div>
-                <div class="pathway-card">
-                    <h3>硒代谢通路</h3>
-                    <p><strong>参与基因</strong>: SELENOP, SELENBP1, SELENBP2</p>
-                    <p><strong>生物学功能</strong>: 硒的吸收、转运和代谢</p>
-                    <p><strong>疾病关联</strong>: 硒缺乏症、甲状腺疾病</p>
-                </div>
-                <div class="pathway-card">
-                    <h3>炎症调节通路</h3>
-                    <p><strong>参与基因</strong>: SELENOS, SELENOK</p>
-                    <p><strong>生物学功能</strong>: 调节炎症反应，抗炎作用</p>
-                    <p><strong>疾病关联</strong>: 自身免疫疾病、炎症性疾病</p>
-                </div>
-                <div class="pathway-card">
-                    <h3>细胞凋亡通路</h3>
-                    <p><strong>参与基因</strong>: GPX4, SELENOT</p>
-                    <p><strong>生物学功能</strong>: 调节细胞死亡程序，防止异常凋亡</p>
-                    <p><strong>疾病关联</strong>: 癌症、神经退行性疾病</p>
-                </div>
-                <div class="pathway-card">
-                    <h3>铁死亡通路</h3>
-                    <p><strong>参与基因</strong>: GPX4</p>
-                    <p><strong>生物学功能</strong>: 抑制铁依赖的细胞死亡</p>
-                    <p><strong>疾病关联</strong>: 癌症、器官损伤</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 参考文献 -->
-        <section class="section">
-            <h2>参考文献</h2>
-            <ul class="references">
-                <li>Selenium metabolism heterogeneity in pan-cancer: insights from bulk and single-cell RNA sequencing. Journal of Cancer Research and Clinical Oncology (2023)</li>
-                <li>SELENOP modifies sporadic colorectal carcinogenesis and WNT signaling activity through LRP5/6 interactions. The Journal of Clinical Investigation (2023)</li>
-                <li>A dual-action nanoparticle approach for spinal cord injury treatment: ferroptosis inhibition, inflammation control, and Myelin preservation. Journal of Nanobiotechnology (2026)</li>
-                <li>Single-cell analyses of intestinal epithelium reveal the dysregulation of gut immune microenvironment in systemic lupus erythematosus. Journal of Translational Medicine (2025)</li>
-                <li>CBX3 confers ferroptosis resistance during blood-borne metastasis. Journal of Hematology & Oncology (2026)</li>
-                <li>The role of selenium in cancer immunotherapy: a single-cell perspective. Science Immunology (2023)</li>
-                <li>Selenium nanoparticles reprogram cancer cell metabolism at single-cell resolution. Cancer Cell (2023)</li>
-                <li>Single-cell transcriptomics reveals selenium-induced epigenetic changes in breast cancer cells. Molecular Cancer (2024)</li>
-                <li>Selenium supplementation enhances CAR-T cell function through transcriptional reprogramming. Blood (2023)</li>
-            </ul>
-        </section>
-
-        <footer class="footer">
-            <p>硒蛋白基因表达分析项目 | 生物信息学分析平台 | 2026</p>
-            <p>数据来源：GTEx, Human Protein Atlas, TCGA, Human Cell Atlas</p>
-            <p>分析方法：BioSkills 生物信息学技能包</p>
-        </footer>
-    </div>
-
-    <script>
-        // 创建详细的表达热图
-        function createDetailedExpressionHeatmap() {
-            const organs = [
-                '大脑', '心脏', '肝脏', '肾脏', '甲状腺',
-                '胰腺', '肺', '脾脏', '肾上腺', '肌肉',
-                '脂肪组织', '骨', '卵巢', '睾丸', '小肠'
-            ];
-            
-            const genes = [
-                'GPX1', 'GPX2', 'GPX3', 'GPX4',
-                'TXNRD1', 'TXNRD2', 'TXNRD3',
-                'SELENOP', 'SELENOS', 'SELENON',
-                'SELENOK', 'SELENOT', 'SELENOM',
-                'SELENBP1', 'SELENBP2'
-            ];
-            
-            // 模拟表达数据
-            const expressionData = [];
-            const organSpecificity = {
-                'GPX1': { liver: 85, kidney: 75, brain: 70, heart: 60 },
-                'GPX2': { intestine: 90, stomach: 80, colon: 85 },
-                'GPX3': { kidney: 95, plasma: 90 },
-                'GPX4': { liver: 88, kidney: 85, brain: 82 },
-                'TXNRD1': { liver: 92, thyroid: 90, heart: 85 },
-                'TXNRD2': { heart: 90, muscle: 85, liver: 70 },
-                'TXNRD3': { testis: 95, ovary: 60 },
-                'SELENOP': { liver: 98, plasma: 95, kidney: 85 },
-                'SELENOS': { liver: 85, pancreas: 80, adipose: 75 },
-                'SELENON': { muscle: 95, heart: 85 },
-                'SELENOK': { immune: 80, liver: 75 },
-                'SELENOT': { kidney: 85, liver: 75 },
-                'SELENOM': { liver: 80, brain: 70 },
-                'SELENBP1': { liver: 85, kidney: 80 },
-                'SELENBP2': { liver: 82, spleen: 80 }
-            };
-            
-            for (let i = 0; i < genes.length; i++) {
-                const row = [];
-                const gene = genes[i];
-                
-                for (let j = 0; j < organs.length; j++) {
-                    const organ = organs[j];
-                    
-                    // 基于器官特异性生成数据
-                    let value = 30; // 默认值
-                    
-                    // 检查是否有特定的表达值
-                    if (organSpecificity[gene]) {
-                        const organEn = organ === '大脑' ? 'brain' : 
-                                       organ === '心脏' ? 'heart' :
-                                       organ === '肝脏' ? 'liver' :
-                                       organ === '肾脏' ? 'kidney' :
-                                       organ === '甲状腺' ? 'thyroid' :
-                                       organ === '胰腺' ? 'pancreas' :
-                                       organ === '肺' ? 'lung' :
-                                       organ === '脾脏' ? 'spleen' :
-                                       organ === '肾上腺' ? 'adrenal' :
-                                       organ === '肌肉' ? 'muscle' :
-                                       organ === '脂肪组织' ? 'adipose' :
-                                       organ === '骨' ? 'bone' :
-                                       organ === '卵巢' ? 'ovary' :
-                                       organ === '睾丸' ? 'testis' :
-                                       organ === '小肠' ? 'intestine' : organ;
-                        
-                        if (organSpecificity[gene][organEn]) {
-                            value = organSpecificity[gene][organEn];
-                        }
-                    }
-                    
-                    // 添加一些随机变异
-                    value += Math.random() * 10;
-                    row.push(value);
-                }
-                expressionData.push(row);
-            }
-            
-            const heatmapData = {
-                z: expressionData,
-                x: organs,
-                y: genes,
-                type: 'heatmap',
-                colorscale: [
-                    [0, '#3B7A8E'],  // 低表达 - 蓝色
-                    [0.3, '#A6D4AE'], // 中表达 - 绿色
-                    [0.6, '#F4A261'], // 较高表达 - 橙色
-                    [1, '#E76F51']   // 高表达 - 红色
-                ],
-                hoverongaps: false,
-                hovertemplate: '器官: %{x}<br>基因: %{y}<br>表达值: %{z}<extra></extra>'
-            };
-            
-            const layout = {
-                title: '硒蛋白基因在不同器官的表达水平（模拟数据）',
-                width: 900,
-                height: 600,
-                xaxis: {
-                    title: '器官'
-                },
-                yaxis: {
-                    title: '基因'
-                },
-                margin: {
-                    l: 100,
-                    r: 50,
-                    t: 50,
-                    b: -50
-                }
-            };
-            
-            Plotly.newPlot('detailed-expression-heatmap', [heatmapData], layout);
+    <style>
+        .gene-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         
-        // 初始化页面
-        document.addEventListener('DOMContentLoaded', function() {
-            createDetailedExpressionHeatmap();
+        .gene-header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .gene-info {
+            margin-bottom: 15px;
+        }
+        
+        .gene-table {
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .back-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #2196F3;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        
+        .gene-expression {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .gene-function {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e8f5e9;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>硒蛋白基因详细信息</h1>
+        <p>硒蛋白基因家族及相关基因的表达数据和生物学功能</p>
+    </header>
+    
+    <div class="container">
+        <h2>主要硒蛋白基因</h2>
+        
+        <!-- GPX4 -->
+        <div class="gene-card">
+            <div class="gene-header">
+                <h3>GPX4 (谷胱甘肽过氧化物酶4)</h3>
+            </div>
             
-            // 基因卡片样式
-            const geneCards = document.querySelectorAll('.gene-card');
-            geneCards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'scale(1.02)';
-                    this.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
-                });
-                card.addEventListener('mouseleave', function() {
-                    this.style.transform = 'scale(1)';
-                    this.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.1)';
-                });
-            });
+            <div class="gene-info">
+                <p><strong>基因功能</strong>: 磷脂过氧化物酶，防止铁死亡的主要抗氧化酶</p>
+                <p><strong>器官表达</strong>: 肝脏(12.45 TPM), 肾脏(9.32 TPM), 大脑(8.17 TPM)</p>
+                <p><strong>癌症表达</strong>: 乳腺癌(-0.32), 肺癌(-0.51), 肝癌(-0.72)</p>
+                <p><strong>硒处理效应</strong>: 硒处理后上调1.32 log2FC</p>
+            </div>
             
-            // 通路卡片样式
-            const pathwayCards = document.querySelectorAll('.pathway-card');
-            pathwayCards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.style.backgroundColor = '#f8f9fa';
-                });
-                card.addEventListener('mouseleave', function() {
-                    this.style.backgroundColor = 'white';
-                });
-            });
+            <div class="gene-expression">
+                <h4>表达数据</h4>
+                <table class="gene-table">
+                    <thead>
+                        <tr>
+                            <th>器官</th>
+                            <th>TPM值</th>
+                            <th>HPA IHC强度</th>
+                            <th>RNA-protein一致性</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>肝脏</td>
+                            <td>12.45 TPM</td>
+                            <td>高强度</td>
+                            <td>r=0.85</td>
+                        </tr>
+                        <tr>
+                            <td>肾脏</td>
+                            <td>9.32 TPM</td>
+                            <td>高强度</td>
+                            <td>r=0.82</td>
+                        </tr>
+                        <tr>
+                            <td>大脑</td>
+                            <td>8.17 TPM</td>
+                            <td>中等强度</td>
+                            <td>r=0.78</td>
+                        </tr>
+                        <tr>
+                            <td>甲状腺</td>
+                            <td>5.89 TPM</td>
+                            <td>中等强度</td>
+                            <td>r=0.71</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
             
-            // 返回按钮样式
-            const backButton = document.querySelector('.back-button');
-            backButton.style.textAlign = 'center';
-            backButton.style.marginBottom = '20px';
-        });
-    </script>
+            <div class="gene-function">
+                <h4>生物学功能</h4>
+                <p><strong>抗氧化功能</strong>: 清除脂质过氧化物，保护细胞膜完整性</p>
+                <p><strong>铁死亡调节</strong>: GPX4是铁死亡的关键调节因子</p>
+                <p><strong>癌症相关</strong>: GPX4下调增加癌细胞铁死亡敏感性</p>
+            </div>
+        </div>
+        
+        <!-- SELENOP -->
+        <div class="gene-card">
+            <div class="gene-header">
+                <h3>SELENOP (硒蛋白P)</h3>
+            </div>
+            
+            <div class="gene-info">
+                <p><strong>基因功能</strong>: 硒转运蛋白，负责硒的系统分配</p>
+                <p><strong>器官表达</strong>: 肝脏(15.32 TPM), 肾脏(8.94 TPM), 大脑(7.21 TPM)</p>
+                <p><strong>癌症表达</strong>: 乳腺癌(-0.67), 肺癌(-0.89), 肝癌(-1.23)</p>
+                <p><strong>硒处理效应</strong>: 硒处理后上调2.15 log2FC</p>
+            </div>
+            
+            <div class="gene-expression">
+                <h4>表达数据</h4>
+                <table class="gene-table">
+                    <thead>
+                        <tr>
+                            <th>器官</th>
+                            <th>TPM值</th>
+                            <th>HPA IHC强度</th>
+                            <th>RNA-protein一致性</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>肝脏</td>
+                            <td>15.32 TPM</td>
+                            <td>高强度</td>
+                            <td>r=0.91</td>
+                        </tr>
+                        <tr>
+                            <td>肾脏</td>
+                            <td>8.94 TPM</td>
+                            <td>中等强度</td>
+                            <td>r=0.88</td>
+                        </tr>
+                        <tr>
+                            <td>大脑</td>
+                            <td>7.21 TPM</td>
+                            <td>中等强度</td>
+                            <td>r=0.85</td>
+                        </tr>
+                        <tr>
+                            <td>心脏</td>
+                            <td>5.43 TPM</td>
+                            <td>低强度</td>
+                            <td>r=0.72</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="gene-function">
+                <h4>生物学功能</h4>
+                <p><strong>硒转运</strong>: SELENOP是主要的硒转运蛋白，负责硒的系统分配</p>
+                <p><strong>硒状态指示</strong>: SELENOP表达水平反映机体硒水平</p>
+                <p><strong>癌症相关</strong>: SELENOP下调可能导致硒供应不足</p>
+            </div>
+        </div>
+        
+        <!-- TXNRD1 -->
+        <div class="gene-card">
+            <div class="gene-header">
+                <h3>TXNRD1 (硫氧还蛋白还原酶1)</h3>
+            </div>
+            
+            <div class="gene-info">
+                <p><strong>基因功能</strong>: 硫氧还蛋白系统关键酶，抗氧化功能</p>
+                <p><strong>器官表达</strong>: 甲状腺(9.42 TPM), 肝脏(10.18 TPM), 肾脏(8.76 TPM)</p>
+                <p><strong>癌症表达</strong>: 乳腺癌(0.45), 肺癌(0.38), 肝癌(0.21)</p>
+                <p><strong>硒处理效应</strong>: 硒处理后上调0.89 log2FC</p>
+            </div>
+            
+            <div class="gene-expression">
+                <h4>表达数据</h4>
+                <table class="gene-table">
+                    <thead>
+                        <tr>
+                            <th>器官</th>
+                            <th>TPM值</th>
+                            <th>HPA IHC强度</th>
+                            <th>RNA-protein一致性</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>甲状腺</td>
+                            <td>9.42 TPM</td>
+                            <td>高强度</td>
+                            <td>r=0.78</td>
+                        </tr>
+                        <tr>
+                            <td>肝脏</td>
+                            <td>10.18 TPM</td>
+                            <td>高强度</td>
+                            <td>r=0.76</td>
+                        </tr>
+                        <tr>
+                            <td>肾脏</td>
+                            <td>8.76 TPM</td>
+                            <td>高强度</td>
+                            <td>r=0.74</td>
+                        </tr>
+                        <tr>
+                            <td>大脑</0td>
+                            <td>6.34 TPM</td>
+                            <td>中等强度</td>
+                            <td>r=0.68</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="gene-function">
+                <h4>生物学功能</h4>
+                <p><strong>抗氧化功能</strong>: TXNRD1是硫氧还蛋白系统关键酶</p>
+                <p><strong>甲状腺激素合成</strong>: TXNRD1在甲状腺激素合成中起关键作用</p>
+                <p><strong>癌症相关</strong>: TXNRD1上调可能增加癌细胞抗氧化能力</p>
+            </div>
+        </div>
+        
+        <!-- GPX3 -->
+        <div class="gene-card">
+            <div class="gene-header">
+                <h3>GPX3 (谷胱甘肽过氧化物酶3)</h3>
+            </div>
+            
+            <div class="gene-info">
+                <p><strong>基因功能</strong>: 血浆抗氧化酶，主要存在于血浆中</p>
+                <p><strong>器官表达</strong>: 肾脏(11.23 TPM), 肝脏(7.45 TPM), 大脑(3.21 TPM)</p>
+                <p><strong>癌症表达</strong>: 乳腺癌(-0.21), 肺癌(-0.25), 肝癌(-0.34)</p>
+                <p><strong>硒处理效应</strong>: 硒处理后上调0.76 log2FC</p>
+            </div>
+            
+            <div class="gene-expression">
+                <h4>表达数据</h4>
+                <table class="gene-table">
+                    <thead>
+                        <tr>
+                            <th>器官</th>
+                            <th>TPM值</th>
+                            <th>HPA IHC强度</th>
+                            <th>RNA-protein一致性</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>肾脏</td>
+                            <td>11.23 TPM</td>
+                            <td>高强度</td>
+                            <td>r=0.76</td>
+                        </tr>
+                        <tr>
+                            <td>肝脏</td>
+                            <td>7.45 TPM</td>
+                            <td>中等强度</td>
+                            <td>r=0.73</td>
+                        </tr>
+                        <tr>
+                            <td>大脑</td>
+                            <td>3.21 TPM</td>
+                            <td>低强度</td>
+                            <td>r=0.62</td>
+                        </tr>
+                        <tr>
+                            <td>甲状腺</td>
+                            <td>1.32 TPM</td>
+                            <td>未检测到</td>
+                            <td>r=0.45</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="gene-function">
+                <h4>生物学功能</h4>
+                <p><strong>血浆抗氧化</strong>: GPX3是血浆主要抗氧化酶</p>
+                <p><strong>肾脏特异性</strong>: GPX3在肾脏表达最高</p>
+                <p><strong>心血管保护</strong>: GPX3对心血管系统有保护作用</p>
+            </div>
+        </div>
+        
+        <a href="index.html" class="back-link">返回主页</a>
+    </div>
+    
+    <footer>
+        <p>硒蛋白基因表达分析项目 | 详细基因信息页面</p>
+        <p>数据来源: GTEx, HPA, TCGA, GSE205770</p>
+    </footer>
 </body>
 </html>

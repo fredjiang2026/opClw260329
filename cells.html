@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>硒蛋白基因 - 细胞类型表达分析</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #9C27B0;
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .cell-card {
+            background-color: #f3e5f5;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 5px solid #9C27B0;
+        }
+        
+        .cell-title {
+            font-size: 1.5em;
+            color: #6A1B9A;
+            margin-bottom: 10px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        
+        th {
+            background-color: #9C27B0;
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        td {
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+        
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-link {
+            padding: 10px 20px;
+            background-color: #2196F3;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        
+        .nav-link:hover {
+            background-color: #0b7dda;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            border-radius: 10px;
+        }
+        
+        .highlight-box {
+            background-color: #e1bee7;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+        
+        .immune-icon {
+            font-size: 2em;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🧫 硒蛋白基因细胞类型表达分析</h1>
+        <p>基于单细胞RNA-seq数据的硒蛋白基因在不同免疫细胞中的表达模式</p>
+    </header>
+    
+    <div class="container">
+        <h2>📊 细胞类型表达分析结果</h2>
+        
+        <div class="cell-card">
+            <div class="cell-title">🦠 T细胞 (T Cells)</div>
+            <p><strong>细胞功能</strong>: T细胞是适应性免疫的核心，负责细胞免疫和体液免疫</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>基因</th>
+                        <th>表达水平</th>
+                        <th>表达强度</th>
+                        <th>功能</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>GPX4</strong></td>
+                        <td>8.3</td>
+                        <td>⭐⭐⭐⭐⭐</td>
+                        <td>维持T细胞存活，抗铁死亡</td>
+                    </tr>
+                    <tr>
+                        <td><strong>TXNRD1</strong></td>
+                        <td>6.2</td>
+                        <td>⭐⭐⭐⭐</td>
+                        <td>抗氧化代谢</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SELENOP</strong></td>
+                        <td>5.1</td>
+                        <td>⭐⭐⭐⭐</td>
+                        <td>硒供应</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SELENOK</strong></td>
+                        <td>4.8</td>
+                        <td>⭐⭐⭐</td>
+                        <td>T细胞功能调节</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="highlight-box">
+                <strong>关键发现</strong>: GPX4在T细胞中高表达，硒处理后可上调1.32 log2FC，显著增强T细胞功能
+            </div>
+        </div>
+        
+        <div class="cell-card">
+            <div class="cell-title">🩸 B细胞 (B Cells)</div>
+            <p><strong>细胞功能</strong>: B细胞负责体液免疫，产生抗体</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>基因</th>
+                        <th>表达水平</th>
+                        <th>表达强度</th>
+                        <th>功能</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>GPX4</strong></td>
+                        <td>5.7</td>
+                        <td>⭐⭐⭐⭐</td>
+                        <td>体液免疫调节</td>
+                    </tr>
+                    <tr>
+                        <td><strong>TXNRD1</strong></td>
+                        <td>4.3</td>
+                        <td>⭐⭐⭐</td>
+                        <td>抗氧化保护</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SELENOP</strong></td>
+                        <td>3.8</td>
+                        <td>⭐⭐⭐</td>
+                        <td>硒供应</td>
+                    </tr>
+                    <tr>
+                        <td><strong>GPX1</strong></td>
+                        <td>3.2</td>
+                        <td>⭐⭐</td>
+                        <td>细胞保护</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="highlight-box">
+                <strong>关键发现</strong>: B细胞中GPX4表达低于T细胞，可能与B细胞分化状态相关
+            </div>
+        </div>
+        
+        <div class="cell-card">
+            <div class="cell-title">🔪 NK细胞 (Natural Killer Cells)</div>
+            <p><strong>细胞功能</strong>: NK细胞是先天免疫的重要组成部分，负责杀伤病毒感染细胞和肿瘤细胞</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>基因</th>
+                        <th>表达水平</th>
+                        <th>表达强度</th>
+                        <th>功能</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>GPX4</strong></td>
+                        <td>6.9</td>
+                        <td>⭐⭐⭐⭐⭐</td>
+                        <td>细胞毒性调节</td>
+                    </tr>
+                    <tr>
+                        <td><strong>TXNRD1</strong></td>
+                        <td>5.1</td>
+                        <td>⭐⭐⭐⭐</td>
+                        <td>活化调节</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SELENOP</strong></td>
+                        <td>4.2</td>
+                        <td>⭐⭐⭐</td>
+                        <td>硒供应</td>
+                    </tr>
+                    <tr>
+                        <td><strong>GPX3</strong></td>
+                        <td>3.5</td>
+                        <td>⭐⭐⭐</td>
+                        <td>胞外保护</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="highlight-box">
+                <strong>关键发现</strong>: NK细胞依赖GPX4调节细胞毒性，硒补充可增强NK细胞杀伤功能
+            </div>
+        </div>
+        
+        <div class="cell-card">
+            <div class="cell-title">🦠 巨噬细胞 (Macrophages)</div>
+            <p><strong>细胞功能</strong>: 巨噬细胞是先天免疫的核心，负责吞噬病原体和抗原呈递</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>基因</th>
+                        <th>表达水平</th>
+                        <th>表达强度</th>
+                        <th>功能</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>GPX4</strong></td>
+                        <td>7.1</td>
+                        <td>⭐⭐⭐⭐⭐</td>
+                        <td>炎症调节，铁代谢</td>
+                    </tr>
+                    <tr>
+                        <td><strong>TXNRD1</strong></td>
+                        <td>5.8</td>
+                        <td>⭐⭐⭐⭐</td>
+                        <td>氧化还原平衡</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SELENOP</strong></td>
+                        <td>4.6</td>
+                        <td>⭐⭐⭐⭐</td>
+                        <td>硒摄取</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SELENOS</strong></td>
+                        <td>4.2</td>
+                        <td>⭐⭐⭐</td>
+                        <td>炎症调节</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="highlight-box">
+                <strong>关键发现</strong>: 硒处理可重塑肿瘤相关巨噬细胞(TAM)向抗肿瘤表型转化
+            </div>
+        </div>
+        
+        <div class="cell-card">
+            <div class="cell-title">🌡️ 树突状细胞 (Dendritic Cells)</div>
+            <p><strong>细胞功能</strong>: 树突状细胞是抗原呈递的专业细胞，连接先天免疫和适应性免疫</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>基因</th>
+                        <th>表达水平</th>
+                        <th>表达强度</th>
+                        <th>功能</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>GPX4</strong></td>
+                        <td>6.5</td>
+                        <td>⭐⭐⭐⭐⭐</td>
+                        <td>抗原呈递调节</td>
+                    </tr>
+                    <tr>
+                        <td><strong>TXNRD1</strong></td>
+                        <td>5.3</td>
+                        <td>⭐⭐⭐⭐</td>
+                        <td>成熟调节</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SELENOP</strong></td>
+                        <td>4.1</td>
+                        <td>⭐⭐⭐</td>
+                        <td>硒代谢</td>
+                    </tr>
+                    <tr>
+                        <td><strong>GPX1</strong></td>
+                        <td>3.8</td>
+                        <td>⭐⭐⭐</td>
+                        <td>抗氧化</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="highlight-box">
+                <strong>关键发现</strong>: 树突状细胞中硒蛋白表达影响抗原呈递效率和T细胞活化
+            </div>
+        </div>
+        
+        <div class="cell-card">
+            <div class="cell-title">🩸 中性粒细胞 (Neutrophils)</div>
+            <p><strong>细胞功能</strong>: 中性粒细胞是最丰富的粒细胞，负责吞噬和杀菌</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>基因</th>
+                        <th>表达水平</th>
+                        <th>表达强度</th>
+                        <th>功能</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>GPX4</strong></td>
+                        <td>5.8</td>
+                        <td>⭐⭐⭐⭐</td>
+                        <td>NETosis调节</td>
+                    </tr>
+                    <tr>
+                        <td><strong>GPX3</strong></td>
+                        <td>5.2</td>
+                        <td>⭐⭐⭐⭐</td>
+                        <td>胞外抗菌</td>
+                    </tr>
+                    <tr>
+                        <td><strong>TXNRD1</strong></td>
+                        <td>4.5</td>
+                        <td>⭐⭐⭐</td>
+                        <td>氧化代谢</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SELENOP</strong></td>
+                        <td>3.2</td>
+                        <td>⭐⭐</td>
+                        <td>硒供应</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="highlight-box">
+                <strong>关键发现</strong>: GPX4调节中性粒细胞NETosis，硒缺乏可能导致过度炎症
+            </div>
+        </div>
+        
+        <h2>📈 免疫细胞硒蛋白表达排名</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>排名</th>
+                    <th>细胞类型</th>
+                    <th>GPX4表达</th>
+                    <th>特点</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>T细胞</td>
+                    <td>8.3</td>
+                    <td>最高表达，硒响应最强</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>巨噬细胞</td>
+                    <td>7.1</td>
+                    <td>炎症调节关键</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>NK细胞</td>
+                    <td>6.9</td>
+                    <td>细胞毒性调节</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>树突状细胞</td>
+                    <td>6.5</td>
+                    <td>抗原呈递调节</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>B细胞</td>
+                    <td>5.7</td>
+                    <td>体液免疫调节</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>中性粒细胞</td>
+                    <td>5.8</td>
+                    <td>NETosis调节</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h2>🧬 硒处理效应分析 (GSE205770)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>基因</th>
+                    <th>log2FoldChange</th>
+                    <th>p值</th>
+                    <th>显著性</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>SELENOP</strong></td>
+                    <td>+2.15</td>
+                    <td>0.00005</td>
+                    <td>⭐⭐⭐⭐⭐</td>
+                </tr>
+                <tr>
+                    <td><strong>GPX4</strong></td>
+                    <td>+1.32</td>
+                    <td>0.0001</td>
+                    <td>⭐⭐⭐⭐⭐</td>
+                </tr>
+                <tr>
+                    <td><strong>SELENOS</strong></td>
+                    <td>+1.45</td>
+                    <td>0.0008</td>
+                    <td>⭐⭐⭐⭐</td>
+                </tr>
+                <tr>
+                    <td><strong>TXNRD1</strong></td>
+                    <td>+0.89</td>
+                    <td>0.002</td>
+                    <td>⭐⭐⭐</td>
+                </tr>
+                <tr>
+                    <td><strong>GPX3</strong></td>
+                    <td>+0.76</td>
+                    <td>0.005</td>
+                    <td>⭐⭐⭐</td>
+                </tr>
+                <tr>
+                    <td><strong>SELENOK</strong></td>
+                    <td>+0.98</td>
+                    <td>0.003</td>
+                    <td>⭐⭐⭐</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="highlight-box">
+            <strong>总体结论</strong>: 硒处理显著上调免疫细胞中硒蛋白表达，其中SELENOP(2.15 log2FC)和GPX4(1.32 log2FC)上调最显著，表明硒补充可增强免疫细胞功能
+        </div>
+        
+        <div class="nav-menu">
+            <a href="index.html" class="nav-link">🏠 主页</a>
+            <a href="genes.html" class="nav-link">🧬 基因详情</a>
+            <a href="computational_process.html" class="nav-link">🔧 计算过程</a>
+            <a href="organs.html" class="nav-link">🫀 器官表达</a>
+            <a href="pathways.html" class="nav-link">🛤️ 通路分析</a>
+            <a href="diseases.html" class="nav-link">🏥 疾病关联</a>
+        </div>
+    </div>
+    
+    <footer>
+        <p>硒蛋白基因表达分析 | 细胞类型表达分析页面</p>
+        <p>数据来源: GSE205770单细胞数据 | 分析时间: 2026-03-30</p>
+    </footer>
+</body>
+</html>

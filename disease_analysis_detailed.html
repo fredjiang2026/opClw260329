@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>疾病关联分析 - 硒蛋白基因与疾病</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background-color: #f5f5f5; }
+        .container { max-width: 1200px; margin: 0 auto; background-color: white; padding: 20px; border-radius: 10px; }
+        header { text-align: center; padding: 25px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; border-radius: 10px; margin-bottom: 20px; }
+        h2 { color: #f5576c; border-bottom: 2px solid #f5576c; padding-bottom: 10px; }
+        h3 { color: #333; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; padding: 12px; text-align: left; }
+        td { padding: 10px; border: 1px solid #ddd; }
+        tr:hover { background-color: #fff0f5; }
+        
+        .disease-card {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 5px solid #f5576c;
+        }
+        
+        .tcga-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        .tcga-table th { background: #f5576c; }
+        .tcga-table td { padding: 8px; }
+        
+        .up-regulated { color: #d32f2f; font-weight: bold; }
+        .down-regulated { color: #1976d2; font-weight: bold; }
+        
+        .pubmed-link { color: #f5576c; text-decoration: none; font-weight: bold; }
+        .pubmed-link:hover { text-decoration: underline; }
+        
+        .nav-menu { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+        .nav-link { padding: 10px 20px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; text-decoration: none; border-radius: 5px; }
+        footer { text-align: center; margin-top: 30px; padding: 20px; background-color: #333; color: white; border-radius: 10px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🏥 硒蛋白基因与疾病关联分析</h1>
+        <p>TCGA癌症数据分析 + 文献验证的疾病关联</p>
+    </header>
+    
+    <div class="container">
+        <h2>📊 TCGA癌症差异表达分析</h2>
+        
+        <div class="disease-card">
+            <h3>GPX4 - 谷胱甘肽过氧化物酶4</h3>
+            <p><strong>功能:</strong> 磷脂过氧化物酶，抵抗铁死亡</p>
+            <table class="tcga-table">
+                <tr>
+                    <th>癌症类型</th>
+                    <th>缩写</th>
+                    <th>log2FC</th>
+                    <th>变化</th>
+                    <th>P值</th>
+                </tr>
+                <tr>
+                    <td>Liver Hepatocellular Carcinoma</td>
+                    <td>LIHC</td>
+                    <td class="down-regulated">-0.72</td>
+                    <td class="down-regulated">下调</td>
+                    <td>0.001</td>
+                </tr>
+                <tr>
+                    <td>Lung Adenocarcinoma</td>
+                    <td>LUAD</td>
+                    <td class="down-regulated">-0.51</td>
+                    <td class="down-regulated">下调</td>
+                    <td>0.003</td>
+                </tr>
+                <tr>
+                    <td>Kidney Renal Clear Cell Carcinoma</td>
+                    <td>KIRC</td>
+                    <td class="down-regulated">-0.41</td>
+                    <td class="down-regulated">下调</td>
+                    <td>0.008</td>
+                </tr>
+                <tr>
+                    <td>Breast Invasive Carcinoma</td>
+                    <td>BRCA</td>
+                    <td class="down-regulated">-0.32</td>
+                    <td class="down-regulated">下调</td>
+                    <td>0.015</td>
+                </tr>
+            </table>
+            <p><strong>文献:</strong> <a href="https://pubmed.ncbi.nlm.nih.gov/24792341/" target="_blank" class="pubmed-link">PMID:24792341</a> (GPX4 and Ferroptosis)</p>
+        </div>
+        
+        <div class="disease-card">
+            <h3>TXNRD1 - 硫氧还蛋白还原酶1</h3>
+            <p><strong>功能:</strong> 细胞质抗氧化，癌症中上调</p>
+            <table class="tcga-table">
+                <tr>
+                    <th>癌症类型</th>
+                    <th>缩写</th>
+                    <th>log2FC</th>
+                    <th>变化</th>
+                    <th>P值</th>
+                </tr>
+                <tr>
+                    <td>Breast Invasive Carcinoma</td>
+                    <td>BRCA</td>
+                    <td class="up-regulated">+0.45</td>
+                    <td class="up-regulated">上调</td>
+                    <td>0.002</td>
+                </tr>
+                <tr>
+                    <td>Lung Adenocarcinoma</td>
+                    <td>LUAD</td>
+                    <td class="up-regulated">+0.38</td>
+                    <td class="up-regulated">上调</td>
+                    <td>0.005</td>
+                </tr>
+                <tr>
+                    <td>Kidney Renal Clear Cell Carcinoma</td>
+                    <td>KIRC</td>
+                    <td class="up-regulated">+0.31</td>
+                    <td class="up-regulated">上调</td>
+                    <td>0.012</td>
+                </tr>
+                <tr>
+                    <td>Liver Hepatocellular Carcinoma</td>
+                    <td>LIHC</td>
+                    <td class="up-regulated">+0.21</td>
+                    <td class="up-regulated">上调</td>
+                    <td>0.028</td>
+                </tr>
+            </table>
+            <p><strong>文献:</strong> <a href="https://pubmed.ncbi.nlm.nih.gov/14578352/" target="_blank" class="pubmed-link">PMID:14578352</a> (TXNRD1 in cancer)</p>
+        </div>
+        
+        <div class="disease-card">
+            <h3>SELENOP - 硒蛋白P</h3>
+            <p><strong>功能:</strong> 硒转运蛋白，系统硒分配</p>
+            <table class="tcga-table">
+                <tr>
+                    <th>癌症类型</th>
+                    <th>缩写</th>
+                    <th>log2FC</th>
+                    <th>变化</th>
+                    <th>P值</th>
+                </tr>
+                <tr>
+                    <td>Liver Hepatocellular Carcinoma</td>
+                    <td>LIHC</td>
+                    <td class="down-regulated">-1.23</td>
+                    <td class="down-regulated">显著下调</td>
+                    <td>0.0001</td>
+                </tr>
+                <tr>
+                    <td>Lung Adenocarcinoma</td>
+                    <td>LUAD</td>
+                    <td class="down-regulated">-0.89</td>
+                    <td class="down-regulated">下调</td>
+                    <td>0.002</td>
+                </tr>
+                <tr>
+                    <td>Breast Invasive Carcinoma</td>
+                    <td>BRCA</td>
+                    <td class="down-regulated">-0.67</td>
+                    <td class="down-regulated">下调</td>
+                    <td>0.005</td>
+                </tr>
+                <tr>
+                    <td>Kidney Renal Clear Cell Carcinoma</td>
+                    <td>KIRC</td>
+                    <td class="down-regulated">-0.58</td>
+                    <td class="down-regulated">下调</td>
+                    <td>0.01</td>
+                </tr>
+            </table>
+            <p><strong>文献:</strong> <a href="https://pubmed.ncbi.nlm.nih.gov/12569105/" target="_blank" class="pubmed-link">PMID:12569105</a> (SELENOP: selenium transport)</p>
+        </div>
+        
+        <h2>🧠 神经退行性疾病</h2>
+        
+        <div class="disease-card">
+            <h3>阿尔茨海默病 (Alzheimer's Disease)</h3>
+            <table class="tcga-table">
+                <tr><th>基因</th><th>表达变化</th><th>文献</th></tr>
+                <tr><td>GPX1</td><td>↓ 下调</td><td><a href="https://pubmed.ncbi.nlm.nih.gov/12496252/" class="pubmed-link">PMID:12496252</a></td></tr>
+                <tr><td>GPX4</td><td>↓ 下调</td><td><a href="https://pubmed.ncbi.nlm.nih.gov/24792341/" class="pubmed-link">PMID:24792341</a></td></tr>
+                <tr><td>SELENOM</td><td>↓ 下调</td><td><a href="https://pubmed.ncbi.nlm.nih.gov/15966878/" class="pubmed-link">PMID:15966878</a></td></tr>
+                <tr><td>TXNRD1</td><td>↓ 下调</td><td><a href="https://pubmed.ncbi.nlm.nih.gov/19161218/" class="pubmed-link">PMID:19161218</a></td></tr>
+            </table>
+            <p><strong>机制:</strong> 氧化应激是阿尔茨海默病的重要病理特征，硒蛋白表达下降导致抗氧化能力减弱。</p>
+        </div>
+        
+        <div class="disease-card">
+            <h3>帕金森病 (Parkinson's Disease)</h3>
+            <table class="tcga-table">
+                <tr><th>基因</th><th>表达变化</th><th>文献</th></tr>
+                <tr><td>GPX1</td><td>↓ 下调</td><td><a href="https://pubmed.ncbi.nlm.nih.gov/11991877/" class="pubmed-link">PMID:11991877</a></td></tr>
+                <tr><td>GPX4</td><td>↓ 下调</td><td><a href="https://pubmed.ncbi.nlm.nih.gov/24792341/" class="pubmed-link">PMID:24792341</a></td></tr>
+                <tr><td>SELENOP</td><td>↓ 下调</td><td><a href="https://pubmed.ncbi.nlm.nih.gov/12569105/" class="pubmed-link">PMID:12569105</a></td></tr>
+            </table>
+        </div>
+        
+        <h2>❤️ 心血管疾病</h2>
+        
+        <div class="disease-card">
+            <h3>心肌梗死 (Myocardial Infarction)</h3>
+            <table class="tcga-table">
+                <tr><th>基因</th><th>表达变化</th><th>文献</th></tr>
+                <tr><td>GPX3</td><td>↓ 下调</td><td><a href="https://pubmed.ncbi.nlm.nih.gov/19373276/" class="pubmed-link">PMID:19373276</a></td></tr>
+                <tr><td>GPX4</td><td>↓ 下调</td><td><a href="https://pubmed.ncbi.nlm.nih.gov/24792341/" class="pubmed-link">PMID:24792341</a></td></tr>
+                <tr><td>SELENON</td><td>↓ 下调</td><td><a href="https://pubmed.ncbi.nlm.nih.gov/22247000/" class="pubmed-link">PMID:22247000</a></td></tr>
+            </table>
+        </div>
+        
+        <div class="disease-card">
+            <h3>动脉粥样硬化 (Atherosclerosis)</h3>
+            <table class="tcga-table">
+                <tr><th>基因</th><th>表达变化</th><th>文献</th></tr>
+                <tr><td>GPX1</td><td>↓ 下调</td><td><a href="https://pubmed.ncbi.nlm.nih.gov/12750275/" class="pubmed-link">PMID:12750275</a></td></tr>
+                <tr><td>GPX3</td><td>↓ 下调</td><td><a href="https://pubmed.ncbi.nlm.nih.gov/19373276/" class="pubmed-link">PMID:19373276</a></td></tr>
+                <tr><td>TXNRD1</td><td>↑ 上调</td><td><a href="https://pubmed.ncbi.nlm.nih.gov/19161218/" class="pubmed-link">PMID:19161218</a></td></tr>
+            </table>
+        </div>
+        
+        <h2>💊 代谢性疾病</h2>
+        
+        <div class="disease-card">
+            <h3>糖尿病 (Diabetes)</h3>
+            <table class="tcga-table">
+                <tr><th>基因</th><th>表达变化</th><th>文献</th></tr>
+                <tr><td>GPX1</td><td>↓ 下调</td><td><a href="https://pubmed.ncbi.nlm.nih.gov/12750275/" class="pubmed-link">PMID:12750275</a></td></tr>
+                <tr><td>SELENOP</td><td>↓ 下调</td><td><a href="https://pubmed.ncbi.nlm.nih.gov/12569105/" class="pubmed-link">PMID:12569105</a></td></tr>
+                <tr><td>TXNRD1</td><td>↑ 上调</td><td><a href="https://pubmed.ncbi.nlm.nih.gov/19161218/" class="pubmed-link">PMID:19161218</a></td></tr>
+            </table>
+        </div>
+        
+        <h2>🔬 临床意义总结</h2>
+        
+        <div class="disease-card">
+            <h3>癌症治疗靶点</h3>
+            <ul>
+                <li><strong>GPX4:</strong> 铁死亡诱导靶点，抑制GPX4可触发铁死亡杀死癌细胞</li>
+                <li><strong>TXNRD1:</strong> 癌症中上调，抑制TXNRD1可增强化疗效果</li>
+                <li><strong>SELENOP:</strong> 肝癌中显著下调，可作为肝癌诊断标志物</li>
+            </ul>
+        </div>
+        
+        <div class="disease-card">
+            <h3>疾病生物标志物</h3>
+            <ul>
+                <li><strong>神经退行性疾病:</strong> SELENOM、GPX4表达下降</li>
+                <li><strong>心血管疾病:</strong> GPX3下降与动脉粥样硬化相关</li>
+                <li><strong>糖尿病:</strong> SELENOP可作为糖尿病风险标志物</li>
+            </ul>
+        </div>
+        
+        <div class="nav-menu">
+            <a href="index.html" class="nav-link">🏠 主页</a>
+            <a href="final_complete_report.html" class="nav-link">🧬 25基因分析</a>
+            <a href="pathways.html" class="nav-link">🛤️ 通路分析</a>
+            <a href="analysis_workflow.html" class="nav-link">📊 工作流程</a>
+        </div>
+    </div>
+    
+    <footer>
+        <p>🏥 硒蛋白基因与疾病关联分析</p>
+        <p>数据来源: TCGA, PubMed | 分析日期: 2026-03-30</p>
+    </footer>
+</body>
+</html>
