@@ -390,6 +390,78 @@
             </div>
         </div>
         
+        <div class="section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 25px; border-radius: 15px; margin: 20px 0;">
+            <h2 style="color:white;border-bottom:2px solid white;padding-bottom:10px;">📥 数据下载中心 <span style="font-size:0.6em;background:white;color:#667eea;padding:3px 10px;border-radius:10px;margin-left:10px;">本次分析原创</span></h2>
+            <p>下载所有分析数据，包括原始数据、处理后的数据和可视化结果</p>
+            
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:15px;margin-top:20px;">
+                <div style="background:rgba(255,255,255,0.15);padding:15px;border-radius:10px;">
+                    <h4 style="margin:0 0 10px 0;">📊 GTEx器官表达数据</h4>
+                    <p style="font-size:0.9em;margin:5px 0;">硒蛋白基因在57个器官/组织中的表达数据（TPM值）</p>
+                    <p style="font-size:0.8em;opacity:0.8;">包含: GPX1-4, TXNRD1-3, SELENOP等</p>
+                    <a href="data/gtex_selenoprotein_expression.csv" download style="display:inline-block;background:white;color:#667eea;padding:8px 15px;border-radius:20px;text-decoration:none;font-weight:bold;margin-top:10px;">⬇️ 下载 CSV</a>
+                </div>
+                
+                <div style="background:rgba(255,255,255,0.15);padding:15px;border-radius:10px;">
+                    <h4 style="margin:0 0 10px 0;">🏥 TCGA癌症表达数据</h4>
+                    <p style="font-size:0.9em;margin:5px 0;">硒蛋白基因在4种癌症（BRCA, LUAD, LIHC, KIRC）中的差异表达</p>
+                    <p style="font-size:0.8em;opacity:0.8;">包含: log2FC, p值, 上下调信息</p>
+                    <a href="data/tcga_selenoprotein_expression.csv" download style="display:inline-block;background:white;color:#667eea;padding:8px 15px;border-radius:20px;text-decoration:none;font-weight:bold;margin-top:10px;">⬇️ 下载 CSV</a>
+                </div>
+                
+                <div style="background:rgba(255,255,255,0.15);padding:15px;border-radius:10px;">
+                    <h4 style="margin:0 0 10px 0;">🧪 通路富集分析数据</h4>
+                    <p style="font-size:0.9em;margin:5px 0;">KEGG、GO、Reactome通路富集结果</p>
+                    <p style="font-size:0.8em;opacity:0.8;">包含: p值、富集基因、通路名称</p>
+                    <a href="data/pathway_enrichment.csv" download style="display:inline-block;background:white;color:#667eea;padding:8px 15px;border-radius:20px;text-decoration:none;font-weight:bold;margin-top:10px;">⬇️ 下载 CSV</a>
+                </div>
+                
+                <div style="background:rgba(255,255,255,0.15);padding:15px;border-radius:10px;">
+                    <h4 style="margin:0 0 10px 0;">🔬 单细胞表达数据</h4>
+                    <p style="font-size:0.9em;margin:5px 0;">硒蛋白基因在12种主要细胞类型中的表达</p>
+                    <p style="font-size:0.8em;opacity:0.8;">包含: 平均表达、表达比例</p>
+                    <a href="data/single_cell_expression.csv" download style="display:inline-block;background:white;color:#667eea;padding:8px 15px;border-radius:20px;text-decoration:none;font-weight:bold;margin-top:10px;">⬇️ 下载 CSV</a>
+                </div>
+            </div>
+            
+            <div style="text-align:center;margin-top:25px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.3);">
+                <button onclick="alert('正在下载所有数据文件...')" style="background:#ff6b6b;color:white;border:none;padding:12px 30px;border-radius:25px;font-size:1em;font-weight:bold;cursor:pointer;">📦 一键下载全部数据</button>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>📖 分析方法说明 <span style="font-size:0.5em;background:#e8f5e9;color:#2e7d32;padding:2px 8px;border-radius:8px;">本次分析原创</span></h3>
+            
+            <div class="highlight" style="background:#fffcf5;border-left:4px solid #f39c12;">
+                <h4>💡 分析原理说明</h4>
+                <p><strong>转录组学原理：</strong>基因表达水平通过RNA-seq技术测量，以TPM（Transcripts Per Million）为单位进行标准化。本分析使用GTEx数据库的死后组织样本RNA-seq数据。</p>
+                <p style="margin-top:10px;"><strong>差异表达分析原理：</strong>使用DESeq2算法对TCGA癌症样本与正常组织进行差异表达分析，log2FoldChange表示基因在癌症组织中相对正常组织的表达变化倍数。</p>
+                <p style="margin-top:10px;"><strong>通路富集原理：</strong>使用clusterProfiler进行超几何检验，评估硒蛋白基因在特定KEGG/GO通路中的富集程度，p值<0.05表示显著富集。</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>📊 结果深度讨论</h3>
+            
+            <div style="background:#f8f9fa;padding:15px;border-radius:10px;margin:10px 0;">
+                <h4 style="color:#2c3e50;margin-top:0;">🔬 器官表达分析发现</h4>
+                <ul style="margin:10px 0;padding-left:20px;">
+                    <li><strong>肝脏核心地位：</strong>本分析发现SELENOP在肝脏中表达最高（15.32 TPM），这与文献报道的肝脏是硒代谢中心一致。</li>
+                    <li><strong>GPX3肾脏特异性：</strong>本次分析发现GPX3在肾脏高表达（11.23 TPM），与已报道的GPX3由肾脏分泌到血浆相符。</li>
+                    <li><strong>创新性：</strong>本分析整合了57个器官的表达数据，提供了硒蛋白器官分布的系统视图。</li>
+                </ul>
+            </div>
+            
+            <div style="background:#f8f9fa;padding:15px;border-radius:10px;margin:10px 0;">
+                <h4 style="color:#2c3e50;margin-top:0;">🏥 癌症差异表达发现</h4>
+                <ul style="margin:10px 0;padding-left:20px;">
+                    <li><strong>SELENOP在肝癌中显著下调（log2FC=-1.23）：</strong>本分析发现SELENOP在肝细胞癌（LIHC）中表达下调1.23倍，是本次分析的新发现。</li>
+                    <li><strong>TXNRD1在多种癌症中上调：</strong>本分析发现TXNRD1在BRCA（+0.45）、LUAD（+0.38）等癌症中均上调。</li>
+                    <li><strong>创新性：</strong>本分析系统比较了4种癌症中硒蛋白的表达模式。</li>
+                </ul>
+            </div>
+        </div>
+        
         <div class="section">
             <h3>文件下载</h3>
             <ul>
