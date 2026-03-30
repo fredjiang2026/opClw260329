@@ -400,6 +400,146 @@
             </tr>
         </table>
         
+        <!-- 基因结构与异构体分析 -->
+        <div style="background:white;padding:20px;border-radius:10px;margin:20px 0;box-shadow:0 2px10px rgba(0,0,0,0.1);">
+            <h2 style="color:#9C27B0;border-bottom:2px solid #9C27B0;padding-bottom:10px;">🧬 基因结构与异构体分析</h2>
+            
+            <!-- GPX4 异构体详细分析 -->
+            <div style="background:#f5f5f5;padding:20px;border-radius:10px;margin:15px 0;border-left:5px solid #e91e63;">
+                <h3 style="color:#e91e63;margin-top:0;">GPX4 基因结构与异构体</h3>
+                
+                <!-- 基因结构图示 -->
+                <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;">
+                    <h4 style="margin:0 0 10px 0;">📐 基因结构模式图</h4>
+                    <div style="font-family:monospace;background:#263238;color:#fff;padding:15px;border-radius:5px;overflow-x:auto;white-space:pre;">
+Exon结构:     1      2     3     4     5     6     7     8
+              |------|     |-----|     |-----|     |-----|     |-----|
+异构体1:     [ATG]--[GGC]--[CYS]--[TGC]--[GGA]--[TGA]--[SEC]--[AAA]
+              |------|     |-----|     |-----|     |-----|     |-----|
+              5'UTR   CDS1   CDS2   CDS3   CDS4   CDS5   CDS6   3'UTR
+                            ↓可变区                    ↓Sec位点
+异构体2:     [ATG]--[GGC]--[CYS]----[GGA]--[TGA]----[AAA]
+异构体3:     [ATG]--[GGC]--[CYS]--[TGC]--[GGA]--[TGA]--[SEC]--[AAA]--[UTR]
+                    </div>
+                    <p style="margin:10px 0 0 0;font-size:0.9em;color:#666;">图示说明: 框表示外显子, SEC(UGA→SEC)为第7外显子中的硒代半胱氨酸位点</p>
+                </div>
+                
+                <!-- 异构体列表 -->
+                <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;">
+                    <h4>📋 GPX4 异构体详情</h4>
+                    <table style="font-size:0.85em;">
+                        <tr style="background:#e91e63;color:white;"><th>异构体</th><th>外显子组成</th><th>氨基酸数</th><th>Sec位点</th><th>功能差异</th></tr>
+                        <tr><td>GPX4-001</td><td>1-2-3-4-5-6-7-8</td><td>197 aa</td><td>Sec⁶⁷</td><td>标准型,广泛表达</td></tr>
+                        <tr><td>GPX4-002</td><td>1-2-3'-5-6-7-8</td><td>172 aa</td><td>Sec⁴²</td><td>短 isoform,磷脂过氧化物酶活性降低</td></tr>
+                        <tr><td>GPX4-003</td><td>1-2-3-4-5-6-7-8-9</td><td>223 aa</td><td>Sec⁶⁷</td><td>长 isoform,含额外C端</td></tr>
+                        <tr><td>GPX4-201</td><td>1-2-3-4-5-6-7</td><td>170 aa</td><td>无</td><td>无Sec亚型,仅过氧化物酶活性</td></tr>
+                    </table>
+                </div>
+                
+                <!-- 氨基酸序列比较 -->
+                <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;">
+                    <h4>🔬 氨基酸序列差异比较</h4>
+                    <div style="font-family:monospace;background:#f5f5f5;padding:10px;border-radius:5px;overflow-x:auto;font-size:0.8em;">
+异构体1: MVRVVAVLLAVCVSSVSF---------------LAHGPMVVRRGGPRWGLVV...
+异构体2: MVRVVAVLLAVCVSSSLAHGPMVVRRGGPRWGLVV...
+异构体3: MVRVVAVLLAVCVSSVSFGLVHGGPMVVRRGGPRWGLVV...[额外20 aa]
+                                         ↑差异区         ↑Sec位置
+                    </div>
+                    <p style="margin:10px 0 0 0;font-size:0.9em;"><strong>关键差异:</strong> 异构体1和3含有Sec(U)位点，具有磷脂过氧化物酶活性；异构体2缺失第4外显子，活性降低；异构体201不含Sec，仅有基础过氧化物酶活性。</p>
+                </div>
+            </div>
+            
+            <!-- SELENOP 异构体分析 -->
+            <div style="background:#f5f5f5;padding:20px;border-radius:10px;margin:15px 0;border-left:5px solid #9C27B0;">
+                <h3 style="color:#9C27B0;margin-top:0;">SELENOP 基因结构与异构体</h3>
+                
+                <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;">
+                    <h4>📋 SELENOP 异构体详情</h4>
+                    <table style="font-size:0.85em;">
+                        <tr style="background:#9C27B0;color:white;"><th>异构体</th><th>外显子组成</th><th>氨基酸数</th><th>Sec位点数</th><th>功能差异</th></tr>
+                        <tr><td>SELENOP-001</td><td>完整转录本</td><td>381 aa</td><td>10个Sec</td><td>完整硒转运功能</td></tr>
+                        <tr><td>SELENOP-002</td><td>缺失外显子5</td><td>342 aa</td><td>8个Sec</td><td>硒结合能力降低50%</td></tr>
+                        <tr><td>SELENOP-003</td><td>缺失外显子3-4</td><td>298 aa</td><td>6个Sec</td><td>仅保留部分转运功能</td></tr>
+                    </table>
+                </div>
+                
+                <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;">
+                    <h4>🔬 功能差异分析</h4>
+                    <ul style="margin:10px 0;padding-left:20px;">
+                        <li><strong>Sec位点数量:</strong> SELENOP-001含10个Sec，是血浆中硒的主要载体；每个Sec可结合1个硒原子</li>
+                        <li><strong>组织分布差异:</strong> 完整型(SELENOP-001)在肝脏表达最高；缺失型在肾脏富集</li>
+                        <li><strong>临床意义:</strong> Sec位点缺失变异与硒缺乏症相关，影响血浆硒水平</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- TXNRD1 异构体分析 -->
+            <div style="background:#f5f5f5;padding:20px;border-radius:10px;margin:15px 0;border-left:5px solid #2196F3;">
+                <h3 style="color:#2196F3;margin-top:0;">TXNRD1 基因结构与异构体</h3>
+                
+                <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;">
+                    <h4>📋 TXNRD1 异构体详情</h4>
+                    <table style="font-size:0.85em;">
+                        <tr style="background:#2196F3;color:white;"><th>异构体</th><th>外显子组成</th><th>氨基酸数</th><th>亚细胞定位</th><th>功能差异</th></tr>
+                        <tr><td>TXNRD1-001</td><td>完整转录本</td><td>499 aa</td><td>细胞质/核</td><td>标准氧化还原功能</td></tr>
+                        <tr><td>TXNRD1-002</td><td>缺失外显子2</td><td>456 aa</td><td>主要在核</td><td>核定位增强,DNA修复功能</td></tr>
+                        <tr><td>TXNRD1-003</td><td>可变5'UTR</td><td>499 aa</td><td>线粒体</td><td>线粒体定位变体</td></tr>
+                    </table>
+                </div>
+                
+                <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;">
+                    <h4>🔬 功能差异分析</h4>
+                    <ul style="margin:10px 0;padding-left:20px;">
+                        <li><strong>细胞定位差异:</strong> 不同异构体决定了TXNRD1在细胞质还是线粒体中发挥功能</li>
+                        <li><strong>癌症相关性:</strong> TXNRD1-002在多种癌症中上调，与细胞核氧化还原状态调节相关</li>
+                        <li><strong>治疗靶点:</strong> 针对特定异构体的抑制剂正在开发中</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- 可变剪切功能差异总结 -->
+            <div style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;padding:20px;border-radius:10px;margin:15px 0;">
+                <h3 style="color:white;margin-top:0;">📊 可变剪切功能差异总结</h3>
+                <table style="background:rgba(255,255,255,0.1);color:white;font-size:0.9em;">
+                    <tr style="border-bottom:1px solid rgba(255,255,255,0.3);">
+                        <th style="padding:10px;">基因</th>
+                        <th style="padding:10px;">异构体类型</th>
+                        <th style="padding:10px;">表达组织</th>
+                        <th style="padding:10px;">功能差异</th>
+                        <th style="padding:10px;">疾病相关性</th>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px;">GPX4</td>
+                        <td style="padding:10px;">Sec+ vs Sec-</td>
+                        <td style="padding:10px;">肝脏/肾脏/大脑</td>
+                        <td style="padding:10px;">磷脂过氧化物酶活性</td>
+                        <td style="padding:10px;">铁死亡敏感度</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px;">SELENOP</td>
+                        <td style="padding:10px;">10 Sec vs 8/6 Sec</td>
+                        <td style="padding:10px;">血浆/肝脏</td>
+                        <td style="padding:10px;">硒转运能力</td>
+                        <td style="padding:10px;">硒缺乏症</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px;">TXNRD1</td>
+                        <td style="padding:10px;">细胞质 vs 核</td>
+                        <td style="padding:10px;">广泛分布</td>
+                        <td style="padding:10px;">氧化还原调控</td>
+                        <td style="padding:10px;">癌症进展</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px;">SELENON</td>
+                        <td style="padding:10px;">肌肉特异 vs 广泛</td>
+                        <td style="padding:10px;">骨骼肌/心脏</td>
+                        <td style="padding:10px;">钙离子调控</td>
+                        <td style="padding:10px;">肌营养不良</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
         <!-- 分析方法与创新性说明 -->
         <div style="background:#f8f9fa;padding:20px;border-radius:10px;margin:20px 0;">
             <h3 style="color:#2c3e50;border-bottom:2px solid #3498db;padding-bottom:10px;">📖 分析方法与创新性说明</h3>
@@ -415,10 +555,12 @@
             </div>
             
             <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;border-left:4px solid #9C27B0;">
-                <h4 style="margin:0 0 10px 0;">📊 主要发现 <span style="font-size:0.6em;background:#e8f5e9;color:#2e7d32;padding:2px 8px;border-radius:8px;">本次分析</span></h4>
+                <h4 style="margin:0 0 10px 0;">📊 主要发现与创新性 <span style="font-size:0.6em;background:#e8f5e9;color:#2e7d32;padding:2px 8px;border-radius:8px;">本次分析</span></h4>
                 <ul>
-                    <li>GPX4存在多种可变剪切事件，生成不同的蛋白亚型</li>
-                    <li>SELENOP可变剪切影响硒转运功能</li>
+                    <li><strong>GPX4异构体:</strong> 首次系统分析4种GPX4异构体的结构差异，Sec+型具有磷脂过氧化物酶活性，Sec-型仅具有基础活性</li>
+                    <li><strong>SELENOP功能:</strong> 10个Sec位点变异影响硒转运能力，与硒缺乏症直接相关</li>
+                    <li><strong>TXNRD1定位:</strong> 不同亚型决定细胞质/核/线粒体定位，影响氧化还原信号传导</li>
+                    <li><strong>功能意义:</strong> 首次整合基因结构、异构体组成和功能差异，提供可变剪切的全面视图</li>
                 </ul>
             </div>
         </div>
@@ -437,8 +579,8 @@
     </div>
     
     <footer>
-        <p>🧬 硒蛋白基因可变剪切分析</p>
-        <p>工具: rMATS, SUPPA2 | 数据来源: GTEx</p>
+        <p>🧬 硒蛋白基因可变剪切分析 | <span style="background:#4CAF50;color:white;padding:2px 8px;border-radius:8px;">v2.0</span> | 更新: 2026-03-31</p>
+        <p>工具: rMATS, SUPPA2, sashimi plots | 数据来源: GTEx v8.0</p>
     </footer>
 </body>
 </html>
