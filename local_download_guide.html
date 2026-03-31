@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>离线下载指南 - 硒蛋白基因可变剪切分析</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background-color: #f5f5f5; }
+        .container { max-width: 800px; margin: 0 auto; background-color: white; padding: 20px; border-radius: 10px; }
+        header { text-align: center; padding: 25px; background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%); color: white; border-radius: 10px; margin-bottom: 20px; }
+        h2 { color: #0072ff; border-bottom: 2px solid #0072ff; padding-bottom: 10px; }
+        h3 { color: #333; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th { background-color: #0072ff; color: white; padding: 12px; text-align: left; }
+        td { padding: 10px; border: 1px solid #ddd; }
+        tr:hover { background-color: #e6f3ff; }
+        
+        .download-box {
+            background-color: #e8f5e9;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 5px solid #4CAF50;
+        }
+        
+        .local-box {
+            background-color: #e3f2fd;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 5px solid #2196F3;
+        }
+        
+        .download-link {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: #0072ff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 5px;
+            font-weight: bold;
+        }
+        
+        .download-link:hover {
+            background-color: #0056cc;
+        }
+        
+        .code-block {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+        
+        footer { text-align: center; margin-top: 30px; padding: 20px; background-color: #333; color: white; border-radius: 10px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📂 离线下载指南</h1>
+        <p>硒蛋白基因可变剪切分析数据已准备完成</p>
+    </header>
+    
+    <div class="container">
+        <div class="download-box">
+            <h3>✅ 数据已成功准备好</h3>
+            <p><strong>GitHub连接问题</strong>：网络连接有问题，无法上传到GitHub，但所有数据已完整保存在本地。</p>
+            
+            <p><strong>离线解决方案</strong>：你可以直接从本地目录获取所有文件。</p>
+            
+            <h4>📋 已准备好的文件</h4>
+            <ul>
+                <li>完整的数据下载中心网页：data_download.html</li>
+                <li>多序列比对文件：FASTA和Clustal格式</li>
+                <li>PASA分析文件：GFF格式</li>
+                <li>完整的HTML分析报告</li>
+                <li>可视化图片（PNG格式）</li>
+                <li>下载脚本和说明文档</li>
+            </ul>
+        </div>
+        
+        <div class="local-box">
+            <h3>📦 本地数据包</h3>
+            <p><strong>压缩包位置</strong>：/root/.openclaw/workspace/selenium-analysis-data.tar.gz</p>
+            
+            <h4>📁 使用本地数据</h4>
+            <div class="code-block">
+                # 进入工作目录<br>
+                cd /root/.openclaw/workspace<br><br>
+                # 打开数据下载中心<br>
+                # 浏览器打开：data_download.html<br><br>
+                # 查看多序列比对文件<br>
+                less data/gpx4_msa.clustal<br><br>
+                # 查看PASA分析文件<br>
+                less data/pasa_gpx4.gff<br><br>
+                # 查看可视化图片<br>
+                # 在images目录中查看PNG文件<br><br>
+                # 运行下载脚本<br>
+                ./download_script.sh
+            </div>
+        </div>
+        
+        <h2>📋 文件清单</h2>
+        
+        <table>
+            <tr>
+                <th>文件类型</th>
+                <th>文件数量</th>
+                <th>位置</th>
+                <th>主要内容</th>
+            </tr>
+            <tr>
+                <td>多序列比对文件</td>
+                <td>6个</td>
+                <td>data/目录</td>
+                <td>GPX4, SELENOP, TXNRD1异构体FASTA和Clustal比对</td>
+            </tr>
+            <tr>
+                <td>PASA分析文件</td>
+                <td>2个</td>
+                <td>data/目录</td>
+                <td>GPX4, SELENOP基因结构GFF文件</td>
+            </tr>
+            <tr>
+                <td>数据下载中心</td>
+                <td>3个</td>
+                <td>根目录</td>
+                <td>data_download.html, README_DOWNLOAD.md, download_script.sh</td>
+            </tr>
+            <tr>
+                <td>完整数据包</td>
+                <td>1个</td>
+                <td>根目录</td>
+                <td>selenium-analysis-data.tar.gz（960KB）</td>
+            </tr>
+            <tr>
+                <td>HTML报告</td>
+                <td>15个</td>
+                <td>根目录</td>
+                <td>可变剪切分析、基因详情、表达分析等</td>
+            </tr>
+            <tr>
+                <td>图片文件</td>
+                <td>4个</td>
+                <td>images/目录</td>
+                <td>基因结构图、Sashimi plots、比对图</td>
+            </tr>
+        </table>
+        
+        <h2>🛠️ 使用方法</h2>
+        
+        <div class="local-box">
+            <h4>🧬 查看可变剪切分析</h4>
+            <p>打开 <a href="splicing_analysis.html">splicing_analysis.html</a> 查看完整的可变剪切分析报告。</p>
+            
+            <h4>🔬 查看多序列比对</h4>
+            <p>查看Clustal格式的多序列比对结果：</p>
+            <div class="code-block">
+                cat data/gpx4_msa.clustal<br>
+                cat data/selenop_msa.clustal
+            </div>
+            
+            <h4>📐 查看PASA分析</h4>
+            <p>查看GFF格式的基因结构差异分析：</p>
+            <div class="code-block">
+                cat data/pasa_gpx4.gff<br>
+                cat data/pasa_selenop.gff
+            </div>
+            
+            <h4>📊 查看可视化</h4>
+            <p>图片文件位于images目录：</p>
+            <ul>
+                <li>gpx4_genemap.png - GPX4基因结构图</li>
+                <li>selenop_genemap.png - SELENOP基因结构图</li>
+                <li>sashimi_plot.png - Sashimi Plot图</li>
+                <li>msa_alignment.png - 多序列比对图</li>
+            </ul>
+        </div>
+        
+        <h2>📥 下载方法</h2>
+        
+        <div class="download-box">
+            <h4>方法一：直接使用文件</h4>
+            <p>文件已经保存在工作目录中，可以直接使用。</p>
+            
+            <h4>方法二：使用下载脚本</h4>
+            <p>运行下载脚本打包所有文件：</p>
+            <div class="code-block">
+                ./download_script.sh
+            </div>
+            
+            <h4>方法三：人工复制</h4>
+            <p>如果你需要特定的文件，可以直接从以下目录复制：</p>
+            <ul>
+                <li><strong>CSV数据：</strong> /root/.openclaw/workspace/data/</li>
+                <li><strong>多序列比对：</strong> /root/.openclaw/workspace/data/</li>
+                <li><strong>PASA分析：</strong> /root/.openclaw/workspace/data/</li>
+                <li><strong>可视化图片：</strong> /root/.openclaw/workspace/images/</li>
+                <li><strong>HTML报告：</strong> /root/.openclaw/workspace/</li>
+            </ul>
+        </div>
+        
+        <h2>🔬 分析工具总结</h2>
+        
+        <table>
+            <tr>
+                <th>工具</th>
+                <th>用途</th>
+                <th>对应文件</th>
+                <th>使用方法</th>
+            </tr>
+            <tr>
+                <td>MUSCLE</td>
+                <td>多序列比对</td>
+                <td>*.fasta, *.clustal</td>
+                <td>muscle -in gpx4_isoforms.fasta -out aligned.fasta</td>
+            </tr>
+            <tr>
+                <td>MVIEW</td>
+                <td>比对可视化</td>
+                <td>*.clustal</td>
+                <td>mview -in msa.clustal -out msa.html</td>
+            </tr>
+            <tr>
+                <td>PASA</td>
+                <td>基因结构分析</td>
+                <td>*.gff</td>
+                <td>pasa -i isoforms.fasta -g genome.gff -o pasa.gff</td>
+            </tr>
+            <tr>
+                <td>rMATS</td>
+                <td>可变剪切分析</td>
+                <td>HTML报告</td>
+                <td>已预分析，可直接查看结果</td>
+            </tr>
+            <tr>
+                <td>SUPPA2</td>
+                <td>PSI计算</td>
+                <td>HTML报告</td>
+                <td>已预分析，可直接查看结果</450></td>
+            </tr>
+        </table>
+        
+        <h2>📊 分析内容总结</h2>
+        
+        <ul>
+            <li><strong>可变剪切分析</strong>：rMATS+SUPPA2检测GPX4、TXNRD1、SELENOP等基因的SE、MXE、A3SS、A5SS、RI事件</li>
+            <li><strong>多序列比对</strong>：使用MUSCLE比对GPX4、SELENOP、TXNRD1异构体序列</li>
+            <li><strong>基因结构分析</strong>：使用PASA分析外显子-内含子结构差异和Sec(UGA)密码子位置</li>
+            <li><strong>可视化分析</strong>：基因结构图、Sashimi plots、多序列比对图</li>
+            <li><strong>统一一致的专业图形</strong>：已在HTML报告中展示统一的可视化图表</li>
+        </ul>
+        
+        <div style="background:#ffecb3;padding:20px;border-radius:10px;">
+            <h3>⚠️ GitHub上传问题说明</h3>
+            <p>GitHub连接遇到网络问题，显示错误：<strong>"GnuTLS recv error (-110): The TLS connection was non-properly terminated"</strong></p>
+            <p><strong>解决方案：</strong></p>
+            <ol>
+                <li>所有数据已完整保存在本地工作目录</li>
+                <li>你可以直接从本地复制或使用</li>
+                <li>文件已经准备好，可以直接用于分析</li>
+                <li>后续网络恢复后，可以使用git push上传到GitHub</li>
+            </ol>
+        </div>
+        
+        <h2>🔗 本地查看链接</h2>
+        
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <a href="data_download.html" class="download-link">📥 数据下载中心</a>
+            <a href="splicing_analysis.html" class="download-link">🧬 可变剪切分析</a>
+            <a href="index.html" class="download-link">🏠 主页</a>
+            <a href="README_DOWNLOAD.md" class="download-link">📖 下载指南</a>
+        </div>
+    </div>
+    
+    <footer>
+        <p>📂 离线数据准备完成 | <span style="background:#4CAF50;color:white;padding:2px 8px;border-radius:8px;">已保存</span> | 2026-03-31</p>
+        <p>所有数据已完整准备好，包含多序列比对、PASA分析、可视化图表和HTML报告</p>
+    </footer>
+</body>
+</html>

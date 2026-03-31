@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub上传完成 - 硒蛋白基因可变剪切分析</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background-color: #f5f5f5; }
+        .container { max-width: 800px; margin: 0 auto; background-color: white; padding: 20px; border-radius: 10px; }
+        header { text-align: center; padding: 25px; background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%); color: white; border-radius: 10px; margin-bottom: 20px; }
+        h2 { color: #0072ff; border-bottom: 2px solid #0072ff; padding-bottom: 10px; }
+        h3 { color: #333; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th { background-color: #0072ff; color: white; padding: 12px; text-align: left; }
+        td { padding: 10px; border: 1px solid #ddd; }
+        tr:hover { background-color: #e6f3ff; }
+        
+        .success-box {
+            background-color: #e8f5e9;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 5px solid #4CAF50;
+        }
+        
+        .github-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 5px;
+            font-weight: bold;
+        }
+        
+        .github-link:hover {
+            background-color: #555;
+        }
+        
+        .download-box {
+            background-color: #e3f2fd;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 5px solid #2196F3;
+        }
+        
+        .download-link {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: #0072ff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 5px;
+            font-weight: bold;
+        }
+        
+        .download-link:hover {
+            background-color: #0056cc;
+        }
+        
+        footer { text-align: center; margin-top: 30px; padding: 20px; background-color: #333; color: white; border-radius: 10px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>✅ GitHub上传完成</h1>
+        <p>硒蛋白基因可变剪切分析数据上传到GitHub成功</p>
+    </header>
+    
+    <div class="container">
+        <div class="success-box">
+            <h3>📤 上传状态：成功</h3>
+            <p><strong>GitHub仓库：</strong> https://github.com/fredjiang2026/opClw260329</p>
+            <p><strong>提交ID：</strong> 08fc7f9 Add GitHub README and complete data package</p>
+            <p><strong>上传时间：</strong> 2026-03-31</p>
+            <p><strong>上传大小：</strong> 约 1MB (压缩包)</p>
+            
+            <h4>🔗 GitHub链接</h4>
+            <a href="https://github.com/fredjiang2026/opClw260329" class="github-link" target="_blank">访问GitHub仓库</a>
+        </div>
+        
+        <h2>📂 上传的文件</h2>
+        
+        <div class="download-box">
+            <h3>📋 已上传的文件清单</h3>
+            
+            <table>
+                <tr>
+                    <th>文件类型</th>
+                    <th>文件数量</th>
+                    <th>主要内容</th>
+                    <th>下载链接</th>
+                </tr>
+                <tr>
+                    <td>多序列比对文件</td>
+                    <td>6个</td>
+                    <td>GPX4, SELENOP, TXNRD1异构体FASTA和Clustal比对</td>
+                    <td><a href="data/gpx4_isoforms.fasta" class="download-link">查看</a></td>
+                </tr>
+                <tr>
+                    <td>PASA分析文件</td>
+                    <td>2个</td>
+                    <td>GPX4, SELENOP基因结构GFF文件</td>
+                    <td><a href="data/pasa_gpx4.gff" class="download-link">查看</a></td>
+                </tr>
+                <tr>
+                    <td>数据下载中心</td>
+                    <td>3个</td>
+                    <td>HTML下载页面, README, 下载脚本</td>
+                    <td><a href="data_download.html" class="download-link">查看</a></td>
+                </tr>
+                <tr>
+                    <td>完整数据包</td>
+                    <td>1个</td>
+                    <td>selenium-analysis-data.tar.gz (压缩包)</td>
+                    <td><a href="selenium-analysis-data.tar.gz" class="download-link">下载</a></td>
+                </tr>
+            </table>
+            
+            <h4>📦 快速下载方法</h4>
+            <pre style="background:#1e1e1e;color:#d4d4d4;padding:10px;border-radius:5px;">
+# 下载完整数据包
+wget https://github.com/fredjiang2026/opClw260329/blob/main/selenium-analysis-data.tar.gz
+
+# 或克隆整个仓库
+git clone https://github.com/fredjiang2026/opClw260329.git
+cd opClw260329
+./download_script.sh
+            </pre>
+        </div>
+        
+        <h2>🛠️ 使用指南</h2>
+        
+        <table>
+            <tr>
+                <th>工具</th>
+                <th>用途</th>
+                <th>下载文件</th>
+                <th>使用方法</th>
+            </tr>
+            <tr>
+                <td>MUSCLE</td>
+                <td>多序列比对</td>
+                <td>*.fasta, *.clustal</td>
+                <td>muscle -in gpx4_isoforms.fasta -out aligned.fasta</td>
+            </tr>
+            <tr>
+                <td>MVIEW</td>
+                <td>比对可视化</td>
+                <td>*.clustal</td>
+                <td>mview -in msa.clustal -out msa.html</td>
+            </tr>
+            <tr>
+                <td>PASA</td>
+                <td>基因结构分析</td>
+                <td>*.gff</td>
+                <td>pasa -i isoforms.fasta -g genome.gff -o pasa.gff</td>
+            </tr>
+            <tr>
+                <td>rMATS</td>
+                <td>可变剪切分析</td>
+                <td>HTML报告</td>
+                <td>已预分析，可直接查看结果</td>
+            </tr>
+        </table>
+        
+        <h2>📊 包含的分析内容</h2>
+        
+        <div style="background:#ffecb3;padding:20px;border-radius:10px;">
+            <h3>🧬 可变剪切分析</h3>
+            <ul>
+                <li>GPX4, TXNRD1, SELENOP等25个硒蛋白基因的可变剪切事件</li>
+                <li>PSI值计算和ΔPSI差异分析</li>
+                <li>SE, MXE, A3SS, A5SS, RI五种事件类型</li>
+                <li>Sashimi plots可视化</li>
+            </ul>
+            
+            <h3>🔬 多序列比对</h3>
+            <ul>
+                <li>GPX4的4种异构体序列比对</li>
+                <li>SELENOP的3种异构体序列比对</li>
+                <li>TXNRD1的3种异构体序列比对</li>
+                <li>Sec(UGA)密码子位置识别</li>
+            </ul>
+            
+            <h3>📐 PASA分析</h3>
+            <ul>
+                <li>基因结构差异分析</li>
+                <li>外显子-内含子边界识别</li>
+                <li>Sec位点位置分析</li>
+                <li>功能结构域预测</li>
+            </ul>
+        </div>
+        
+        <h2>🔗 相关链接</h2>
+        
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <a href="data_download.html" class="download-link">📥 数据下载中心</a>
+            <a href="splicing_analysis.html" class="download-link">🧬 可变剪切分析</a>
+            <a href="index.html" class="download-link">🏠 主页</a>
+            <a href="https://github.com/fredjiang2026/opClw260329" class="github-link" target="_blank">🌐 GitHub仓库</a>
+        </div>
+    </div>
+    
+    <footer>
+        <p>✅ GitHub上传完成 | <span style="background:#4CAF50;color:white;padding:2px 8px;border-radius:8px;">已上传</span> | 2026-03-31</p>
+        <p>包含完整的多序列比对、PASA分析、可变剪切数据和下载脚本</p>
+    </footer>
+</body>
+</html>

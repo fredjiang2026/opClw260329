@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>硒蛋白基因分析 - 文件下载中心</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background-color: #f5f5f5; }
+        .container { max-width: 1200px; margin: 0 auto; background-color: white; padding: 20px; border-radius: 10px; }
+        header { text-align: center; padding: 25px; background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%); color: white; border-radius: 10px; margin-bottom: 20px; }
+        h2 { color: #0072ff; border-bottom: 2px solid #0072ff; padding-bottom: 10px; }
+        h3 { color: #333; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th { background-color: #0072ff; color: white; padding: 12px; text-align: left; }
+        td { padding: 10px; border: 1px solid #ddd; }
+        tr:hover { background-color: #e6f3ff; }
+        
+        .download-card {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 5px solid #0072ff;
+        }
+        
+        .category {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin: 2px;
+        }
+        
+        .category-raw { background-color: #4CAF50; color: white; }
+        .category-analysis { background-color: #9C27B0; color: white; }
+        .category-visual { background-color: #FF9800; color: white; }
+        .category-report { background-color: #E91E63; color: white; }
+        
+        .download-link {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: #0072ff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 5px;
+            font-weight: bold;
+        }
+        
+        .download-link:hover {
+            background-color: #0056cc;
+        }
+        
+        .data-info {
+            background-color: #e3f2fd;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 5px 0;
+        }
+        
+        .instruction-box {
+            background-color: #ffecb3;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 4px solid #ff9800;
+        }
+        
+        .share-box {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        
+        footer { text-align: center; margin-top: 30px; padding: 20px; background-color: #333; color: white; border-radius: 10px; }
+        
+        .code-block {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📥 硒蛋白基因分析 - 文件下载中心</h1>
+        <p>Public Download Center for Selenoprotein Analysis Files</p>
+    </header>
+    
+    <div class="container">
+        <div class="instruction-box">
+            <h3>📖 如何使用本页面</h3>
+            <p>本页面列出了硒蛋白基因分析的所有文件。你可以通过以下方式获取这些文件：</p>
+            <ol>
+                <li><strong>压缩包下载</strong>：下载完整的selenium-analysis-data.tar.gz文件（960KB）</li>
+                <li><strong>单个文件下载</strong>：点击表格中的下载链接获取单个文件</li>
+                <li><strong>共享方法</strong>：将此HTML文件分享给其他人，他们可以看到同样的内容</li>
+            </ol>
+        </div>
+        
+        <div class="share-box">
+            <h3 style="color:white;">📤 共享方法</h3>
+            <p>由于文件在本地服务器上，你可以通过以下方法分享给公网用户：</p>
+            
+            <h4 style="color:white;">方法一：压缩包传输</h4>
+            <div class="code-block">
+                # 创建压缩包<br>
+                tar -czf selenium-analysis-data.tar.gz *.html *.md *.txt data/ images/ css/ js/<br><br>
+                # 然后通过云存储（如Google Drive、Dropbox）分享<br>
+                # 或通过电子邮件发送压缩包
+            </div>
+            
+            <h4 style="color:white;">方法二：GitHub上传</h4>
+            <p>当网络连接恢复后，使用git push上传到GitHub：</p>
+            <div class="code-block">
+                git add .<br>
+                git commit -m "Update selenium analysis files"<br>
+                git push origin main
+            </div>
+            
+            <h4 style="color:white;">方法三：创建公开网页</h4>
+            <p>将此HTML页面部署到任何网页服务器，用户可以浏览文件列表。</p>
+        </div>
+        
+        <!-- 压缩包下载 -->
+        <div class="download-card">
+            <h3><span class="category category-raw">📦 完整压缩包</span></h3>
+            <div style="background-color: #e8f5e9; padding: 15px; border-radius: 8px;">
+                <h4>selenium-analysis-data.tar.gz (960KB)</h4>
+                <p>包含所有分析文件的完整压缩包，解压后包含：261个文件</p>
+                <p><strong>包含内容：</strong></p>
+                <ul>
+                    <li>所有HTML分析报告</li>
+                    <li>数据文件（CSV、FASTA、Clustal、GFF）</li>
+                    <li>可视化图片（PNG格式）</li>
+                    <li>样式文件和脚本</li>
+                    <li>下载指南和说明文档</li>
+                </ul>
+                <p><strong>下载指令：</strong></p>
+                <div class="code-block">
+                    # 下载完成后解压<br>
+                    tar -xzf selenium-analysis-data.tar.gz<br>
+                    # 查看内容<br>
+                    cd selenium-analysis-data<br>
+                    ls -lh
+                </div>
+            </div>
+        </div>
+        
+        <!-- 多序列比对文件 -->
+        <div class="download-card">
+            <h3><span class="category category-analysis">🧬 多序列比对文件</span> 可变剪切基因的多序列比对</h3>
+            
+            <table>
+                <tr>
+                    <th>文件名称</th>
+                    <th>大小</th>
+                    <th>描述</th>
+                    <th>内容</th>
+                    <th>下载链接</th>
+                </tr>
+                <tr>
+                    <td>gpx4_isoforms.fasta</td>
+                    <td>817字节</td>
+                    <td>GPX4异构体序列</td>
+                    <td>4种异构体FASTA格式</td>
+                    <td><a href="#gpx4_isoforms_fasta" class="download-link">下载</a></td>
+                </tr>
+                <tr>
+                    <td>selenop_isoforms.fasta</td>
+                    <td>1.5KB</td>
+                    <td>SELENOP异构体序列</td>
+                    <td>3种异构体FASTA格式</td>
+                    <td><a href="#selenop_isoforms_fasta" class="download-link">下载</a></td>
+                </tr>
+                <tr>
+                    <td>txnrd1_isoforms.fasta</td>
+                    <td>2.3KB</td>
+                    <td>TXNRD1异构体序列</td>
+                    <td>3种异构体FASTA格式</td>
+                    <td><a href="#txnrd1_isoforms_fasta" class="download-link">下载</a></td>
+                </tr>
+                <tr>
+                    <td>gpx4_msa.clustal</td>
+                    <td>3.2KB</td>
+                    <td>GPX4多序列比对</td>
+                    <td>Clustal格式比对结果</td>
+                    <td><a href="#gpx4_msa_clustal" class="download-link">下载</a></td>
+                </tr>
+                <tr>
+                    <td>selenop_msa.clustal</td>
+                    <td>2.8KB</td>
+                    <td>SELENOP多序列比对</td>
+                    <td>Clustal格式比对结果</td>
+                    <td><a href="#selenop_msa_clustal" class="download-link">下载</a></td>
+                </tr>
+            </table>
+            
+            <div class="data-info">
+                <h4>📊 使用方法</h4>
+                <div class="code-block">
+                    # 使用MUSCLE软件进行多序列比对<br>
+                    muscle -in gpx4_isoforms.fasta -out aligned.fasta<br><br>
+                    # 使用MVIEW查看比对结果<br>
+                    mview -in gpx4_msa.clustal -out msa.html
+                </div>
+            </div>
+        </div>
+        
+        <!-- PASA分析文件 -->
+        <div class="download-card">
+            <h3><span class="category category-analysis">📐 PASA分析文件</span> 可变剪切结构差异分析</h3>
+            
+            <table>
+                <tr>
+                    <th>文件名称</th>
+                    <th>大小</th>
+                    <th>描述</th>
+                    <th>内容</th>
+                    <th>下载链接</th>
+                </tr>
+                <tr>
+                    <td>pasa_gpx4.gff</td>
+                    <td>3.8KB</td>
+                    <td>GPX4基因结构分析</td>
+                    <td>GFF3格式基因结构差异</td>
+                    <td><a href="#pasa_gpx4_gff" class="download-link">下载</a></td>
+                </tr>
+                <tr>
+                    <td>pasa_selenop.gff</td>
+                    <td>4.5KB</td>
+                    <td>SELENOP基因结构分析</td>
+                    <td>GFF3格式基因结构差异</td>
+                    <td><a href="#pasa_selenop_gff" class="download-link">下载</a></td>
+                </tr>
+            </table>
+            
+            <div class="data-info">
+                <h4>📊 使用方法</h4>
+                <p>PASA（Program to Assemble Spliced Alignments）用于分析可变剪切异构体的结构差异。</p>
+                <div class="code-block">
+                    # 查看PASA分析结果<br>
+                    cat pasa_gpx4.gff<br><br>
+                    # 使用PASA分析其他基因<br>
+                    pasa -i isoforms.fasta -g genome.gff -o output.gff
+                </div>
+                <p><strong>分析内容：</strong></p>
+                <ul>
+                    <li>外显子-内含子边界识别</li>
+                    <li>Sec(UGA)密码子位置分析</li>
+                    <li>功能结构域预测</li>
+                    <li>异构体结构差异比较</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- HTML报告 -->
+        <div class="download-card">
+            <h3><span class="category category-report">📋 HTML分析报告</span> 可视化分析结果</h3>
+            
+            <table>
+                <tr>
+                    <th>页面名称</th>
+                    <th>大小</th>
+                    <th>描述</th>
+                    <th>下载链接</th>
+                </tr>
+                <tr>
+                    <td>可变剪切分析报告</td>
+                    <td>46KB</td>
+                    <td>完整的可变剪切分析HTML报告</td>
+                    <td><a href="#splicing_analysis" class="download-link">下载</a></td>
+                </tr>
+                <tr>
+                    <td>数据下载中心</td>
+                    <td>27KB</td>
+                    <td>数据下载中心HTML页面</td>
+                    <td><a href="#data_download" class="download-link">下载</a></td>
+                </tr>
+                <tr>
+                    <td>主页</td>
+                    <td>30KB</td>
+                    <td>硒蛋白基因分析主页面</td>
+                    <td><a href="#index" class="download-link">下载</a></td>
+                </tr>
+                <tr>
+                    <td>基因详情页</td>
+                    <td>18KB</td>
+                    <td>25个硒蛋白基因详细数据</td>
+                    <td><a href="#genes" class="download-link">下载</a></td>
+                </tr>
+                <tr>
+                    <td>器官表达分析</td>
+                    <td>18KB</td>
+                    <td>器官特异性表达分析</td>
+                    <td><a href="#organs" class="download-link">下载</a></td>
+                </tr>
+                <tr>
+                    <td>细胞类型分析</td>
+                    <td>20KB</td>
+                    <td>细胞类型特异性表达分析</td>
+                    <td><a href="#cells" class="download-link">下载</a></td>
+                </tr>
+                <tr>
+                    <td>通路富集分析</td>
+                    <td>19KB</td>
+                    <td>硒蛋白通路富集分析结果</td>
+                    <td><a href="#pathways" class="download-link">下载</a></td>
+                </tr>
+                <tr>
+                    <td>疾病关联分析</td>
+                    <td>23KB</td>
+                    <td>硒蛋白与疾病关联分析</td>
+                    <td><a href="#diseases" class="download-link">下载</a></td>
+                </tr>
+                <tr>
+                    <td>GWAS分析</td>
+                    <td>20KB</td>
+                    <td>硒蛋白GWAS关联分析</td>
+                    <td><a href="#gwas" class="download-link">下载</a></td>
+                </tr>
+            </table>
+            
+            <div class="data-info">
+                <h4>📊 使用方法</h4>
+                <p>这些HTML页面可以直接在浏览器中打开查看分析结果。</p>
+                <div class="code-block">
+                    # 在浏览器中打开<br>
+                    # 或上传到网页服务器共享
+                </div>
+            </div>
+        </div>
+        
+        <!-- 可视化图片 -->
+        <div class="download-card">
+            <h3><span class="category category-visual">🖼️ 可视化图片</span> 基因结构和比对可视化</h3>
+            
+            <table>
+                <tr>
+                    <th>图片名称</th>
+                    <th>大小</th>
+                    <th>描述</th>
+                    <th>下载链接</th>
+                </tr>
+                <tr>
+                    <td>GPX4基因结构图</td>
+                    <td>180KB</td>
+                    <td>GPX4基因外显子-内含子结构图</td>
+                    <td><a href="#gpx4_genemap" class="download-link">下载</a></td>
+                </tr>
+                <tr>
+                    <td>SELENOP基因结构图</td>
+                    <td>160KB</td>
+                    <td>SELENOP基因结构可视化</td>
+                    <td><a href="#selenop_genemap" class="download-link">下载</a></td>
+                </tr>
+                <tr>
+                    <td>Sashimi Plot图</td>
+                    <td>220KB</td>
+                    <td>可变剪切junction reads可视化图</td>
+                    <td><a href="#sashimi_plot" class="download-link">下载</a></td>
+                </tr>
+                <tr>
+                    <td>多序列比对图</td>
+                    <td>190KB</td>
+                    <td>GPX4异构体多序列比对图</td>
+                    <td><a href="#msa_alignment" class="download-link">下载</a></td>
+                </tr>
+            </table>
+            
+            <div class="data-info">
+                <h4>📊 使用方法</h4>
+                <p>PNG格式图片可以在任何图片查看器中打开。</p>
+                <div class="code-block">
+                    # 查看图片<br>
+                    # 或嵌入HTML报告中
+                </div>
+            </div>
+        </div>
+        
+        <!-- 数据文件 -->
+        <div class="download-card">
+            <h3><span class="category category-raw">📊 数据文件</span> CSV原始数据</h3>
+            
+            <table>
+                <tr>
+                    <th>文件名称</th>
+                    <th>大小</th>
+                    <th>描述</th>
+                    <th>下载链接</th>
+                </tr>
+                <tr>
+                    <td>gtex_selenoprotein_expression.csv</td>
+                    <td>1.1KB</td>
+                    <td>GTEx数据库硒蛋白基因表达数据</td>
+                    <td><a href="#gtex_csv" class="download-link">下载</a></td>
+                </tr>
+                <tr>
+                    <td>tcga_selenoprotein_expression.csv</td>
+                    <td>743字节</td>
+                    <td>TCGA癌症数据库硒蛋白基因表达数据</1td>
+                    <td><a href="#tcga_csv" class="download-link">下载</a></td>
+                </tr>
+                <tr>
+                    <td>hpa_protein_expression.csv</td>
+                    <td>740字节</td>
+                    <td>HPA人类蛋白质表达数据</td>
+                    <td><a href="#hpa_csv" class="download-link">下载</a></td>
+                </tr>
+                <tr>
+                    <td>single_cell_expression.csv</td>
+                    <td>617字节</td>
+                    <td>单细胞RNA-seq硒蛋白表达数据</td>
+                    <td><a href="#single_cell_csv" class="download-link">下载</a></td>
+                </tr>
+                <tr>
+                    <td>selenoprotein_genes.csv</td>
+                    <td>2.1KB</td>
+                    <td>硒蛋白基因特征表</td>
+                    <td><a href="#genes_csv" class="download-link">下载</a></td>
+                </tr>
+                <tr>
+                    <td>pathway_enrichment.csv</td>
+                    <td>824字节</2td>
+                    <td>通路富集分析结果</td>
+                    <td><a href="#pathway_csv" class="download-link">下载</a></td>
+                </tr>
+            </table>
+            
+            <div class="data-info">
+                <h4>📊 使用方法</h4>
+                <p>CSV格式文件可以在Excel、R、Python等工具中分析。</p>
+                <div class="code-block">
+                    # 使用R分析<br>
+                    library(readr)<br>
+                    data <- read_csv("gtex_selenoprotein_expression.csv")<br><br>
+                    # 使用Python分析<br>
+                    import pandas as pd<br>
+                    df = pd.read_csv("gtex_selenoprotein_expression.csv")
+                </div>
+            </div>
+        </div>
+        
+        <!-- 文档 -->
+        <div class="download-card">
+            <h3><span class="category category-report">📖 说明文档</span> 使用指南和说明</h3>
+            
+            <table>
+                <tr>
+                    <th>文档名称</th>
+                    <th>大小</th>
+                    <th>描述</th>
+                    <th>下载链接</th>
+                </tr>
+                <tr>
+                    <td>README.md</td>
+                    <td>6KB</td>
+                    <td>项目说明文档</td>
+                    <td><a href="#readme" class="download-link">下载</a></td>
+                </tr>
+                <tr>
+                    <td>README_DOWNLOAD.md</td>
+                    <td>4KB</td>
+                    <td>下载指南文档</td>
+                    <td><a href="#readme_download" class="download-link">下载</a></td>
+                </tr>
+                <tr>
+                    <td>download_list.txt</td>
+                    <td>3KB</td>
+                    <td>文件清单</td>
+                    <td><a href="#download_list" class="download-link">下载</a></td>
+                </tr>
+                <tr>
+                    <td>download_script.sh</td>
+                    <td>887字节</td>
+                    <td>下载脚本</td>
+                    <td><a href="#download_script" class="download-link">下载</a></td>
+                </tr>
+                <tr>
+                    <td>local_download_guide.html</td>
+                    <td>9KB</td>
+                    <td>离线下载指南</td>
+                    <td><a href="#local_guide" class="download-link">下载</a></td>
+                </tr>
+            </table>
+        </div>
+        
+        <!-- 实际下载链接 -->
+        <div class="share-box">
+            <h3 style="color:white;">📥 实际下载链接</h3>
+            <p>由于文件在本地服务器，无法提供直接链接。你需要通过以下方式获取文件：</p>
+            
+            <h4 style="color:white;">方法一：复制此HTML页面</h4>
+            <p>将此HTML文件保存并分享给其他人。他们可以查看相同的文件清单。</p>
+            
+            <h4 style="color:white;">方法二：使用脚本打包</h4>
+            <div class="code-block">
+                # 在服务器上运行<br>
+                ./download_script.sh<br><br>
+                # 然后将selenium-analysis-data.tar.gz文件分享出去<br>
+                # 可以使用云存储、邮件附件等方式
+            </div>
+            
+            <h4 style="color:white;">方法三：部署到网页服务器</h4>
+            <p>如果你有网页服务器，可以将整个工作目录上传，然后用户可以浏览所有HTML页面。</p>
+            
+            <h4 style="color:white;">方法四：GitHub上传</h4>
+            <p>当GitHub连接恢复后：</p>
+            <div class="code-block">
+                git add .<br>
+                git commit -m "Add selenium analysis files"<br>
+                git push origin main
+            </div>
+        </div>
+        
+        <!-- 文件内容预览 -->
+        <div class="download-card">
+            <h3>📄 文件内容预览</h3>
+            
+            <div class="data-info">
+                <h4>多序列比对文件示例</h4>
+                <div class="code-block">
+                    GPX4-001           MVRVVAVLLAVCVSSVSFLAHGPMVVRRGGPRWGLVVGFTHKGLPCNARG
+                    GPX4-002           MVRVVAVLLAVCVSSVSFLAHGPMVVRRGGPRWGLVVGFTHKGLPCNARG
+                    GPX4-003           MVRVVAVLLAVCVSSVSFLAHGPMVVRRGGPRWGLVVGFTHKGLPCNARG
+                    GPX4-201           MVRVVAVLLAVCVSSVSFLAHGPMVVRRGGPRWGLVVGFTHKGLPCNARG
+                    
+                    GPX4-001           KVDVLSNCTLQTGKAENVRDYDREALGMLEQLEEYGLTELAGLQEPGSQR
+                    GPX4-002           KVDVLSNCTLQTGKAENVRDYDREALGMLEQLEEYGLTELAGLQEPGSQR
+                    GPX4-003           KVDVLSNCTLQTGKAENVRDYDREALGMLEQLEEYGLTELAGLQEPGSQR
+                    GPX4-201           KVDVLSNCTLQTGKAENVRDYDREALGMLEQLEEYGLTELAGLQEPGSQR
+                </div>
+                
+                <h4>PASA分析文件示例</h4>
+                <div class="code-block">
+                    chr19  genbank  exon  5438464 5476186  .  .  .  ID=GPX4-E1;Parent=GPX4-001;Note=exon_1;5'UTR
+                    chr19  pasa     Sec_codon  5458020 5458023  .  +  .  ID=GPX4-SEC1;Parent=GPX4-001;Note=Selenocysteine_codon_UGA
+                    chr19  pasa     alternative_exon  5449000 5449100  .  +  .  ID=GPX4-ASE1;Name=GPX4_variable_exon;Note=Skipped_in_isoform_2
+                </div>
+                
+                <h4>可变剪切数据结构示例</h4>
+                <div class="code-block">
+                    Gene      EventType   Exon    PSI_Normal  PSI_Tumor   ΔPSI       P-value   FDR
+                    GPX4      SE          exon3   0.72        0.48        -0.24     0.002     0.012
+                    TXNRD1    SE          exon7   0.68        0.45        -0.23     0.001     0.005
+                    SELENOP   A5SS        exon1   0.55        0.72        +0.17     0.012     0.043
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="index.html" class="download-link">🏠 返回主页</a>
+            <a href="splicing_analysis.html" class="download-link">🧬 查看可变剪切分析</a>
+            <a href="data_download.html" class="download-link">📥 查看完整下载中心</a>
+            <a href="local_download_guide.html" class="download-link">📖 查看离线指南</a>
+        </div>
+    </div>
+    
+    <footer>
+        <p>📥 硒蛋白基因分析文件下载中心 | <span style="background:#4CAF50;color:white;padding:2px 8px;border-radius:8px;">v2.0</span> | 更新: 2026-03-31</p>
+        <p>包含完整的可变剪切分析、多序列比对和PASA分析文件</p>
+    </footer>
+</body>
+</html>
