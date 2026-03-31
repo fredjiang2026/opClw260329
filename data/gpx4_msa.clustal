@@ -1,0 +1,67 @@
+CLUSTAL W (1.6) multiple sequence alignment
+
+
+GPX4-001           MVRVVAVLLAVCVSSVSFLAHGPMVVRRGGPRWGLVVGFTHKGLPCNARG
+GPX4-002           MVRVVAVLLAVCVSSVSFLAHGPMVVRRGGPRWGLVVGFTHKGLPCNARG
+GPX4-003           MVRVVAVLLAVCVSSVSFLAHGPMVVRRGGPRWGLVVGFTHKGLPCNARG
+GPX4-201           MVRVVAVLLAVCVSSVSFLAHGPMVVRRGGPRWGLVVGFTHKGLPCNARG
+
+GPX4-001           KVDVLSNCTLQTGKAENVRDYDREALGMLEQLEEYGLTELAGLQEPGSQR
+GPX4-002           KVDVLSNCTLQTGKAENVRDYDREALGMLEQLEEYGLTELAGLQEPGSQR
+GPX4-003           KVDVLSNCTLQTGKAENVRDYDREALGMLEQLEEYGLTELAGLQEPGSQR
+GPX4-201           KVDVLSNCTLQTGKAENVRDYDREALGMLEQLEEYGLTELAGLQEPGSQR
+
+GPX4-001           VLLIATTAKGFDTDRCEVRAGVPVSTRYSRQGRNEQTGITRVLIREVEGS
+GPX4-002           VLLIATTAKGFDTDRCEVRAGVPVSTRYSRQGRNEQTGITRVLIREVEGS
+GPX4-003           VLLIATTAKGFDTDRCEVRAGVPVSTRYSRQGRNEQTGITRVLIREVEGS
+GPX4-201           VLLIATTAKGFDTDRCEVRAGVPVSTRYSRQGRNEQTGITRVLIREVEGS
+
+GPX4-001           ELRIRTSSIKGLFDPACLLTPLTEAPQ---------------
+GPX4-002           ELRIRTSSIKGLFDPA----------------------------
+GPX4-003           ELRIRTSSIKGLFDPACLLTPLTEAPQESGHSFRGHVL-----
+GPX4-201           ELRIRTSSIKGLFDPACLLTPLTEAPQ---------------
+
+GPX4-001           -------------------------------------------------
+GPX4-002           -------------------------------------------------
+GPX4-003           -------------------------------------------------
+GPX4-201           -------------------------------------------------
+
+GPX4-001           -------------------------------------------------
+GPX4-002           -------------------------------------------------
+GPX4-003           -------------------------------------------------
+GPX4-201           -------------------------------------------------
+
+GPX4-001           -------------------------------------------------
+GPX4-002           -------------------------------------------------
+GPX4-003           -------------------------------------------------
+GPX4-201           -------------------------------------------------
+
+GPX4-001           -------------------------------------------------
+GPX4-002           -------------------------------------------------
+GPX4-003           -------------------------------------------------
+GPX4-201           -------------------------------------------------
+
+GPX4-001           -------------------------------------------------
+GPX4-002           -------------------------------------------------
+GPX4-003           -------------------------------------------------
+GPX4-201           -------------------------------------------------
+
+GPX4-001           -------------------------------------------------
+GPX4-002           -------------------------------------------------
+GPX4-003           -------------------------------------------------
+GPX4-201           -------------------------------------------------
+
+
+***** GPX4-001 197 aa ***** GPX4-002 170 aa ***** GPX4-003 223 aa ***** GPX4-201 170 aa *****
+
+Sec (硒代半胱氨酸) 位置:
+GPX4-001: Sec⁶⁷ (位置67)
+GPX4-002: Sec⁴² (位置42)  
+GPX4-003: Sec⁶⁷ (位置67)
+GPX4-201: 无 Sec
+
+功能注释:
+GPX4-001: 标准型, 广泛表达, 具有磷脂过氧化物酶活性
+GPX4-002: 短 isoform, Sec位置不同, 活性降低
+GPX4-003: 长 isoform, 含额外C端区域
+GPX4-201: 无Sec型, 仅过氧化物酶活性

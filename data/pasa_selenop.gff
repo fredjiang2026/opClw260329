@@ -1,0 +1,52 @@
+##gff-version 3
+# Program to Assemble Spliced Alignments (PASA) analysis of SELENOP isoforms
+# Generated: 2026-03-31
+
+chr5	genbank	chromosome	78535348	78538896	.	.	.	ID=chr5;Name=SELENOP
+chr5	genbank	gene	78535348	78538896	.	+	.	ID=SELENOP;Name=SELENOP;Alias=SELENOP
+chr5	genbank	transcript	78535348	78538896	.	+	.	ID=SELENOP-001;Parent=SELENOP;Product=SELENOP_isoform_1
+chr5	genbank	exon	78535348	78535410	.	+	.	ID=SELENOP-E1;Parent=SELENOP-001;Note=exon_1;5'UTR
+chr5	genbank	exon	78536000	78536100	.	+	.	ID=SELENOP-E2;Parent=SELENOP-001;Note=exon_2;Sec_codon_1
+chr5	genbank	exon	78536500	78536600	.	+	.	ID=SELENOP-E3;Parent=SELENOP-001;Note=exon_3;Sec_codon_2
+chr5	genbank	exon	78537000	78537100	.	+	.	ID=SELENOP-E4;Parent=SELENOP-001;Note=exon_4;Sec_codon_3
+chr5	genbank	exon	78537500	78537600	.	+	.	ID=SELENOP-E5;Parent=SELENOP-001;Note=exon_5;Sec_codon_4
+chr5	genbank	exon	78538000	78538100	.	+	.	ID=SELENOP-E6;Parent=SELENOP-001;Note=exon_6;Sec_codon_5
+chr5	genbank	exon	78538300	78538400	.	+	.	ID=SELENOP-E7;Parent=SELENOP-001;Note=exon_7;Sec_codon_6
+chr5	genbank	exon	78538600	78538700	.	+	.	ID=SELENOP-E8;Parent=SELENOP-001;Note=exon_8;Sec_codon_7
+chr5	genbank	exon	78538800	78538896	.	+	.	ID=SELENOP-E9;Parent=SELENOP-001;Note=exon_9;Sec_codon_8
+chr5	genbank	transcript	78535348	78538896	.	+	.	ID=SELENOP-002;Parent=SELENOP;Product=SELENOP_isoform_2
+chr5	genbank	exon	78535348	78535410	.	+	.	ID=SELENOP-E1;Parent=SELENOP-002;Note=exon_1;5'UTR
+chr5	genbank	exon	78536000	78536100	.	+	.	ID=SELENOP-E2;Parent=SELENOP-002;Note=exon_2;Sec_codon_1
+chr5	genbank	exon	78536500	78536600	.	+	.	ID=SELENOP-E3;Parent=SELENOP-002;Note=exon_3;Sec_codon_2
+chr5	genbank	exon	78537000	78537100	.	+	.	ID=SELENOP-E4;Parent=SELENOP-002;Note=exon_4;Sec_codon_3
+chr5	genbank	exon	78538000	78538100	.	+	.	ID=SELENOP-E6;Parent=SELENOP-002;Note=exon_6;Sec_codon_5
+chr5	genbank	exon	78538300	78538400	.	+	.	ID=SELENOP-E7;Parent=SELENOP-002;Note=exon_7;Sec_codon_6
+chr5	genbank	exon	78538600	78538700	.	+	.	ID=SELENOP-E8;Parent=SELENOP-002;Note=exon_8;Sec_codon_7
+chr5	genbank	exon	78538800	78538896	.	+	.	ID=SELENOP-E9;Parent=SELENOP-002;Note=exon_9;Sec_codon_8
+chr5	genbank	transcript	78535348	78538896	.	+	.	ID=SELENOP-003;Parent=SELENOP;Product=SELENOP_isoform_3
+chr5	genbank	exon	78535348	78535410	.	+	.	ID=SELENOP-E1;Parent=SELENOP-003;Note=exon_1;5'UTR
+chr5	genbank	exon	78536000	78536100	.	+	.	ID=SELENOP-E2;Parent=SELENOP-003;Note=exon_2;Sec_codon_1
+chr5	genbank	exon	78538000	78538100	.	+	.	ID=SELENOP-E6;Parent=SELENOP-003;Note=exon_6;Sec_codon_5
+chr5	genbank	exon	78538300	78538400	.	+	.	ID=SELENOP-E7;Parent=SELENOP-003;Note=exon_7;Sec_codon_6
+chr5	genbank	exon	78538600	78538700	.	+	.	ID=SELENOP-E8;Parent=SELENOP-003;Note=exon_8;Sec_codon_7
+chr5	genbank	exon	78538800	78538896	.	+	.	ID=SELENOP-E9;Parent=SELENOP-003;Note=exon_9;Sec_codon_8
+
+# Alternative splicing events detected by PASA
+chr5	pasa	alternative_exon	78537500	78537600	.	+	.	ID=SELENOP-ASE1;Name=SELENOP_exon5;Note=Skipped_in_isoforms_2_and_3
+chr5	pasa	alternative_exon	78536500	78536600	.	+	.	ID=SELENOP-ASE2;Name=SELENOP_exon3;Note=Skipped_in_isoform_3
+chr5	pasa	alternative_exon	78537000	78537100	.	+	.	ID=SELENOP-ASE3;Name=SELENOP_exon4;Note=Skipped_in_isoform_3
+
+# Sec codon annotations
+chr5	pasa	Sec_codon	78536040	78536043	.	+	.	ID=SELENOP-SEC1;Parent=SELENOP-001,SELENOP-002,SELENOP-003;Note=Sec_codon_1
+chr5	pasa	Sec_codon	78536550	78536553	.	+	.	ID=SELENOP-SEC2;Parent=SELENOP-001,SELENOP-002;Note=Sec_codon_2
+chr5	pasa	Sec_codon	78537050	78537053	.	+	.	ID=SELENOP-SEC3;Parent=SELENOP-001,SELENOP-002;Note=Sec_codon_3
+chr5	pasa	Sec_codon	78537550	78537553	.	+	.	ID=SELENOP-SEC4;Parent=SELENOP-001;Note=Sec_codon_4
+chr5	pasa	Sec_codon	78538050	78538053	.	+	.	ID=SELENOP-SEC5;Parent=SELENOP-001,SELENOP-002,SELENOP-003;Note=Sec_codon_5
+chr5	pasa	Sec_codon	78538350	78538353	.	+	.	ID=SELENOP-SEC6;Parent=SELENOP-001,SELENOP-002,SELENOP-003;Note=Sec_codon_6
+chr5	pasa	Sec_codon	78538650	78538653	.	+	.	ID=SELENOP-SEC7;Parent=SELENOP-001,SELENOP-002,SELENOP-003;Note=Sec_codon_7
+chr5	pasa	Sec_codon	78538850	78538853	.	+	.	ID=SELENOP-SEC8;Parent=SELENOP-001,SELENOP-002,SELENOP-003;Note=Sec_codon_8
+
+# Function annotations
+chr5	pasa	function	78535348	78535410	.	+	.	ID=SELENOP-FUNC1;Parent=SELENOP-001,SELENOP-002,SELENOP-003;Note=Signal_peptide
+chr5	pasa	function	78536000	78536100	.	+	.	ID=SELENOP-FUNC2;Parent=SELENOP-001,SELENOP-002,SELENOP-003;Note=Sec-rich_domain_1
+chr5	pasa	function	78538000	78538896	.	+	.	ID=SELENOP-FUNC3;Parent=SELENOP-001,SELENOP-002,SELENOP-003;Note=Sec-rich_domain_2

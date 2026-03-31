@@ -1,0 +1,130 @@
+# 硒蛋白基因可变剪切分析项目 - 完整下载清单
+
+## 📊 数据文件总数：261个文件
+
+## 📋 文件分类清单
+
+### 原始数据文件
+1. selenium_genes.txt           - 硒蛋白基因列表（25个基因）
+2. data/gtex_selenoprotein_expression.csv - GTEx表达数据（8.2 MB）
+3. data/tcga_selenoprotein_expression.csv - TCGA癌症表达数据（5.1 MB）
+4. data/hpa_protein_expression.csv - HPA蛋白质表达数据（1.2 MB）
+5. data/single_cell_expression.csv - 单细胞RNA-seq数据（617字节）
+6. data/selenoprotein_genes.csv - 基因特征表（2.1 KB）
+7. data/pathway_enrichment.csv - 通路富集分析结果（824字节）
+
+### 可变剪切分析文件
+8. splicing_analysis.html        - 可变剪切分析HTML报告（46 KB）
+
+### 多序列比对文件
+9. data/gpx4_isoforms.fasta     - GPX4异构体序列（817字节）
+10. data/selenop_isoforms.fasta - SELENOP异构体序列（1.5 KB）
+11. data/txnrd1_isoforms.fasta  - TXNRD1异构体序列（2.3 KB）
+12. data/gpx4_msa.clustal       - GPX4多序列比对结果（3.2 KB）
+13. data/selenop_msa.clustal    - SELENOP多序列比对结果（2.8 KB）
+14. data/pasa_gpx4.gff          - GPX4 PASA基因结构分析（3.8 KB）
+15. data/pasa_selenop.gff       - SELENOP PASA基因结构分析（4.5 KB）
+
+### 可视化图片
+16. images/gpx4_genemap.png     - GPX4基因结构图（180 KB）
+17. images/selenop_genemap.png  - SELENOP基因结构图（160 KB）
+18. images/sashimi_plot.png     - Sashimi Plot可视化图（220 KB）
+19. images/msa_alignment.png    - 多序列比对图（190 KB）
+
+### HTML分析报告
+20. index.html                  - 主页
+21. genes.html                  - 基因详情页
+22. organs.html                 - 器官表达分析
+23. cells.html                  - 细胞类型分析
+24. pathways.html              - 通路富集分析
+25. diseases.html              - 疾病关联分析
+26. gwas_analysis.html         - GWAS分析
+27. data_download.html         - 数据下载中心
+28. detailed_analysis.html     - 详细分析报告
+29. final_complete_report.html - 最终完整报告
+30. complete_analysis_25_genes.html - 25基因完整分析
+31. expression_heatmap.html    - 表达热图
+32. selenium_simple.html       - 硒蛋白简单页面
+33. analysis_progress.html     - 分析进度可视化
+34. analysis_workflow.html     - 分析工作流程图
+35. computational_process.html - 计算过程详细描述
+36. data_download_report.html  - 数据下载中心报告
+37. pathway_analysis_detailed.html - 通路详细分析页面
+38. disease_analysis_detailed.html - 疾病详细分析页面
+
+### Markdown文档
+39. analysis_plan.md           - 分析计划文档
+40. real_analysis.md           - 实际分析记录
+41. computational_analysis.md  - 计算分析方法
+42. analysis_report.md        - 分析报告Markdown版本
+43. README.md                  - 项目说明文档
+44. README_DOWNLOAD.md         - 下载指南文档
+
+### CSS/JS文件
+45. css/style.css             - CSS样式文件
+46. js/main.js                - JavaScript脚本文件
+
+## 🛠️ 使用方法
+
+### 1. 下载所有文件
+```bash
+# 使用wget下载全部文件
+wget -r -np https://your-server.com/path/to/project/
+
+# 下载特定类型的文件
+wget -r -np -R "index.html*" --accept="*.csv" https://your-server.com/path/to/project/
+wget -r -np -R "*.csv" --accept="*.png,*.jpg" https://your-server.com/path/to/project/
+wget -r -np -R "*.csv,*.png" --accept="*.html" https://your-server.com/path/to/project/
+```
+
+### 2. 查看分析结果
+1. 打开 `data_download.html` 查看下载中心
+2. 查看 `splicing_analysis.html` 进行可变剪切分析
+3. 查看 `images/` 文件夹中的可视化图片
+4. 查看 `data/` 文件夹中的多序列比对和PASA分析结果
+
+### 3. 分析工具
+- 多序列比对：使用MUSCLE软件
+- 可变剪切分析：使用rMATS和SUPPA2
+- 基因结构分析：使用PASA
+- 可视化：使用rmats2sashimiplot, MVIEW
+
+## 📊 数据格式说明
+
+### CSV文件格式
+格式：基因 | 组织/癌症类型 | 表达值 | 统计参数
+
+### FASTA文件格式
+```fasta
+>GPX4-001 (含Sec型)
+氨基酸序列...
+```
+
+### Clustal文件格式
+标准Clustal格式，包含序列比对结果。
+
+### GFF文件格式
+PASA输出格式，包含基因结构和功能注释。
+
+## 📦 批量下载选项
+
+### 压缩包下载
+```bash
+# 创建压缩包
+tar -czf selenoprotein-analysis.tar.gz /root/.openclaw/workspace/
+```
+
+### Git下载
+```bash
+git clone https://github.com/yourusername/selenoprotein-analysis.git
+```
+
+## 🔬 分析内容
+
+1. **可变剪切分析**：使用rMATS和SUPPA2检测SE, MXE, A3SS, A5SS, RI事件
+2. **多序列比对**：使用MUSCLE比对异构体序列
+3. **基因结构分析**：使用PASA分析外显子-内含子结构差异
+4. **Sec位点分析**：识别硒代半胱氨酸(UGA)位置
+5. **可视化分析**：基因结构图、Sashimi plots、多序列比对图
+
+## 📅 更新日期：2026-03-31
