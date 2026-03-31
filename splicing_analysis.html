@@ -404,14 +404,31 @@
         <div style="background:white;padding:20px;border-radius:10px;margin:20px 0;box-shadow:0 2px10px rgba(0,0,0,0.1);">
             <h2 style="color:#9C27B0;border-bottom:2px solid #9C27B0;padding-bottom:10px;">🧬 基因结构与异构体分析</h2>
             
-            <!-- GPX4 外显子-内含子结构图 -->
+            <!-- GPX4 图形化基因结构图 -->
             <div style="background:#f5f5f5;padding:20px;border-radius:10px;margin:15px 0;border-left:5px solid #e91e63;">
                 <h3 style="color:#e91e63;margin-top:0;">🧬 GPX4 基因结构与可变剪切</h3>
                 
-                <!-- SVG基因结构图 -->
-                <div style="background:white;padding:20px;border-radius:8px;margin:10px 0;">
-                    <h4>📐 GPX4 基因外显子-内含子结构图</h4>
-                    <svg width="100%" height="200" viewBox="0 0 800 180" xmlns="http://www.w3.org/2000/svg">
+                <!-- 生成的基因结构图 -->
+                <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;text-align:center;">
+                    <h4>📐 GPX4 基因外显子-内含子结构图 (Matplotlib生成)</h4>
+                    <img src="images/gpx4_genemap.png" alt="GPX4 Gene Structure" style="max-width:100%;height:auto;border-radius:8px;box-shadow:0 2px8px rgba(0,0,0,0.2);">
+                    <p style="font-size:0.85em;color:#666;margin-top:10px;">图示: GPX4基因外显子结构及3种可变剪切异构体</p>
+                </div>
+                
+                <!-- Sashimi Plot图 -->
+                <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;text-align:center;">
+                    <h4>📊 GPX4 Sashimi Plot (剪切junction可视化)</h4>
+                    <img src="images/sashimi_plot.png" alt="GPX4 Sashimi Plot" style="max-width:100%;height:auto;border-radius:8px;box-shadow:0 2px8px rgba(0,0,0,0.2);">
+                    <p style="font-size:0.85em;color:#666;margin-top:10px;">图示: 可变剪切事件的junction reads覆盖，数字表示跨越剪接的reads数量</p>
+                </div>
+                
+                <!-- 多序列比对图 -->
+                <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;text-align:center;">
+                    <h4>🔬 GPX4 蛋白异构体多序列比对</h4>
+                    <img src="images/msa_alignment.png" alt="GPX4 MSA" style="max-width:100%;height:auto;border-radius:8px;box-shadow:0 2px8px rgba(0,0,0,0.2);">
+                    <p style="font-size:0.85em;color:#666;margin-top:10px;">图示: 3种GPX4异构体的氨基酸序列比对，蓝色=保守区域，绿色=Sec位点，橙色=可变区域</p>
+                </div>
+            </div>
                         <!-- 基因坐标轴 -->
                         <line x1="50" y1="170" x2="750" y2="170" stroke="#333" stroke-width="2"/>
                         <text x="50" y="165" font-size="10" fill="#333">5'</text>
@@ -560,20 +577,12 @@
             <div style="background:#f5f5f5;padding:20px;border-radius:10px;margin:15px 0;border-left:5px solid #9C27B0;">
                 <h3 style="color:#9C27B0;margin-top:0;">🧬 SELENOP 基因结构与可变剪切</h3>
                 
-                <!-- SELENOP SVG结构图 -->
-                <div style="background:white;padding:20px;border-radius:8px;margin:10px 0;">
-                    <h4>📐 SELENOP 基因外显子-内含子结构图</h4>
-                    <svg width="100%" height="180" viewBox="0 0 800 170" xmlns="http://www.w3.org/2000/svg">
-                        <!-- 基因坐标 -->
-                        <line x1="50" y1="160" x2="750" y2="160" stroke="#333" stroke-width="2"/>
-                        <text x="50" y="155" font-size="10" fill="#333">5'</text>
-                        <text x="740" y="155" font-size="10" fill="#333">3'</text>
-                        <text x="400" y="175" font-size="10" fill="#666" text-anchor="middle">基因组 DNA (约15kb)</text>
-                        
-                        <!-- 外显子 (SELENOP有10个Sec位点) -->
-                        <rect x="50" y="30" width="45" height="20" fill="#9C27B0" stroke="#333" rx="2"/>
-                        <text x="72" y="44" font-size="8" fill="white" text-anchor="middle">Ex1</text>
-                        <line x1="95" y1="40" x2="130" y2="40" stroke="#999" stroke-width="2" stroke-dasharray="4,2"/>
+                <!-- 生成的SELENOP基因结构图 -->
+                <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;text-align:center;">
+                    <h4>📐 SELENOP 基因外显子-内含子结构图 (Matplotlib生成)</h4>
+                    <img src="images/selenop_genemap.png" alt="SELENOP Gene Structure" style="max-width:100%;height:auto;border-radius:8px;box-shadow:0 2px8px rgba(0,0,0,0.2);">
+                    <p style="font-size:0.85em;color:#666;margin-top:10px;">图示: SELENOP基因有9个外显子，其中多个含Sec(UGA)位点</p>
+                </div>
                         
                         <rect x="130" y="30" width="50" height="20" fill="#9C27B0" stroke="#333" rx="2"/>
                         <text x="155" y="44" font-size="8" fill="white" text-anchor="middle">Ex2</text>
