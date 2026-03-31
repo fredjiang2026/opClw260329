@@ -1,0 +1,16 @@
+title: "硒蛋白基因可变剪切分析数据下载中心"
+description: "硒蛋白基因可变剪切分析项目，包含多序列比对、基因结构差异分析和可视化"
+baseurl: ""
+url: ""
+show_downloads: true
+
+theme: jekyll-theme-minimal
+
+plugins:
+  - jekyll-redirect-from
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "default"
