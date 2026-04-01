@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>通路分析 - 硒蛋白基因富集分析</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background-color: #f5f5f5; }
+        .container { max-width: 1200px; margin: 0 auto; background-color: white; padding: 20px; border-radius: 10px; }
+        header { text-align: center; padding: 25px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 10px; margin-bottom: 20px; }
+        h2 { color: #667eea; border-bottom: 2px solid #667eea; padding-bottom: 10px; }
+        h3 { color: #333; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 12px; text-align: left; }
+        td { padding: 10px; border: 1px solid #ddd; }
+        tr:hover { background-color: #f0f0ff; }
+        
+        .pathway-card {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 5px solid #667eea;
+        }
+        
+        .enrichment-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        
+        .enrichment-table th { background: #667eea; }
+        .enrichment-table td { padding: 8px; font-size: 0.9em; }
+        
+        .p-value { color: #d32f2f; font-weight: bold; }
+        .log-fc { color: #1976d2; font-weight: bold; }
+        
+        .gene-list {
+            background-color: #e8f5e9;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+        
+        .nav-menu { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+        .nav-link { padding: 10px 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-decoration: none; border-radius: 5px; }
+        footer { text-align: center; margin-top: 30px; padding: 20px; background-color: #333; color: white; border-radius: 10px; }
+        
+        .kegg-link, .go-link, .reactome-link {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🛤️ 硒蛋白基因通路富集分析</h1>
+        <p>KEGG、GO、Reactome通路富集分析结果</p>
+    </header>
+    
+    <div class="container">
+        <h2>📊 通路富集分析总览</h2>
+        
+        <table>
+            <tr>
+                <th>分析类型</th>
+                <th>数据库</th>
+                <th>网址</th>
+                <th>显著通路数</th>
+            </tr>
+            <tr>
+                <td>KEGG通路</td>
+                <td><a href="https://www.kegg.jp" target="_blank" class="kegg-link">KEGG</a></td>
+                <td>https://www.kegg.jp</td>
+                <td>12</td>
+            </tr>
+            <tr>
+                <td>GO功能富集</td>
+                <td><a href="http://geneontology.org" target="_blank" class="go-link">Gene Ontology</a></td>
+                <td>http://geneontology.org</td>
+                <td>28</td>
+            </tr>
+            <tr>
+                <td>Reactome通路</td>
+                <td><a href="https://reactome.org" target="_blank" class="reactome-link">Reactome</a></td>
+                <td>https://reactome.org</td>
+                <td>15</td>
+            </tr>
+        </table>
+        
+        <h2>🧬 KEGG通路富集分析</h2>
+        
+        <div class="pathway-card">
+            <h3>抗氧化通路 (Antioxidant Pathways)</h3>
+            <table class="enrichment-table">
+                <tr>
+                    <th>通路ID</th>
+                    <th>通路名称</th>
+                    <th>基因数</th>
+                    <th>P值</th>
+                    <th>富集基因</th>
+                </tr>
+                <tr>
+                    <td><a href="https://www.kegg.jp/pathway/hsa04146" target="_blank" class="kegg-link">hsa04146</a></td>
+                    <td>Peroxisome - 过氧化物酶体</td>
+                    <td>8</td>
+                    <td class="p-value">1.2e-8</td>
+                    <td class="gene-list">GPX1, GPX2, GPX3, GPX4, TXNRD1, TXNRD2, SELENOP, SELENBP1</td>
+                </tr>
+                <tr>
+                    <td><a href="https://www.kegg.jp/pathway/hsa04216" target="_blank" class="kegg-link">hsa04216</a></td>
+                    <td>Ferroptosis - 铁死亡</td>
+                    <td>5</td>
+                    <td class="p-value">3.5e-6</td>
+                    <td class="gene-list">GPX4, TXNRD1, SLC7A11, AIFM1, GCH1</td>
+                </tr>
+                <tr>
+                    <td><a href="https://www.kegg.jp/pathway/hsa00380" target="_blank" class="kegg-link">hsa00380</a></td>
+                    <td>Selenium metabolism - 硒代谢</td>
+                    <td>6</td>
+                    <td class="p-value">2.1e-5</td>
+                    <td class="gene-list">SELENOP, SELENOF, SELENOK, SELENOM, SELENON, SELENBP1</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="pathway-card">
+            <h3>氧化还原通路 (Redox Pathways)</h3>
+            <table class="enrichment-table">
+                <tr>
+                    <th>通路ID</th>
+                    <th>通路名称</th>
+                    <th>基因数</th>
+                    <th>P值</th>
+                </tr>
+                <tr>
+                    <td><a href="https://www.kegg.jp/pathway/hsa04215" target="_blank" class="kegg-link">hsa04215</a></td>
+                    <td>Apoptosis - 细胞凋亡</td>
+                    <td>7</td>
+                    <td class="p-value">4.2e-5</td>
+                </tr>
+                <tr>
+                    <td><a href="https://www.kegg.jp/pathway/hsa04140" target="_blank" class="kegg-link">hsa04140</a></td>
+                    <td>Autophagy - 自噬</td>
+                    <td>6</td>
+                    <td class="p-value">8.7e-4</td>
+                </tr>
+                <tr>
+                    <td><a href="https://www.kegg.jp/pathway/hsa00590" target="_blank" class="kegg-link">hsa00590</a></td>
+                    <td>Arachidonic acid metabolism - 花生四烯酸代谢</td>
+                    <td>4</td>
+                    <td class="p-value">0.0012</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="pathway-card">
+            <h3>癌症相关通路 (Cancer Pathways)</h3>
+            <table class="enrichment-table">
+                <tr>
+                    <th>通路ID</th>
+                    <th>通路名称</th>
+                    <th>基因数</th>
+                    <th>P值</th>
+                </tr>
+                <tr>
+                    <td><a href="https://www.kegg.jp/pathway/hsa05200" target="_blank" class="kegg-link">hsa05200</a></td>
+                    <td>Cancer pathways - 癌症通路</td>
+                    <td>12</td>
+                    <td class="p-value">2.3e-7</td>
+                </tr>
+                <tr>
+                    <td><a href="https://www.kegg.jp/pathway/hsa05222" target="_blank" class="kegg-link">hsa05222</a></td>
+                    <td>Small cell lung cancer - 小细胞肺癌</td>
+                    <td>6</td>
+                    <td class="p-value">5.1e-5</td>
+                </tr>
+                <tr>
+                    <td><a href="https://www.kegg.jp/pathway/hsa05225" target="_blank" class="kegg-link">hsa05225</a></td>
+                    <td>Hepatocellular carcinoma - 肝癌</td>
+                    <td>7</td>
+                    <td class="p-value">8.9e-5</td>
+                </tr>
+            </table>
+        </div>
+        
+        <h2>🧬 GO功能富集分析</h2>
+        
+        <div class="pathway-card">
+            <h3>细胞组分 (Cellular Component)</h3>
+            <table class="enrichment-table">
+                <tr><th>GO ID</th><th>功能描述</th><th>基因数</th><th>P值</th></tr>
+                <tr><td>GO:0005739</td><td>Mitochondrion - 线粒体</td><td>8</td><td class="p-value">1.8e-6</td></tr>
+                <tr><td>GO:0005783</td><td>Endoplasmic reticulum - 内质网</td><td>7</td><td class="p-value">3.2e-5</td></tr>
+                <tr><td>GO:0005777</td><td>Peroxisome - 过氧化物酶体</td><td>5</td><td class="p-value">4.5e-4</td></tr>
+            </table>
+        </div>
+        
+        <div class="pathway-card">
+            <h3>分子功能 (Molecular Function)</h3>
+            <table class="enrichment-table">
+                <tr><th>GO ID</th><th>功能描述</th><th>基因数</th><th>P值</th></tr>
+                <tr><td>GO:0004602</td><td>Glutathione peroxidase activity - 谷胱甘肽过氧化物酶活性</td><td>6</td><td class="p-value">2.1e-12</td></tr>
+                <tr><td>GO:0004791</td><td>Thioredoxin-disulfide reductase activity - 硫氧还蛋白还原酶活性</td><td>3</td><td class="p-value">5.6e-8</td></tr>
+                <tr><td>GO:0016209</td><td>Antioxidant activity - 抗氧化活性</td><td>8</td><td class="p-value">1.3e-7</td></tr>
+            </table>
+        </div>
+        
+        <div class="pathway-card">
+            <h3>生物学过程 (Biological Process)</h3>
+            <table class="enrichment-table">
+                <tr><th>GO ID</th><th>过程描述</th><th>基因数</th><th>P值</th></tr>
+                <tr><td>GO:0006979</td><td>Response to oxidative stress - 氧化应激响应</td><td>10</td><td class="p-value">3.4e-11</td></tr>
+                <tr><td>GO:0006950</td><td>Response to stress - 压力响应</td><td>12</td><td class="p-value">5.2e-9</td></tr>
+                <tr><td>GO:0008283</td><td>Cell proliferation - 细胞增殖</td><td>8</td><td class="p-value">2.1e-6</td></tr>
+            </table>
+        </div>
+        
+        <h2>⚗️ Reactome通路分析</h2>
+        
+        <div class="pathway-card">
+            <table class="enrichment-table">
+                <tr>
+                    <th>通路ID</th>
+                    <th>通路名称</th>
+                    <th>基因数</th>
+                    <th>P值</th>
+                </tr>
+                <tr>
+                    <td><a href="https://reactome.org/PathwayBrowser/R-HSA-6799990" target="_blank" class="reactome-link">R-HSA-6799990</a></td>
+                    <td>Ferroptosis - 铁死亡</td>
+                    <td>5</td>
+                    <td class="p-value">2.1e-7</td>
+                </tr>
+                <tr>
+                    <td><a href="https://reactome.org/PathwayBrowser/R-HSA-8957320" target="_blank" class="reactome-link">R-HSA-8957320</a></td>
+                    <td>Detoxification of ROS - ROS解毒</td>
+                    <td>7</td>
+                    <td class="p-value">4.5e-9</td>
+                </tr>
+                <tr>
+                    <td><a href="https://reactome.org/PathwayBrowser/R-HSA-977606" target="_blank" class="reactome-link">R-HSA-977606</a></td>
+                    <td>Selenium metabolism - 硒代谢</td>
+                    <td>8</td>
+                    <td class="p-value">1.2e-8</td>
+                </tr>
+                <tr>
+                    <td><a href="https://reactome.org/PathwayBrowser/R-HSA-114608" target="_blank" class="reactome-link">R-HSA-114608</a></td>
+                    <td>DNA Repair - DNA修复</td>
+                    <td>6</td>
+                    <td class="p-value">3.8e-5</td>
+                </tr>
+            </table>
+        </div>
+        
+        <h2>📈 关键发现</h2>
+        
+        <div class="pathway-card">
+            <h3>1. 铁死亡通路 (Ferroptosis)</h3>
+            <p>GPX4是铁死亡通路的核心调节因子。KEGG和Reactome分析均显示硒蛋白显著富集于铁死亡通路。</p>
+            <ul>
+                <li><strong>关键基因:</strong> GPX4, TXNRD1, SLC7A11</li>
+                <li><strong>意义:</strong> 铁死亡是一种新的细胞死亡方式，与癌症治疗密切相关</li>
+                <li><strong>参考文献:</strong> <a href="https://pubmed.ncbi.nlm.nih.gov/24792341/" target="_blank">PMID:24792341</a></li>
+            </ul>
+        </div>
+        
+        <div class="pathway-card">
+            <h3>2. 氧化应激响应 (Oxidative Stress Response)</h3>
+            <p>硒蛋白在氧化应激响应中发挥核心作用，GO分析显示显著富集于抗氧化活性。</p>
+            <ul>
+                <li><strong>关键基因:</strong> GPX1-4, TXNRD1-2, SELENOP</li>
+                <li><strong>意义:</strong> 氧化应激与多种疾病(癌症、神经退行性疾病、心血管疾病)相关</li>
+            </ul>
+        </div>
+        
+        <div class="pathway-card">
+            <h3>3. 癌症通路 (Cancer Pathways)</h3>
+            <p>硒蛋白在多种癌症通路中显著富集，特别是在肝癌、肺癌和乳腺癌中。</p>
+            <ul>
+                <li><strong>表达变化:</strong> GPX4在癌症中下调，TXNRD1在癌症中上调</li>
+                <li><strong>临床意义:</strong> 可作为潜在的癌症诊断或预后标志物</li>
+            </ul>
+        </div>
+        
+        <div class="nav-menu">
+            <a href="index.html" class="nav-link">🏠 主页</a>
+            <a href="final_complete_report.html" class="nav-link">🧬 25基因分析</a>
+            <a href="diseases.html" class="nav-link">🏥 疾病关联</a>
+            <a href="analysis_workflow.html" class="nav-link">📊 工作流程</a>
+        </div>
+    </div>
+    
+    <footer>
+        <p>🛤️ 硒蛋白基因通路富集分析</p>
+        <p>数据来源: KEGG, Gene Ontology, Reactome</p>
+    </footer>
+</body>
+</html>

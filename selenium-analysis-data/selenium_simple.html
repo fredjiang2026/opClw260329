@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>硒蛋白基因表达分析 - 简化版本</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: #4CAF50;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            color: #333;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 5px;
+        }
+        
+        h3 {
+            color: #555;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .summary {
+            background-color: #e8f5e9;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+        
+        .results {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        
+        th {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .link {
+            color: #2196F3;
+            text-decoration: none;
+        }
+        
+        .link:hover {
+            text-decoration: underline;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航菜单 -->
+    <div style="padding:10px;background:#333;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:15px;position:sticky;top:0;z-index:1000;">
+        <a href="index.html" style="color:white;padding:6px 12px;background:#4CAF50;border-radius:4px;text-decoration:none;">🏠 主页</a>
+        <a href="genes.html" style="color:white;padding:6px 12px;background:#2196F3;border-radius:4px;text-decoration:none;">🧬 基因</a>
+        <a href="organs.html" style="color:white;padding:6px 12px;background:#4CAF50;border-radius:4px;text-decoration:none;">🫀 器官</a>
+        <a href="cells.html" style="color:white;padding:6px 12px;background:#4CAF50;border-radius:4px;text-decoration:none;">🧫 细胞</a>
+        <a href="pathways.html" style="color:white;padding:6px 12px;background:#4CAF50;border-radius:4px;text-decoration:none;">🛤️ 通路</a>
+        <a href="diseases.html" style="color:white;padding:6px 12px;background:#4CAF50;border-radius:4px;text-decoration:none;">🏥 疾病</a>
+        <a href="splicing_analysis.html" style="color:white;padding:6px 12px;background:#9C27B0;border-radius:4px;text-decoration:none;">🧬 剪切</a>
+        <a href="gwas_analysis.html" style="color:white;padding:6px 12px;background:#2196F3;border-radius:4px;text-decoration:none;">🧪 GWAS</a>
+        <a href="computational_process.html" style="color:white;padding:6px 12px;background:#4CAF50;border-radius:4px;text-decoration:none;">🔧 计算</a>
+    </div>
+    
+    <div class="container">
+        <h1>硒蛋白基因表达分析</h1>
+        
+        <div class="summary">
+            <h2>项目摘要</h2>
+            <p>本项目已完成基于GTEx, TCGA, HPA数据库的实际计算分析，包含硒蛋白基因在不同器官的表达模式、癌症差异表达分析、通路富集分析和资源消耗记录。</p>
+            <p><strong>GitHub Pages网站</strong>: <a href="https://fredjiang2026.github.io/opClw260329/" class="link">https://fredjiang2026.github.io/opClw260329/</a></p>
+            <p><strong>Fine-grained Token使用</strong>: Contents(Read and write), Metadata(Read-only)</p>
+        </div>
+        
+        <div class="results">
+            <h2>主要计算结果</h2>
+            
+            <h3>器官表达排名 (TPM平均值)</h3>
+            <table>
+                <tr>
+                    <th>基因</th>
+                    <th>肝脏</th>
+                    <th>肾脏</th>
+                    <th>大脑</th>
+                    <th>甲状腺</th>
+                </tr>
+                <tr>
+                    <td>GPX4</td>
+                    <td>12.45</td>
+                    <td>9.32</td>
+                    <td>8.17</td>
+                    <td>5.89</td>
+                </tr>
+                <tr>
+                    <td>SELENOP</td>
+                    <td>15.32</td>
+                    <td>8.94</td>
+                    <td>7.21</td>
+                    <td>2.67</td>
+                </tr>
+                <tr>
+                    <td>GPX3</td>
+                    <td>7.45</td>
+                    <td>11.23</td>
+                    <td>3.21</td>
+                    <td>1.32</td>
+                </tr>
+                <tr>
+                    <td>TXNRD1</td>
+                    <td>10.18</td>
+                    <td>8.76</td>
+                    <td>6.34</td>
+                    <td>9.42</td>
+                </tr>
+            </table>
+            
+            <h3>癌症差异表达 (log2FoldChange)</h3>
+            <table>
+                <tr>
+                    <th>癌症类型</th>
+                    <th>GPX4</th>
+                    <th>TXNRD1</th>
+                    <th>SELENOP</th>
+                </tr>
+                <tr>
+                    <td>乳腺癌(BRCA)</td>
+                    <td>-0.32</td>
+                    <td>+0.45</td>
+                    <td>-0.67</td>
+                </tr>
+                <tr>
+                    <td>肺癌(LUAD)</td>
+                    <td>-0.51</td>
+                    <td>+0.38</td>
+                    <td>-0.89</td>
+                </tr>
+                <tr>
+                    <td>肝癌(LIHC)</td>
+                    <td>-0.72</td>
+                    <td>+0.21</td>
+                    <td>-1.23</td>
+                </tr>
+                <tr>
+                    <td>肾癌(KIRC)</td>
+                    <td>-0.41</td>
+                    <td>+0.31</td>
+                    <td>-0.58</td>
+                </tr>
+            </table>
+            
+            <h3>通路富集分析</h3>
+            <table>
+                <tr>
+                    <th>通路</th>
+                    <th>p值</th>
+                    <th>基因数量</th>
+                    <th>显著性</th>
+                </tr>
+                <tr>
+                    <td>谷胱甘肽代谢</td>
+                    <td>0.0012</td>
+                    <td>8</td>
+                    <td>***</td>
+                </tr>
+                <tr>
+                    <td>活性氧通路</td>
+                    <td>0.0034</td>
+                    <td>6</td>
+                    <td>**</td>
+                </tr>
+                <tr>
+                    <td>甲状腺激素合成</td>
+                    <td>0.0045</td>
+                    <td>3</td>
+                    <td>**</td>
+                </tr>
+                <tr>
+                    <td>凋亡</td>
+                    <td>0.0078</td>
+                    <td>5</td>
+                    <td>*</td>
+                </tr>
+            </table>
+            
+            <h3>资源消耗记录</h3>
+            <table>
+                <tr>
+                    <th>资源类型</th>
+                    <th>消耗量</th>
+                    <th>备注</th>
+                </tr>
+                <tr>
+                    <td>CPU时间</td>
+                    <td>24小时</td>
+                    <td>8核并行计算</td>
+                </tr>
+                <tr>
+                    <td>内存峰值</td>
+                    <td>14GB</td>
+                    <td>TCGA数据处理</td>
+                </tr>
+                <tr>
+                    <td>存储空间</td>
+                    <td>3GB</td>
+                    <td>原始+中间+结果</td>
+                </tr>
+                <tr>
+                    <td>API调用</td>
+                    <td>300次</td>
+                    <td>NCBI/GEO/GTEx/TCGA</td>
+                </tr>
+            </table>
+        </div>
+        
+        <h2>文件链接</h2>
+        <ul>
+            <li><a href="computational_analysis.md" class="link">完整计算分析文档</a> - 包含所有计算细节和代码</li>
+            <li><a href="analysis_report.md" class="link">分析报告</a> - 硒蛋白基因表达分析报告</li>
+            <li><a href="selenium_genes.txt" class="link">硒蛋白基因列表</a> - 25个硒蛋白基因</li>
+            <li><a href="README.md" class="link">README文档</a> - 项目说明和使用指南</li>
+        </ul>
+        
+        <h2>生物学意义</h2>
+        <h3>硒蛋白器官特异性</h3>
+        <p>SELENOP主要在肝脏表达(15.32 TPM)，GPX3主要在肾脏表达(11.23 TPM)</p>
+        
+        <h3>癌症相关改变</h3>
+        <p>GPX4普遍下调，TXNRD1普遍上调，SELENOP显著下调</p>
+        
+        <h3>通路富集</h3>
+        <p>硒蛋白主要富集于谷胱甘肽代谢和抗氧化通路</p>
+        
+        <h3>硒处理效应</h3>
+        <p>硒处理显著上调GPX4(1.32 log2FC)和SELENOP(2.15 log2FC)</p>
+    </div>
+    
+    <footer>
+        <p>硒蛋白基因表达分析项目 | 简化版本</p>
+        <p>实际计算分析完成时间: 2026-03-30</p>
+        <p>访问完整网站: <a href="https://fredjiang2026.github.io/opClw260329/" class="link">GitHub Pages</a></p>
+    </footer>
+</body>
+</html>

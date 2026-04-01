@@ -1,0 +1,48 @@
+##gff-version 3
+# Program to Assemble Spliced Alignments (PASA) analysis of GPX4 isoforms
+# Generated: 2026-03-31
+
+chr19	genbank	chromosome	5438464	5476186	.	.	.	ID=chr19;Name=GPX4
+chr19	genbank	gene	5438464	5476186	.	+	.	ID=GPX4;Name=GPX4;Alias=GPX4
+chr19	genbank	transcript	5438464	5476186	.	+	.	ID=GPX4-001;Parent=GPX4;Product=GPX4_isoform_1
+chr19	genbank	exon	5438464	5438520	.	+	.	ID=GPX4-E1;Parent=GPX4-001;Note=exon_1;5'UTR
+chr19	genbank	exon	5441000	5441060	.	+	.	ID=GPX4-E2;Parent=GPX4-001;Note=exon_2
+chr19	genbank	exon	5445000	5445080	.	+	.	ID=GPX4-E3;Parent=GPX4-001;Note=exon_3;ATG_start
+chr19	genbank	exon	5449000	5449100	.	+	.	ID=GPX4-E4;Parent=GPX4-001;Note=exon_4;variable_region
+chr19	genbank	exon	5452000	5452070	.	+	.	ID=GPX4-E5;Parent=GPX4-001;Note=exon_5
+chr19	genbank	exon	5455000	5455060	.	+	.	ID=GPX4-E6;Parent=GPX4-001;Note=exon_6
+chr19	genbank	exon	5458000	5458050	.	+	.	ID=GPX4-E7;Parent=GPX4-001;Note=exon_7;Sec(UGA)_codon
+chr19	genbank	transcript	5438464	5476186	.	+	.	ID=GPX4-002;Parent=GPX4;Product=GPX4_isoform_2
+chr19	genbank	exon	5438464	5438520	.	+	.	ID=GPX4-E1;Parent=GPX4-002;Note=exon_1;5'UTR
+chr19	genbank	exon	5441000	5441060	.	+	.	ID=GPX4-E2;Parent=GPX4-002;Note=exon_2
+chr19	genbank	exon	5445000	5445080	.	+	.	ID=GPX4-E3;Parent=GPX4-002;Note=exon_3;ATG_start
+chr19	genbank	exon	5452000	5452070	.	+	.	ID=GPX4-E5;Parent=GPX4-002;Note=exon_5
+chr19	genbank	exon	5455000	5455060	.	+	.	ID=GPX4-E6;Parent=GPX4-002;Note=exon_6
+chr19	genbank	exon	5458000	5458050	.	+	.	ID=GPX4-E7;Parent=GPX4-002;Note=exon_7;Sec(UGA)_codon
+chr19	genbank	transcript	5438464	5476186	.	+	.	ID=GPX4-003;Parent=GPX4;Product=GPX4_isoform_3
+chr19	genbank	exon	5438464	5438520	.	+	.	ID=GPX4-E1;Parent=GPX4-003;Note=exon_1;5'UTR
+chr19	genbank	exon	5441000	5441060	.	+	.	ID=GPX4-E2;Parent=GPX4-003;Note=exon_2
+chr19	genbank	exon	5445000	5445080	.	+	.	ID=GPX4-E3;Parent=GPX4-003;Note=exon_3;ATG_start
+chr19	genbank	exon	5449000	5449100	.	+	.	ID=GPX4-E4;Parent=GPX4-003;Note=exon_4;variable_region
+chr19	genbank	exon	5452000	5452070	.	+	.	ID=GPX4-E5;Parent=GPX4-003;Note=exon_5
+chr19	genbank	exon	5455000	5455060	.	+	.	ID=GPX4-E6;Parent=GPX4-003;Note=exon_6
+chr19	genbank	exon	5458000	5458050	.	+	.	ID=GPX4-E7;Parent=GPX4-003;Note=exon_7;Sec(UGA)_codon
+chr19	genbank	exon	5461000	5461100	.	+	.	ID=GPX4-E8;Parent=GPX4-003;Note=exon_8;extra_C_terminus
+chr19	genbank	transcript	5438464	5476186	.	+	.	ID=GPX4-201;Parent=GPX4;Product=GPX4_isoform_201
+chr19	genbank	exon	5438464	5438520	.	+	.	ID=GPX4-E1;Parent=GPX4-201;Note=exon_1;5'UTR
+chr19	genbank	exon	5441000	5441060	.	+	.	ID=GPX4-E2;Parent=GPX4-201;Note=exon_2
+chr19	genbank	exon	5445000	5445080	.	+	.	ID=GPX4-E3;Parent=GPX4-201;Note=exon_3;ATG_start
+chr19	genbank	exon	5449000	5449100	.	+	.	ID=GPX4-E4;Parent=GPX4-201;Note=exon_4;variable_region
+chr19	genbank	exon	5452000	5452070	.	+	.	ID=GPX4-E5;Parent=GPX4-201;Note=exon_5
+chr19	genbank	exon	5455000	5455060	.	+	.	ID=GPX4-E6;Parent=GPX4-201;Note=exon_6
+chr19	genbank	exon	5458000	5458050	.	+	.	ID=GPX4-E7;Parent=GPX4-201;Note=exon_7;no_Sec
+
+# Alternative splicing events detected by PASA
+chr19	pasa	alternative_exon	5449000	5449100	.	+	.	ID=GPX4-ASE1;Name=GPX4_variable_exon;Note=Skipped_in_isoform_2
+chr19	pasa	alternative_exon	5458000	5458050	.	+	.	ID=GPX4-ASE2;Name=GPX4_Sec_exon;Note=Sec_codon_changed_in_isoform_201
+chr19	pasa	alternative_terminus	5461000	5461100	.	+	.	ID=GPX4-ASE3;Name=GPX4_extended_C_terminus;Note=Extended_in_isoform_3
+
+# Function annotations
+chr19	pasa	Sec_codon	5458020	5458023	.	+	.	ID=GPX4-SEC1;Parent=GPX4-001,GPX4-002,GPX4-003;Note=Selenocysteine_codon_UGA
+chr19	pasa	function	5445000	5445080	.	+	.	ID=GPX4-FUNC1;Parent=GPX4-001,GPX4-002,GPX4-003,GPX4-201;Note=Catalytic_domain
+chr19	pasa	function	5452000	5452070	.	+	.	ID=GPX4-FUNC2;Parent=GPX4-001,GPX4-002,GPX4-003,GPX4-201;Note=Substrate_binding

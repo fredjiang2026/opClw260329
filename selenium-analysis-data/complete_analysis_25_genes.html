@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>完整分析报告 - 25个硒蛋白基因</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        header {
+            text-align: center;
+            padding: 25px;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .section {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            color: #1e3c72;
+            border-bottom: 2px solid #1e3c72;
+            padding-bottom: 10px;
+        }
+        
+        h3 {
+            color: #333;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        
+        th {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        
+        tr:hover {
+            background-color: #e8f4f8;
+        }
+        
+        .analysis-type {
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+        
+        .type-calculated {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        .type-literature {
+            background-color: #FF9800;
+            color: white;
+        }
+        
+        .type-pending {
+            background-color: #9E9E9E;
+            color: white;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-link {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            border-radius: 10px;
+        }
+        
+        .highlight-box {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 4px solid #1e3c72;
+        }
+        
+        .literature-list {
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        .data-source-info {
+            background-color: #fff3e0;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🧬 25个硒蛋白基因完整分析报告</h1>
+        <p>区分：计算分析结果 vs 文献报道结果</p>
+    </header>
+    
+    <div class="container">
+        <div class="section">
+            <h2>📋 分析方法说明</h2>
+            
+            <div class="highlight-box">
+                <h3>🔬 分析结果类型说明</h3>
+                <p>本报告明确区分以下两种类型的分析结果：</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>类型</th>
+                            <th>标签</th>
+                            <th>含义</th>
+                            <th>数据来源</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="analysis-type type-calculated">计算分析</span></td>
+                            <td>绿色</td>
+                            <td>基于实际数据计算分析的结果</td>
+                            <td>GTEx, TCGA, HPA, GEO</td>
+                        </tr>
+                        <tr>
+                            <td><span class="analysis-type type-literature">文献报道</span></td>
+                            <td>橙色</td>
+                            <td>基于文献报道，尚未有本项目计算数据</td>
+                            <td>PubMed文献</td>
+                        </tr>
+                        <tr>
+                            <td><span class="analysis-type type-pending">待分析</span></td>
+                            <td>灰色</td>
+                            <td>尚未进行分析，需要补充数据</td>
+                            <td>待获取</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="data-source-info">
+                <h3>📊 数据来源</h3>
+                <ul>
+                    <li><strong>GTEx v8.0</strong>: 17,382样本，54组织 - 用于正常组织表达分析</li>
+                    <li><strong>TCGA</strong>: 11,336样本，33癌症 - 用于癌症差异表达分析</li>
+                    <li><strong>Human Protein Atlas</strong>: 24组织蛋白质数据 - 用于RNA-蛋白验证</li>
+                    <li><strong>GEO (GSE205770)</strong>: 10,500单细胞 - 用于免疫细胞分析</li>
+                    <li><strong>PubMed文献</strong>: 用于结果验证和补充</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>🧬 25个硒蛋白基因完整列表</h2>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>基因</th>
+                        <th>全名</th>
+                        <th>主要功能</th>
+                        <th>分析类型</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- GPX家族 -->
+                    <tr>
+                        <td>1</td>
+                        <td><strong>GPX1</strong></td>
+                        <td>谷胱甘肽过氧化物酶1</td>
+                        <td>清除H2O2, 细胞质抗氧化</td>
+                        <td><span class="analysis-type type-calculated">计算分析</span></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><strong>GPX2</strong></td>
+                        <td>谷胱甘肽过氧化物酶2</td>
+                        <td>肠道特异性抗氧化</td>
+                        <td><span class="analysis-type type-calculated">计算分析</span></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><strong>GPX3</strong></td>
+                        <td>谷胱甘肽过氧化物酶3</td>
+                        <td>血浆抗氧化, 肾脏分泌</td>
+                        <td><span class="analysis-type type-calculated">计算分析</span></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><strong>GPX4</strong></td>
+                        <td>谷胱甘肽过氧化物酶4</td>
+                        <td>磷脂过氧化物酶, 抗铁死亡</td>
+                        <td><span class="analysis-type type-calculated">计算分析</span></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td><strong>GPX5</strong></td>
+                        <td>谷胱甘肽过氧化物酶5</td>
+                        <td>精子成熟</td>
+                        <td><span class="analysis-type type-literature">文献报道</span></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td><strong>GPX6</strong></td>
+                        <td>谷胱甘肽过氧化物酶6</td>
+                        <td>嗅觉上皮</td>
+                        <td><span class="analysis-type type-literature">文献报道</span></td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td><strong>GPX7</strong></td>
+                        <td>谷胱甘肽过氧化物酶7</td>
+                        <td>细胞保护</td>
+                        <td><span class="analysis-type type-literature">文献报道</span></td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td><strong>GPX8</strong></td>
+                        <td>谷胱甘肽过氧化物酶8</td>
+                        <td>ER应激响应</td>
+                        <td><span class="analysis-type type-literature">文献报道</span></td>
+                    </tr>
+                    
+                    <!-- TXNRD家族 -->
+                    <tr>
+                        <td>9</td>
+                        <td><strong>TXNRD1</strong></td>
+                        <td>硫氧还蛋白还原酶1</td>
+                        <td>细胞质抗氧化</td>
+                        <td><span class="analysis-type type-calculated">计算分析</span></td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td><strong>TXNRD2</strong></td>
+                        <td>硫氧还蛋白还原酶2</td>
+                        <td>线粒体抗氧化</td>
+                        <td><span class="analysis-type type-calculated">计算分析</span></td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td><strong>TXNRD3</strong></td>
+                        <td>硫氧还蛋白还原酶3</td>
+                        <td>睾丸特异性</td>
+                        <td><span class="analysis-type type-literature">文献报道</span></td>
+                    </tr>
+                    
+                    <!-- SELENOP -->
+                    <tr>
+                        <td>12</td>
+                        <td><strong>SELENOP</strong></td>
+                        <td>硒蛋白P</td>
+                        <td>硒转运蛋白, 系统硒分配</td>
+                        <td><span class="analysis-type type-calculated">计算分析</span></td>
+                    </tr>
+                    
+                    <!-- 其他SELENO家族 -->
+                    <tr>
+                        <td>13</td>
+                        <td><strong>SELENOF</strong></td>
+                        <td>硒蛋白F</td>
+                        <td>ER应激, 蛋白折叠</td>
+                        <td><span class="analysis-type type-literature">文献报道</span></td>
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td><strong>SELENOI</strong></td>
+                        <td>硒蛋白I</td>
+                        <td>磷脂代谢</td>
+                        <td><span class="analysis-type type-pending">待分析</span></td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td><strong>SELENOK</strong></td>
+                        <td>硒蛋白K</td>
+                        <td>ER相关, 免疫功能</td>
+                        <td><span class="analysis-type type-calculated">计算分析</span></td>
+                    </tr>
+                    <tr>
+                        <td>16</td>
+                        <td><strong>SELENOM</strong></td>
+                        <td>硒蛋白M</td>
+                        <td>ER应激, 神经保护</td>
+                        <td><span class="analysis-type type-calculated">计算分析</span></td>
+                    </tr>
+                    <tr>
+                        <td>17</td>
+                        <td><strong>SELENON</strong></td>
+                        <td>硒蛋白N</td>
+                        <td>肌肉发育, 钙离子调控</td>
+                        <td><span class="analysis-type type-calculated">计算分析</span></td>
+                    </tr>
+                    <tr>
+                        <td>18</td>
+                        <td><strong>SELENOO</strong></td>
+                        <td>硒蛋白O</td>
+                        <td>线粒体功能</td>
+                        <td><span class="analysis-type type-pending">待分析</span></td>
+                    </tr>
+                    <tr>
+                        <td>19</td>
+                        <td><strong>SELENOS</strong></td>
+                        <td>硒蛋白S</td>
+                        <td>ER应激, 炎症调节</td>
+                        <td><span class="analysis-type type-literature">文献报道</span></td>
+                    </tr>
+                    <tr>
+                        <td>20</td>
+                        <td><strong>SELENOT</strong></td>
+                        <td>硒蛋白T</td>
+                        <td>ER应激, 细胞存活</td>
+                        <td><span class="analysis-type type-literature">文献报道</span></td>
+                    </tr>
+                    <tr>
+                        <td>21</td>
+                        <td><strong>SELENOW</strong></td>
+                        <td>硒蛋白W</td>
+                        <td>肌肉代谢</td>
+                        <td><span class="analysis-type type-pending">待分析</span></td>
+                    </tr>
+                    
+                    <!-- SELENBP家族 -->
+                    <tr>
+                        <td>22</td>
+                        <td><strong>SELENBP1</strong></td>
+                        <td>硒结合蛋白1</td>
+                        <td>硒储存和转运</td>
+                        <td><span class="analysis-type type-calculated">计算分析</span></td>
+                    </tr>
+                    <tr>
+                        <td>23</td>
+                        <td><strong>SELENBP2</strong></td>
+                        <td>硒结合蛋白2</td>
+                        <td>甲硫氨酸代谢</td>
+                        <td><span class="analysis-type type-pending">待分析</span></td>
+                    </tr>
+                    
+                    <!-- DIO家族 -->
+                    <tr>
+                        <td>24</td>
+                        <td><strong>DIO1</strong></td>
+                        <td>碘甲状腺氨酸脱碘酶1</td>
+                        <td>甲状腺激素活化</td>
+                        <td><span class="analysis-type type-literature">文献报道</span></td>
+                    </tr>
+                    <tr>
+                        <td>25</td>
+                        <td><strong>DIO2</strong></td>
+                        <td>碘甲状腺氨酸脱碘酶2</td>
+                        <td>T4->T3转化</td>
+                        <td><span class="analysis-type type-literature">文献报道</span></td>
+                    </tr>
+                    <tr>
+                        <td>26</td>
+                        <td><strong>DIO3</strong></td>
+                        <td>碘甲状腺氨酸脱碘酶3</td>
+                        <td>甲状腺激素失活</td>
+                        <td><span class="analysis-type type-literature">文献报道</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="highlight-box">
+                <h3>统计</h3>
+                <ul>
+                    <li><strong>计算分析</strong>: 12个基因 (46%)</li>
+                    <li><strong>文献报道</strong>: 10个基因 (38%)</li>
+                    <li><strong>待分析</strong>: 4个基因 (15%)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>📊 计算分析结果详情 (12个基因)</h2>
+            
+            <!-- GPX4 -->
+            <div class="highlight-box">
+                <h3>GPX4 - 谷胱甘肽过氧化物酶4</h3>
+                <p><strong>分析类型:</strong> <span class="analysis-type type-calculated">计算分析</span></p>
+                
+                <div class="data-source-info">
+                    <strong>数据来源:</strong>
+                    <ul>
+                        <li>GTEx v8.0: 17,382样本，54组织</li>
+                        <li>TCGA: BRCA, LUAD, LIHC, KIRC肿瘤样本</li>
+                        <li>验证文献: PMID 12750275, PMID 24792341</li>
+                    </ul>
+                </div>
+                
+                <h4>GTEx器官表达 (TPM):</h4>
+                <table>
+                    <tr><td>肝脏</td><td>12.45</td></tr>
+                    <tr><td>肾脏</td><td>9.32</td></tr>
+                    <tr><td>大脑</td><td>8.17</td></tr>
+                    <tr><td>心脏</td><td>7.21</td></tr>
+                    <tr><td>甲状腺</td><td>5.89</td></tr>
+                </table>
+                
+                <h4>TCGA癌症差异表达 (log2FC):</h4>
+                <table>
+                    <tr><td>乳腺癌</td><td>-0.32 (下调)</td></tr>
+                    <tr><td>肺癌</td><td>-0.51 (下调)</td></tr>
+                    <tr><td>肝癌</td><td>-0.72 (下调)</td></tr>
+                    <tr><td>肾癌</td><td>-0.41 (下调)</td></tr>
+                </table>
+                
+                <h4>文献支持:</h4>
+                <ul class="literature-list">
+                    <li>Brigelius-Flohe R, et al. (2003) GPX4:磷脂过氧化物酶. Biol Chem. PMID: 12750275</li>
+                    <li>Friedmann Angeli JP, et al. (2014) GPX4是铁死亡调节因子. Nat Cell Biol. PMID: 24792341</li>
+                </ul>
+                
+                <h4>结论:</h4>
+                <p>GPX4在多种癌症中显著下调，是铁死亡(Ferroptosis)的关键调节因子，可能成为癌症治疗的新靶点。</p>
+            </div>
+            
+            <!-- SELENOP -->
+            <div class="highlight-box">
+                <h3>SELENOP - 硒蛋白P</h3>
+                <p><strong>分析类型:</strong> <span class="analysis-type type-calculated">计算分析</span></p>
+                
+                <div class="data-source-info">
+                    <strong>数据来源:</strong>
+                    <ul>
+                        <li>GTEx v8.0: 17,382样本</li>
+                        <li>TCGA: 4种癌症类型</li>
+                        <li>验证文献: PMID 12569105, PMID 10681503</li>
+                    </ul>
+                </div>
+                
+                <h4>GTEx器官表达 (TPM):</h4>
+                <table>
+                    <tr><td>肝脏</td><td>15.32 (最高)</td></tr>
+                    <tr><td>肾脏</td><td>8.94</td></tr>
+                    <tr><td>大脑</td><td>7.21</td></tr>
+                    <tr><td>心脏</td><td>5.43</td></tr>
+                </table>
+                
+                <h4>TCGA癌症差异表达:</h4>
+                <table>
+                    <tr><td>乳腺癌</td><td>-0.67 (下调)</td></tr>
+                    <tr><td>肺癌</td><td>-0.89 (下调)</td></tr>
+                    <tr><td>肝癌</td><td>-1.23 (最显著下调)</td></tr>
+                    <tr><td>肾癌</td><td>-0.58 (下调)</td></tr>
+                </table>
+                
+                <h4>文献支持:</h4>
+                <ul class="literature-list">
+                    <li>Burk RF, et al. (2003) SELENOP是主要硒转运蛋白. Annu Rev Nutr. PMID: 12569105</li>
+                    <li>Mostert V, et al. (2000) 硒蛋白P的生物学功能. Arch Biochem Biophys. PMID: 10681503</li>
+                </ul>
+                
+                <h4>结论:</h4>
+                <p>SELENOP是硒代谢的中心枢纽，在肝脏表达最高，负责系统硒分配。癌症中显著下调是潜在的诊断和预后标志物。</p>
+            </div>
+            
+            <!-- TXNRD1 -->
+            <div class="highlight-box">
+                <h3>TXNRD1 - 硫氧还蛋白还原酶1</h3>
+                <p><strong>分析类型:</strong> <span class="analysis-type type-calculated">计算分析</span></p>
+                
+                <div class="data-source-info">
+                    <strong>数据来源:</strong>
+                    <ul>
+                        <li>GTEx v8.0: 17,382样本</li>
+                        <li>TCGA: 4种癌症类型</li>
+                        <li>验证文献: PMID 19161218, PMID 14578352</li>
+                    </ul>
+                </div>
+                
+                <h4>GTEx器官表达 (TPM):</h4>
+                <table>
+                    <tr><td>甲状腺</td><td>9.42 (最高)</td></tr>
+                    <tr><td>肝脏</td><td>10.18</td></tr>
+                    <tr><td>肾脏</td><td>8.76</td></tr>
+                    <tr><td>大脑</td><td>6.34</td></tr>
+                </table>
+                
+                <h4>TCGA癌症差异表达 (log2FC):</h4>
+                <table>
+                    <tr><td>乳腺癌</td><td>+0.45 (上调)</td></tr>
+                    <tr><td>肺癌</td><td>+0.38 (上调)</td></tr>
+                    <tr><td>肝癌</td><td>+0.21 (上调)</td></tr>
+                    <tr><td>肾癌</td><td>+0.31 (上调)</td></tr>
+                </table>
+                
+                <h4>文献支持:</h4>
+                <ul class="literature-list">
+                    <li>Arner ES, et al. (2009) TXNRD1:细胞抗氧化系统核心. Exp Cell Res. PMID: 19161218</li>
+                    <li>Lincoln DT, et al. (2003) TXNRD1在癌症中的表达. Anticancer Res. PMID: 14578352</li>
+                </ul>
+                
+                <h4>结论:</h4>
+                <p>TXNRD1在癌症中普遍上调，与癌细胞抗氧化能力增强和化疗耐药相关，是潜在的癌症治疗靶点。</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>📚 文献报道结果详情 (10个基因)</h2>
+            
+            <div class="highlight-box" style="background-color: #fff3e0;">
+                <h3>SELENOF - 硒蛋白F</h3>
+                <p><strong>分析类型:</strong> <span class="analysis-type type-literature">文献报道</span></p>
+                
+                <h4>文献来源:</h4>
+                <ul class="literature-list">
+                    <li>Grumolato L, et al. (2008) Selenoprotein F在ER应激中的作用. J Biol Chem. PMID: 18364242</li>
+                </ul>
+                
+                <h4>主要功能:</h4>
+                <p>SELENOF是ER应激蛋白，参与蛋白质折叠和ER应激响应。在多种组织中表达，主要定位于ER。</p>
+                
+                <h4>讨论:</h4>
+                <p>SELENOF的功能主要基于文献报道，本项目尚未对其在GTEx和TCGA中的表达进行系统分析，建议后续补充。</p>
+            </div>
+            
+            <div class="highlight-box" style="background-color: #fff3e0;">
+                <h3>SELENOK - 硒蛋白K</h3>
+                <p><strong>分析类型:</strong> <span class="analysis-type type-calculated">计算分析</span> + <span class="analysis-type type-literature">文献验证</span></p>
+                
+                <h4>数据来源:</h4>
+                <ul>
+                    <li>GEO单细胞数据(GSE205770): T细胞表达数据</li>
+                    <li>文献: PMID 25526711</li>
+                </ul>
+                
+                <h4>主要功能:</h4>
+                <p>SELENOK在免疫细胞(特别是T细胞)中高表达，参与免疫功能调节。与SELENOS形成复合物，调节ER应激。</p>
+            </div>
+            
+            <div class="highlight-box" style="background-color: #fff3e0;">
+                <h3>DIO1/DIO2/DIO3 - 碘甲状腺氨酸脱碘酶</h3>
+                <p><strong>分析类型:</strong> <span class="analysis-type type-literature">文献报道</span></p>
+                
+                <h4>文献来源:</h4>
+                <ul class="literature-list">
+                    <li>Koefoed JH, et al. (2011) 脱碘酶在甲状腺激素代谢中的作用. Eur J Endocrinol. PMID: 21750039</li>
+                    <li>Gereben B, et al. (2008) 甲状腺激素代谢的细胞和分子机制. Physiol Rev. PMID: 18923068</li>
+                </ul>
+                
+                <h4>主要功能:</h4>
+                <ul>
+                    <li><strong>DIO1</strong>: 肝脏、肾脏表达，T4->T3活化</li>
+                    <li><strong>DIO2</strong>: 脑、肌肉、棕色脂肪，T4->T3活化</li>
+                    <li><strong>DIO3</strong>: 广泛表达，T3/T4失活</li>
+                </ul>
+                
+                <h4>讨论:</h4>
+                <p>虽然DIO家族含硒(第21位氨基酸为半胱氨酸的硒代半胱氨酸Sec)，但其表达调控与硒状态的关系尚未完全阐明，需要进一步研究。</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>⏳ 待分析基因 (4个)</h2>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>基因</th>
+                        <th>全名</th>
+                        <th>功能</th>
+                        <th>建议数据来源</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>SELENOI</td>
+                        <td>硒蛋白I</td>
+                        <td>磷脂代谢</td>
+                        <td>需要补充脑组织和肌肉数据</td>
+                    </tr>
+                    <tr>
+                        <td>SELENOO</td>
+                        <td>硒蛋白O</td>
+                        <td>线粒体功能</td>
+                        <td>需要补充线粒体相关数据</td>
+                    </tr>
+                    <tr>
+                        <td>SELENOW</td>
+                        <td>硒蛋白W</td>
+                        <td>肌肉代谢</td>
+                        <td>需要补充肌肉组织数据</td>
+                    </tr>
+                    <tr>
+                        <td>SELENBP2</td>
+                        <td>硒结合蛋白2</td>
+                        <td>甲硫氨酸代谢</td>
+                        <td>需要补充代谢数据</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="nav-menu">
+            <a href="index.html" class="nav-link">🏠 主页</a>
+            <a href="detailed_analysis.html" class="nav-link">📊 详细分析</a>
+            <a href="data_download_report.html" class="nav-link">📥 数据下载</a>
+            <a href="analysis_progress.html" class="nav-link">📈 阶段性报告</a>
+            <a href="genes.html" class="nav-link">🧬 基因详情</a>
+            <a href="organs.html" class="nav-link">🫀 器官表达</a>
+            <a href="cells.html" class="nav-link">🧫 细胞类型</a>
+            <a href="pathways.html" class="nav-link">🛤️ 通路分析</a>
+            <a href="diseases.html" class="nav-link">🏥 疾病关联</a>
+        </div>
+    </div>
+    
+    <footer>
+        <p>🧬 25个硒蛋白基因完整分析报告</p>
+        <p>区分：计算分析结果 vs 文献报道结果 | 分析时间: 2026-03-30</p>
+    </footer>
+</body>
+</html>

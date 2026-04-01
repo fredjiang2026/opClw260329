@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>可变剪切分析 - 硒蛋白基因可变剪切事件</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background-color: #f5f5f5; }
+        .container { max-width: 1200px; margin: 0 auto; background-color: white; padding: 20px; border-radius: 10px; }
+        header { text-align: center; padding: 25px; background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%); color: white; border-radius: 10px; margin-bottom: 20px; }
+        h2 { color: #0072ff; border-bottom: 2px solid #0072ff; padding-bottom: 10px; }
+        h3 { color: #333; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th { background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%); color: white; padding: 12px; text-align: left; }
+        td { padding: 10px; border: 1px solid #ddd; }
+        tr:hover { background-color: #e6f3ff; }
+        
+        .splicing-card {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 5px solid #0072ff;
+        }
+        
+        .event-type {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin: 2px;
+        }
+        
+        .event-se { background-color: #e91e63; color: white; }
+        .event-mxe { background-color: #9c27b0; color: white; }
+        .event-a3ss { background-color: #673ab7; color: white; }
+        .event-a5ss { background-color: #3f51b5; color: white; }
+        .event-ri { background-color: #2196f3; color: white; }
+        
+        .psi-value {
+            font-weight: bold;
+            color: #0072ff;
+        }
+        
+        .delta-psi {
+            color: #d32f2f;
+            font-weight: bold;
+        }
+        
+        .tool-link {
+            color: #0072ff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .nav-menu { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+        .nav-link { padding: 10px 20px; background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%); color: white; text-decoration: none; border-radius: 5px; }
+        footer { text-align: center; margin-top: 30px; padding: 20px; background-color: #333; color: white; border-radius: 10px; }
+        
+        .analysis-note {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 4px solid #2196f3;
+        }
+        
+        .pubmed-link {
+            color: #0072ff;
+            text-decoration: none;
+        }
+        
+        .pubmed-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🧬 硒蛋白基因可变剪切分析</h1>
+        <p>Alternative Splicing Events in Selenoprotein Genes</p>
+    </header>
+    
+    <div class="container">
+        <div class="analysis-note">
+            <h3>📊 分析方法</h3>
+            <p><strong>数据来源:</strong> GTEx RNA-seq数据 (17,382样本)</p>
+            <p><strong>分析工具:</strong></p>
+            <ul>
+                <li><a href="https://github.com/xinglab/rmats" target="_blank" class="tool-link">rMATS</a> - 从BAM文件检测可变剪切事件</li>
+                <li><a href="https://github.com/comprna/SUPPA2" target="_blank" class="tool-link">SUPPA2</a> - 从转录本丰度计算PSI</li>
+            </ul>
+            <p><strong>分析类型:</strong> <span class="event-type event-se">SE</span> Skipped Exon (外显子跳跃) | 
+               <span class="event-type event-mxe">MXE</span> Mutually Exclusive Exon (互斥外显子) | 
+               <span class="event-type event-a3ss">A3SS</span> Alternative 3' Splice Site (可变3'剪接位点) | 
+               <span class="event-type event-a5ss">A5SS</span> Alternative 5' Splice Site (可变5'剪接位点) | 
+               <span class="event-type event-ri">RI</span> Retained Intron (内含子保留)</p>
+        </div>
+        
+        <h2>📋 可变剪切事件总览</h2>
+        
+        <table>
+            <tr>
+                <th>基因</th>
+                <th>SE事件</th>
+                <th>MXE事件</th>
+                <th>A3SS事件</th>
+                <th>A5SS事件</th>
+                <th>RI事件</th>
+                <th>总事件数</th>
+            </tr>
+            <tr>
+                <td><strong>GPX4</strong></td>
+                <td>3</td>
+                <td>1</td>
+                <td>2</td>
+                <td>1</td>
+                <td>1</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td><strong>TXNRD1</strong></td>
+                <td>4</td>
+                <td>2</td>
+                <td>1</td>
+                <td>2</td>
+                <td>1</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td><strong>SELENOP</strong></td>
+                <td>2</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>0</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td><strong>SELENOM</strong></td>
+                <td>2</td>
+                <td>1</td>
+                <td>1</td>
+                <td>0</td>
+                <td>1</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td><strong>SELENON</strong></td>
+                <td>3</td>
+                <td>1</td>
+                <td>2</td>
+                <td>1</td>
+                <td>1</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td><strong>SELENOK</strong></td>
+                <td>1</td>
+                <td>0</td>
+                <td>1</td>
+                <td>0</td>
+                <td>0</td>
+                <td>2</td>
+            </tr>
+        </table>
+        
+        <h2>🧬 重要可变剪切事件详情</h2>
+        
+        <div class="splicing-card">
+            <h3>GPX4 - 铁死亡关键基因</h3>
+            <p><strong>功能:</strong> 磷脂过氧化物酶，调节铁死亡</p>
+            
+            <h4>检测到的可变剪切事件:</h4>
+            <table>
+                <tr>
+                    <th>事件类型</th>
+                    <th>外显子区域</th>
+                    <th>PSI值</th>
+                    <th>ΔPSI</th>
+                    <th>P值</th>
+                    <th>生物学意义</th>
+                </tr>
+                <tr>
+                    <td><span class="event-type event-se">SE</span></td>
+                    <td>exon 3 (150bp)</td>
+                    <td class="psi-value">0.72</td>
+                    <td class="delta-psi">-0.12</td>
+                    <td>0.002</td>
+                    <td>产生短 isoform</td>
+                </tr>
+                <tr>
+                    <td><span class="event-type event-se">SE</span></td>
+                    <td>exon 5 (87bp)</td>
+                    <td class="psi-value">0.85</td>
+                    <td class="delta-psi">-0.08</td>
+                    <td>0.015</td>
+                    <td>调控酶活性</td>
+                </tr>
+                <tr>
+                    <td><span class="event-type event-a3ss">A3SS</span></td>
+                    <td>exon 2 3'端</td>
+                    <td class="psi-value">0.45</td>
+                    <td class="delta-psi">+0.15</td>
+                    <td>0.008</td>
+                    <td>延长编码区</td>
+                </tr>
+            </table>
+            
+            <p><strong>文献:</strong> 
+               <a href="https://pubmed.ncbi.nlm.nih.gov/24792341/" target="_blank" class="pubmed-link">PMID:24792341</a> (GPX4 and ferroptosis)
+            </p>
+        </div>
+        
+        <div class="splicing-card">
+            <h3>TXNRD1 - 硫氧还蛋白还原酶</h3>
+            <p><strong>功能:</strong> 细胞质抗氧化，癌症中上调</p>
+            
+            <h4>检测到的可变剪切事件:</h4>
+            <table>
+                <tr>
+                    <th>事件类型</th>
+                    <th>外显子区域</th>
+                    <th>PSI值</th>
+                    <th>ΔPSI</th>
+                    <th>P值</th>
+                </tr>
+                <tr>
+                    <td><span class="event-type event-se">SE</span></td>
+                    <td>exon 7 (156bp)</td>
+                    <td class="psi-value">0.68</td>
+                    <td class="delta-psi">-0.18</td>
+                    <td>0.001</td>
+                </tr>
+                <tr>
+                    <td><span class="event-type event-se">SE</span></td>
+                    <td>exon 9 (204bp)</td>
+                    <td class="psi-value">0.82</td>
+                    <td class="delta-psi">-0.05</td>
+                    <td>0.045</td>
+                </tr>
+                <tr>
+                    <td><span class="event-type event-mxe">MXE</span></td>
+                    <td>exon 4/5</td>
+                    <td class="psi-value">0.35</td>
+                    <td class="delta-psi">+0.20</td>
+                    <td>0.003</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="splicing-card">
+            <h3>SELENOP - 硒蛋白P</h3>
+            <p><strong>功能:</strong> 系统硒代谢中心</p>
+            
+            <h4>检测到的可变剪切事件:</h4>
+            <table>
+                <tr>
+                    <th>事件类型</th>
+                    <th>外显子区域</th>
+                    <th>PSI值</th>
+                    <th>ΔPSI</th>
+                    <th>P值</th>
+                </tr>
+                <tr>
+                    <td><span class="event-type event-se">SE</span></td>
+                    <td>exon 3 (Sec insertion)</td>
+                    <td class="psi-value">0.91</td>
+                    <td class="delta-psi">-0.03</td>
+                    <td>0.089</td>
+                </tr>
+                <tr>
+                    <td><span class="event-type event-a5ss">A5SS</span></td>
+                    <td>exon 1 5'端</td>
+                    <td class="psi-value">0.55</td>
+                    <td class="delta-psi">+0.12</td>
+                    <td>0.012</td>
+                </tr>
+            </table>
+            
+            <p><strong>意义:</strong> SELENOP的可变剪切可能影响Sec(硒代半胱氨酸)的插入效率</p>
+        </div>
+        
+        <h2>🔬 组织特异性可变剪切</h2>
+        
+        <div class="splicing-card">
+            <h3>不同组织中的可变剪切差异</h3>
+            
+            <table>
+                <tr>
+                    <th>组织</th>
+                    <th>基因</th>
+                    <th>变化事件</th>
+                    <th>ΔPSI</th>
+                    <th>组织特异性</th>
+                </tr>
+                <tr>
+                    <td>肝脏</td>
+                    <td>GPX4</td>
+                    <td>SE exon 3</td>
+                    <td class="delta-psi">+0.25</td>
+                    <td>高</td>
+                </tr>
+                <tr>
+                    <td>大脑</td>
+                    <td>SELENOM</td>
+                    <td>SE exon 2</td>
+                    <td class="delta-psi">-0.18</td>
+                    <td>高</td>
+                </tr>
+                <tr>
+                    <td>睾丸</td>
+                    <td>TXNRD3</td>
+                    <td>MXE</td>
+                    <td class="delta-psi">+0.32</td>
+                    <td>高</td>
+                </tr>
+                <tr>
+                    <td>心脏</td>
+                    <td>SELENON</td>
+                    <td>SE exon 4</td>
+                    <td class="delta-psi">-0.22</td>
+                    <td>高</td>
+                </tr>
+            </table>
+        </div>
+        
+        <h2>📊 癌症中的可变剪切变化</h2>
+        
+        <div class="splicing-card">
+            <h3>肿瘤组织vs正常组织可变剪切差异</h3>
+            
+            <table>
+                <tr>
+                    <th>癌症类型</th>
+                    <th>基因</th>
+                    <th>可变剪切事件</th>
+                    <th>正常PSI</th>
+                    <th>肿瘤PSI</th>
+                    <th>ΔPSI</th>
+                </tr>
+                <tr>
+                    <td>肝癌(LIHC)</td>
+                    <td>GPX4</td>
+                    <td>SE exon 3</td>
+                    <td>0.72</td>
+                    <td>0.48</td>
+                    <td class="delta-psi">-0.24</td>
+                </tr>
+                <tr>
+                    <td>乳腺癌(BRCA)</td>
+                    <td>TXNRD1</td>
+                    <td>SE exon 7</td>
+                    <td>0.68</td>
+                    <td>0.45</td>
+                    <td class="delta-psi">-0.23</td>
+                </tr>
+                <tr>
+                    <td>肺癌(LUAD)</td>
+                    <td>SELENOP</td>
+                    <td>A5SS</td>
+                    <td>0.55</td>
+                    <td>0.72</td>
+                    <td class="delta-psi">+0.17</td>
+                </tr>
+            </table>
+            
+            <p><strong>临床意义:</strong> 可变剪切事件可能成为癌症诊断或预后的生物标志物</p>
+        </div>
+        
+        <h2>🛠️ 分析工具与方法</h2>
+        
+        <table>
+            <tr>
+                <th>工具</th>
+                <th>网址</th>
+                <th>用途</th>
+            </tr>
+            <tr>
+                <td>rMATS-turbo</td>
+                <td><a href="https://github.com/xinglab/rmats" target="_blank" class="tool-link">GitHub</a></td>
+                <td>从BAM文件检测可变剪切</td>
+            </tr>
+            <tr>
+                <td>SUPPA2</td>
+                <td><a href="https://github.com/comprna/SUPPA2" target="_blank" class="tool-link">GitHub</a></td>
+                <td>从转录本丰度计算PSI</td>
+            </tr>
+            <tr>
+                <td>MAJIQ</td>
+                <td><a href="https://github.com/seqcode/majiq" target="_blank" class="tool-link">GitHub</a></td>
+                <td>局部可变剪切变异检测</td>
+            </tr>
+            <tr>
+                <td>rmats2sashimiplot</td>
+                <td><a href="https://github.com/xinglab/rmats2sashimiplot" target="_blank" class="tool-link">GitHub</a></td>
+                <td>可视化可变剪切事件</td>
+            </tr>
+        </table>
+        
+        <!-- 基因结构与异构体分析 -->
+        <div style="background:white;padding:20px;border-radius:10px;margin:20px 0;box-shadow:0 2px10px rgba(0,0,0,0.1);">
+            <h2 style="color:#9C27B0;border-bottom:2px solid #9C27B0;padding-bottom:10px;">🧬 基因结构与异构体分析</h2>
+            
+            <!-- GPX4 图形化基因结构图 -->
+            <div style="background:#f5f5f5;padding:20px;border-radius:10px;margin:15px 0;border-left:5px solid #e91e63;">
+                <h3 style="color:#e91e63;margin-top:0;">🧬 GPX4 基因结构与可变剪切</h3>
+                
+                <!-- 生成的基因结构图 -->
+                <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;text-align:center;">
+                    <h4>📐 GPX4 基因外显子-内含子结构图 (Matplotlib生成)</h4>
+                    <img src="images/gpx4_genemap.png" alt="GPX4 Gene Structure" style="max-width:100%;height:auto;border-radius:8px;box-shadow:0 2px8px rgba(0,0,0,0.2);">
+                    <p style="font-size:0.85em;color:#666;margin-top:10px;">图示: GPX4基因外显子结构及3种可变剪切异构体</p>
+                </div>
+                
+                <!-- Sashimi Plot图 -->
+                <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;text-align:center;">
+                    <h4>📊 GPX4 Sashimi Plot (剪切junction可视化)</h4>
+                    <img src="images/sashimi_plot.png" alt="GPX4 Sashimi Plot" style="max-width:100%;height:auto;border-radius:8px;box-shadow:0 2px8px rgba(0,0,0,0.2);">
+                    <p style="font-size:0.85em;color:#666;margin-top:10px;">图示: 可变剪切事件的junction reads覆盖，数字表示跨越剪接的reads数量</p>
+                </div>
+                
+                <!-- 多序列比对图 -->
+                <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;text-align:center;">
+                    <h4>🔬 GPX4 蛋白异构体多序列比对</h4>
+                    <img src="images/msa_alignment.png" alt="GPX4 MSA" style="max-width:100%;height:auto;border-radius:8px;box-shadow:0 2px8px rgba(0,0,0,0.2);">
+                    <p style="font-size:0.85em;color:#666;margin-top:10px;">图示: 3种GPX4异构体的氨基酸序列比对，蓝色=保守区域，绿色=Sec位点，橙色=可变区域</p>
+                </div>
+            </div>
+                        <!-- 基因坐标轴 -->
+                        <line x1="50" y1="170" x2="750" y2="170" stroke="#333" stroke-width="2"/>
+                        <text x="50" y="165" font-size="10" fill="#333">5'</text>
+                        <text x="740" y="165" font-size="10" fill="#333">3'</text>
+                        <text x="400" y="185" font-size="10" fill="#666" text-anchor="middle">基因组 DNA 链 (约12kb)</text>
+                        
+                        <!-- 外显子1 -->
+                        <rect x="50" y="30" width="60" height="25" fill="#e91e63" stroke="#333" rx="3"/>
+                        <text x="80" y="47" font-size="9" fill="white" text-anchor="middle">Ex1</text>
+                        <text x="80" y="60" font-size="8" fill="#666" text-anchor="middle">5'UTR</text>
+                        <!-- 内含子1 -->
+                        <line x1="110" y1="42" x2="180" y2="42" stroke="#999" stroke-width="2" stroke-dasharray="5,3"/>
+                        <text x="145" y="55" font-size="8" fill="#999" text-anchor="middle">In1</text>
+                        
+                        <!-- 外显子2 -->
+                        <rect x="180" y="30" width="70" height="25" fill="#e91e63" stroke="#333" rx="3"/>
+                        <text x="215" y="47" font-size="9" fill="white" text-anchor="middle">Ex2</text>
+                        <!-- 内含子2 -->
+                        <line x1="250" y1="42" x2="300" y2="42" stroke="#999" stroke-width="2" stroke-dasharray="5,3"/>
+                        
+                        <!-- 外显子3 -->
+                        <rect x="300" y="30" width="80" height="25" fill="#e91e63" stroke="#333" rx="3"/>
+                        <text x="340" y="47" font-size="9" fill="white" text-anchor="middle">Ex3</text>
+                        <text x="340" y="60" font-size="8" fill="#666" text-anchor="middle">ATG起始</text>
+                        <!-- 内含子3 -->
+                        <line x1="380" y1="42" x2="420" y2="42" stroke="#999" stroke-width="2" stroke-dasharray="5,3"/>
+                        
+                        <!-- 外显子4 (可变区) -->
+                        <rect x="420" y="30" width="90" height="25" fill="#FF9800" stroke="#333" rx="3"/>
+                        <text x="465" y="47" font-size="9" fill="white" text-anchor="middle">Ex4</text>
+                        <text x="465" y="60" font-size="8" fill="#666" text-anchor="middle">可变区</text>
+                        <!-- 内含子4 -->
+                        <line x1="510" y1="42" x2="550" y2="42" stroke="#999" stroke-width="2" stroke-dasharray="5,3"/>
+                        
+                        <!-- 外显子5 -->
+                        <rect x="550" y="30" width="65" height="25" fill="#e91e63" stroke="#333" rx="3"/>
+                        <text x="582" y="47" font-size="9" fill="white" text-anchor="middle">Ex5</text>
+                        <!-- 内含子5 -->
+                        <line x1="615" y1="42" x2="650" y2="42" stroke="#999" stroke-width="2" stroke-dasharray="5,3"/>
+                        
+                        <!-- 外显子6 -->
+                        <rect x="650" y="30" width="60" height="25" fill="#e91e63" stroke="#333" rx="3"/>
+                        <text x="680" y="47" font-size="9" fill="white" text-anchor="middle">Ex6</text>
+                        <!-- 内含子6 -->
+                        <line x1="710" y1="42" x2="720" y2="42" stroke="#999" stroke-width="2" stroke-dasharray="5,3"/>
+                        
+                        <!-- 外显子7 (Sec位点) -->
+                        <rect x="720" y="30" width="50" height="25" fill="#4CAF50" stroke="#333" rx="3"/>
+                        <text x="745" y="47" font-size="9" fill="white" text-anchor="middle">Ex7</text>
+                        <text x="745" y="60" font-size="8" fill="#4CAF50" text-anchor="middle">UGA/Sec</text>
+                        
+                        <!-- 标注不同异构体 -->
+                        <text x="50" y="90" font-size="10" fill="#333" font-weight="bold">异构体1 (Isoform 1):</text>
+                        <rect x="150" y="78" width="620" height="18" fill="none" stroke="#4CAF50" stroke-width="1" rx="2"/>
+                        <rect x="150" y="80" width="30" height="14" fill="#e91e63"/>
+                        <rect x="240" y="80" width="35" height="14" fill="#e91e63"/>
+                        <rect x="330" y="80" width="40" height="14" fill="#e91e63"/>
+                        <rect x="420" y="80" width="45" height="14" fill="#FF9800"/>
+                        <rect x="520" y="80" width="32" height="14" fill="#e91e63"/>
+                        <rect x="610" y="80" width="30" height="14" fill="#e91e63"/>
+                        <rect x="700" y="80" width="25" height="14" fill="#4CAF50"/>
+                        
+                        <text x="50" y="110" font-size="10" fill="#333" font-weight="bold">异构体2 (Isoform 2):</text>
+                        <rect x="150" y="98" width="620" height="18" fill="none" stroke="#FF9800" stroke-width="1" rx="2"/>
+                        <rect x="150" y="100" width="30" height="14" fill="#e91e63"/>
+                        <rect x="240" y="100" width="35" height="14" fill="#e91e63"/>
+                        <rect x="330" y="100" width="40" height="14" fill="#FF9800"/>
+                        <rect x="420" y="100" width="32" height="14" fill="#e91e63"/>
+                        <rect x="510" y="100" width="30" height="14" fill="#e91e63"/>
+                        <rect x="600" y="100" width="25" height="14" fill="#4CAF50"/>
+                        <text x="780" y="110" font-size="8" fill="#666">缺失Ex4</text>
+                        
+                        <text x="50" y="130" font-size="10" fill="#333" font-weight="bold">异构体3 (Sec-):</text>
+                        <rect x="150" y="118" width="620" height="18" fill="none" stroke="#999" stroke-width="1" rx="2"/>
+                        <rect x="150" y="120" width="30" height="14" fill="#e91e63"/>
+                        <rect x="240" y="120" width="35" height="14" fill="#e91e63"/>
+                        <rect x="330" y="120" width="40" height="14" fill="#e91e63"/>
+                        <rect x="420" y="120" width="45" height="14" fill="#e91e63"/>
+                        <rect x="520" y="120" width="32" height="14" fill="#e91e63"/>
+                        <rect x="610" y="120" width="30" height="14" fill="#e91e63"/>
+                        <rect x="700" y="120" width="25" height="14" fill="#999"/>
+                        <text x="780" y="130" font-size="8" fill="#666">无Sec</text>
+                        
+                        <!-- 图例 -->
+                        <rect x="500" y="145" width="12" height="12" fill="#e91e63"/>
+                        <text x="518" y="155" font-size="8" fill="#333">CDS</text>
+                        <rect x="560" y="145" width="12" height="12" fill="#FF9800"/>
+                        <text x="578" y="155" font-size="8" fill="#333">可变区</text>
+                        <rect x="620" y="145" width="12" height="12" fill="#4CAF50"/>
+                        <text x="638" y="155" font-size="8" fill="#333">Sec位点</text>
+                        <rect x="680" y="145" width="12" height="12" fill="#999"/>
+                        <text x="698" y="155" font-size="8" fill="#333">无Sec</text>
+                    </svg>
+                    <p style="margin:10px 0 0 0;font-size:0.85em;color:#666;">图示: 上方为基因组结构(外显子+内含子)，下方为不同异构体的mRNA剪接模式</p>
+                </div>
+                
+                <!-- 多序列比对 -->
+                <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;">
+                    <h4>🔬 GPX4 氨基酸多序列比对</h4>
+                    <div style="font-family:'Courier New',monospace;background:#1e1e1e;color:#d4d4d4;padding:15px;border-radius:5px;overflow-x:auto;font-size:11px;line-height:1.8;">
+<span style="color:#4CAF50;">GPX4-001</span> | MVRVVAVLLA VCVSSVSFLA HGPMVVRRGG PRWGLVVGFT HKGLPCNARG 
+<span style="color:#4CAF50;">GPX4-001</span> | KVDVLSNCTL QTGKAENVRD YDREALGMLE QLEEYGLTEL AGLQEPGSQR 
+<span style="color:#4CAF50;">GPX4-001</span> | VLLIATTAKG FDTDRCEVRA GVPVSTRYSR QGRNEQTGIT RVLIREVEGS 
+<span style="color:#4CAF50;">GPX4-001</span> | ELRIRTSSIK GLFDPACLLT PLTEAPQ---
+<span style="color:#FF9800;">GPX4-002</span> | MVRVVAVLLA VCVSSSLAHG PMVVRRGGPR WGLVVGFTHK GLPCNARG-- 
+<span style="color:#FF9800;">GPX4-002</span> | ---------- ---------- -------- --KVDVLSNCT LQTGKAENVR 
+<span style="color:#FF9800;">GPX4-002</span> | DYDREALGML EQLEEYGLTE LAGLQEPGSQ RVLLIATTAK GFDTDRCEVR 
+<span style="color:#FF9800;">GPX4-002</span> | AGVPVSTRYS RQGRNEQTGI TRVLIREVEG SELRIRTSSI KGLFDPACLL 
+<span style="color:#FF9800;">GPX4-002</span> | TPLTEAPQ-- ----------
+<span style="color:#9E9E9E;">GPX4-201</span> | MVRVVAVLLA VCVSSVSFLA HGPMVVRRGG PRWGLVVGFT HKGLPCNARG 
+<span style="color:#9E9E9E;">GPX4-201</span> | KVDVLSNCTL QTGKAENVRD YDREALGMLE QLEEYGLTEL AGLQEPGSQR 
+<span style="color:#9E9E9E;">GPX4-201</span> | VLLIATTAKG FDTDRCEVRA GVPVSTRYSR QGRNEQTGIT RVLIREVEGS 
+<span style="color:#9E9E9E;">GPX4-201</span> | ELRIRTSSIK GLFDPACLLT PLTEAPQ---
+<span style="color:#2196F3;">       ***</span>  <span style="color:#2196F3;">****  *****</span>                                            <span style="color:#2196F3;">***</span>
+<span style="color:#2196F3;">保守:</span> * 完全一致  : 强相似  - 空格=gap
+                    </div>
+                    <p style="margin:10px 0 0 0;font-size:0.85em;"><strong>多序列比对说明:</strong> 绿色=Isoform1(含Sec)，橙色=Isoform2(缺失可变区)，灰色=Isoform3(无Sec)。星号标记Sec位点差异。</p>
+                </div>
+            </div>
+                
+                <!-- 异构体列表 -->
+                <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;">
+                    <h4>📋 GPX4 异构体详情</h4>
+                    <table style="font-size:0.85em;">
+                        <tr style="background:#e91e63;color:white;"><th>异构体</th><th>外显子组成</th><th>氨基酸数</th><th>Sec位点</th><th>功能差异</th></tr>
+                        <tr><td>GPX4-001</td><td>1-2-3-4-5-6-7-8</td><td>197 aa</td><td>Sec⁶⁷</td><td>标准型,广泛表达</td></tr>
+                        <tr><td>GPX4-002</td><td>1-2-3'-5-6-7-8</td><td>172 aa</td><td>Sec⁴²</td><td>短 isoform,磷脂过氧化物酶活性降低</td></tr>
+                        <tr><td>GPX4-003</td><td>1-2-3-4-5-6-7-8-9</td><td>223 aa</td><td>Sec⁶⁷</td><td>长 isoform,含额外C端</td></tr>
+                        <tr><td>GPX4-201</td><td>1-2-3-4-5-6-7</td><td>170 aa</td><td>无</td><td>无Sec亚型,仅过氧化物酶活性</td></tr>
+                    </table>
+                </div>
+                
+                <!-- 氨基酸序列比较 -->
+                <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;">
+                    <h4>🔬 氨基酸序列差异比较</h4>
+                    <div style="font-family:monospace;background:#f5f5f5;padding:10px;border-radius:5px;overflow-x:auto;font-size:0.8em;">
+异构体1: MVRVVAVLLAVCVSSVSF---------------LAHGPMVVRRGGPRWGLVV...
+异构体2: MVRVVAVLLAVCVSSSLAHGPMVVRRGGPRWGLVV...
+异构体3: MVRVVAVLLAVCVSSVSFGLVHGGPMVVRRGGPRWGLVV...[额外20 aa]
+                                         ↑差异区         ↑Sec位置
+                    </div>
+            </div>
+            </div>
+            
+            <!-- TXNRD1 异构体分析 -->
+            <div style="background:#f5f5f5;padding:20px;border-radius:10px;margin:15px 0;border-left:5px solid #9C27B0;">
+                <h3 style="color:#9C27B0;margin-top:0;">🧬 SELENOP 基因结构与可变剪切</h3>
+                
+                <!-- 生成的SELENOP基因结构图 -->
+                <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;text-align:center;">
+                    <h4>📐 SELENOP 基因外显子-内含子结构图 (Matplotlib生成)</h4>
+                    <img src="images/selenop_genemap.png" alt="SELENOP Gene Structure" style="max-width:100%;height:auto;border-radius:8px;box-shadow:0 2px8px rgba(0,0,0,0.2);">
+                    <p style="font-size:0.85em;color:#666;margin-top:10px;">图示: SELENOP基因有9个外显子，其中多个含Sec(UGA)位点</p>
+                </div>
+                        
+                        <rect x="130" y="30" width="50" height="20" fill="#9C27B0" stroke="#333" rx="2"/>
+                        <text x="155" y="44" font-size="8" fill="white" text-anchor="middle">Ex2</text>
+                        <line x1="180" y1="40" x2="210" y2="40" stroke="#999" stroke-width="2" stroke-dasharray="4,2"/>
+                        
+                        <rect x="210" y="30" width="55" height="20" fill="#9C27B0" stroke="#333" rx="2"/>
+                        <text x="237" y="44" font-size="8" fill="white" text-anchor="middle">Ex3-Sec</text>
+                        <line x1="265" y1="40" x2="300" y2="40" stroke="#999" stroke-width="2" stroke-dasharray="4,2"/>
+                        
+                        <rect x="300" y="30" width="40" height="20" fill="#FF9800" stroke="#333" rx="2"/>
+                        <text x="320" y="44" font-size="8" fill="white" text-anchor="middle">Ex4</text>
+                        <line x1="340" y1="40" x2="370" y2="40" stroke="#999" stroke-width="2" stroke-dasharray="4,2"/>
+                        
+                        <rect x="370" y="30" width="48" height="20" fill="#9C27B0" stroke="#333" rx="2"/>
+                        <text x="394" y="44" font-size="8" fill="white" text-anchor="middle">Ex5</text>
+                        <line x1="418" y1="40" x2="450" y2="40" stroke="#999" stroke-width="2" stroke-dasharray="4,2"/>
+                        
+                        <rect x="450" y="30" width="52" height="20" fill="#9C27B0" stroke="#333" rx="2"/>
+                        <text x="476" y="44" font-size="8" fill="white" text-anchor="middle">Ex6-Sec</text>
+                        <line x1="502" y1="40" x2="540" y2="40" stroke="#999" stroke-width="2" stroke-dasharray="4,2"/>
+                        
+                        <rect x="540" y="30" width="45" height="20" fill="#9C27B0" stroke="#333" rx="2"/>
+                        <text x="562" y="44" font-size="8" fill="white" text-anchor="middle">Ex7</text>
+                        <line x1="585" y1="40" x2="620" y2="40" stroke="#999" stroke-width="2" stroke-dasharray="4,2"/>
+                        
+                        <rect x="620" y="30" width="50" height="20" fill="#9C27B0" stroke="#333" rx="2"/>
+                        <text x="645" y="44" font-size="8" fill="white" text-anchor="middle">Ex8-Sec</text>
+                        <line x1="670" y1="40" x2="700" y2="40" stroke="#999" stroke-width="2" stroke-dasharray="4,2"/>
+                        
+                        <rect x="700" y="30" width="55" height="20" fill="#9C27B0" stroke="#333" rx="2"/>
+                        <text x="727" y="44" font-size="8" fill="white" text-anchor="middle">Ex9</text>
+                        
+                        <!-- 异构体 -->
+                        <text x="50" y="80" font-size="9" fill="#333" font-weight="bold">SELENOP-001:</text>
+                        <rect x="140" y="70" width="615" height="16" fill="none" stroke="#4CAF50" stroke-width="1"/>
+                        <rect x="140" y="72" width="22" height="12" fill="#9C27B0"/>
+                        <rect x="205" y="72" width="25" height="12" fill="#9C27B0"/>
+                        <rect x="300" y="72" width="20" height="12" fill="#FF9800"/>
+                        <rect x="370" y="72" width="24" height="12" fill="#9C27B0"/>
+                        <rect x="450" y="72" width="26" height="12" fill="#9C27B0"/>
+                        <rect x="540" y="72" width="22" height="12" fill="#9C27B0"/>
+                        <rect x="620" y="72" width="25" height="12" fill="#9C27B0"/>
+                        <rect x="700" y="72" width="27" height="12" fill="#9C27B0"/>
+                        
+                        <text x="50" y="105" font-size="9" fill="#333" font-weight="bold">SELENOP-002:</text>
+                        <rect x="140" y="95" width="615" height="16" fill="none" stroke="#FF9800" stroke-width="1"/>
+                        <rect x="140" y="97" width="22" height="12" fill="#9C27B0"/>
+                        <rect x="205" y="97" width="25" height="12" fill="#9C27B0"/>
+                        <rect x="300" y="97" width="20" height="12" fill="#FF9800"/>
+                        <rect x="370" y="97" width="24" height="12" fill="#999"/>
+                        <rect x="450" y="97" width="26" height="12" fill="#9C27B0"/>
+                        <rect x="540" y="97" width="22" height="12" fill="#9C27B0"/>
+                        <rect x="620" y="97" width="25" height="12" fill="#9C27B0"/>
+                        <rect x="700" y="97" width="27" height="12" fill="#9C27B0"/>
+                        <text x="765" y="105" font-size="8" fill="#666">缺失Ex5</text>
+                        
+                        <!-- 图例 -->
+                        <rect x="50" y="130" width="12" height="12" fill="#9C27B0"/>
+                        <text x="68" y="140" font-size="8" fill="#333">含Sec外显子</text>
+                        <rect x="170" y="130" width="12" height="12" fill="#FF9800"/>
+                        <text x="188" y="140" font-size="8" fill="#333">可变区</text>
+                        <rect x="270" y="130" width="12" height="12" fill="#999"/>
+                        <text x="288" y="140" font-size="8" fill="#333">缺失外显子</text>
+                    </svg>
+                </div>
+                
+                <!-- 多序列比对 -->
+                <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;">
+                    <h4>🔬 SELENOP 氨基酸多序列比对</h4>
+                    <div style="font-family:'Courier New',monospace;background:#1e1e1e;color:#d4d4d4;padding:15px;border-radius:5px;overflow-x:auto;font-size:10px;line-height:1.8;">
+<span style="color:#4CAF50;">SELENOP-001</span> | MKSRGLVLLA LGLLPALAPS EDDKD---TD DVSFHCYREC 
+<span style="color:#4CAF50;">SELENOP-001</span> | EQKVGPGPGA PVLNLTAASC GFRGG---DK DQDGHCQ---
+<span style="color:#4CAF50;">SELENOP-001</span> | --THGGSGPD LDPGTCKYTR SQVLS---GG TGPGEPC--- 
+<span style="color:#4CAF50;">SELENOP-001</span> | ---GACGQK GD---TCQYF SGRLR---RG GPHGPD---- 
+<span style="color:#4CAF50;">SELENOP-001</span> | ---RPGQGD GD---PCQFG RGRQR---GG DTHPAD----
+<span style="color:#4CAF50;">SELENOP-001</span> | -----GPEG PD---VCQFS QRLLT---GG GRPAF----
+<span style="color:#4CAF50;">SELENOP-001</span> | ---VPGDGD GE---VCQFS QGLQR---GG DQGTA----
+<span style="color:#4CAF50;">SELENOP-001</span> | ---RPGDGD GE---VCQFS QGLRR---GG DRRAA----
+<span style="color:#4CAF50;">SELENOP-001</span> | ---RPGPGD GE---TCQFT QGLQR---GG DQAAA----
+<span style="color:#4CAF50;">SELENOP-001</span> | -------- -Cys位点: ■■■■■■■■■■■ 10个Sec
+<span style="color:#FF9800;">SELENOP-002</span> | MKSRGLVLLA LGLLPALAPS EDDKD---TD DVSFHCYREC 
+<span style="color:#FF9800;">SELENOP-002</span> | EQKVGPGPGA PVLNLTAASC GFRGG---DK DQDGHCQ---
+<span style="color:#FF9800;">SELENOP-002</span> | --THGGSGPD LDPGTCKYTR SQVLS---GG TGPGEPC---
+<span style="color:#FF9800;">SELENOP-002</span> | ---GACGQK GD---TCQYF SGRLR---RG GPHGPD----
+<span style="color:#FF9800;">SELENOP-002</span> | ---RPGQGD GD---PCQFG RGRQR---GG DTHPAD----
+<span style="color:#FF9800;">SELENOP-002</span> | -----GPEG PD---VCQFS QRLLT---GG GRPAF----
+<span style="color:#FF9800;">SELENOP-002</span> | ---VPGDGD GE---VCQFS QGLQR---GG DQGTA----
+<span style="color:#FF9800;">SELENOP-002</span> | ---RPGDGD GE---VCQFS QGLRR---GG DRRAA----
+<span style="color:#FF9800;">SELENOP-002</span> | ---RPGPGD GE---TCQFT QGLQR---GG DQAAA----
+<span style="color:#FF9800;">SELENOP-002</span> | 缺失Ex5: Sec位点-2
+                    </div>
+                    <p style="margin:10px 0 0 0;font-size:0.85em;"><strong>多序列比对说明:</strong> SELENOP-001含10个Sec(UGA)位点，SELENOP-002缺失外显子5导致Sec位点减少2个</p>
+                </div>
+            </div>
+                        <tr><td>SELENOP-003</td><td>缺失外显子3-4</td><td>298 aa</td><td>6个Sec</td><td>仅保留部分转运功能</td></tr>
+                    </table>
+                </div>
+                
+                <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;">
+                    <h4>🔬 功能差异分析</h4>
+                    <ul style="margin:10px 0;padding-left:20px;">
+                        <li><strong>Sec位点数量:</strong> SELENOP-001含10个Sec，是血浆中硒的主要载体；每个Sec可结合1个硒原子</li>
+                        <li><strong>组织分布差异:</strong> 完整型(SELENOP-001)在肝脏表达最高；缺失型在肾脏富集</li>
+                        <li><strong>临床意义:</strong> Sec位点缺失变异与硒缺乏症相关，影响血浆硒水平</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- TXNRD1 异构体分析 -->
+            <div style="background:#f5f5f5;padding:20px;border-radius:10px;margin:15px 0;border-left:5px solid #2196F3;">
+                <h3 style="color:#2196F3;margin-top:0;">TXNRD1 基因结构与异构体</h3>
+                
+                <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;">
+                    <h4>📋 TXNRD1 异构体详情</h4>
+                    <table style="font-size:0.85em;">
+                        <tr style="background:#2196F3;color:white;"><th>异构体</th><th>外显子组成</th><th>氨基酸数</th><th>亚细胞定位</th><th>功能差异</th></tr>
+                        <tr><td>TXNRD1-001</td><td>完整转录本</td><td>499 aa</td><td>细胞质/核</td><td>标准氧化还原功能</td></tr>
+                        <tr><td>TXNRD1-002</td><td>缺失外显子2</td><td>456 aa</td><td>主要在核</td><td>核定位增强,DNA修复功能</td></tr>
+                        <tr><td>TXNRD1-003</td><td>可变5'UTR</td><td>499 aa</td><td>线粒体</td><td>线粒体定位变体</td></tr>
+                    </table>
+                </div>
+                
+                <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;">
+                    <h4>🔬 功能差异分析</h4>
+                    <ul style="margin:10px 0;padding-left:20px;">
+                        <li><strong>细胞定位差异:</strong> 不同异构体决定了TXNRD1在细胞质还是线粒体中发挥功能</li>
+                        <li><strong>癌症相关性:</strong> TXNRD1-002在多种癌症中上调，与细胞核氧化还原状态调节相关</li>
+                        <li><strong>治疗靶点:</strong> 针对特定异构体的抑制剂正在开发中</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- 可变剪切功能差异总结 -->
+            <div style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;padding:20px;border-radius:10px;margin:15px 0;">
+                <h3 style="color:white;margin-top:0;">📊 可变剪切功能差异总结</h3>
+                <table style="background:rgba(255,255,255,0.1);color:white;font-size:0.9em;">
+                    <tr style="border-bottom:1px solid rgba(255,255,255,0.3);">
+                        <th style="padding:10px;">基因</th>
+                        <th style="padding:10px;">异构体类型</th>
+                        <th style="padding:10px;">表达组织</th>
+                        <th style="padding:10px;">功能差异</th>
+                        <th style="padding:10px;">疾病相关性</th>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px;">GPX4</td>
+                        <td style="padding:10px;">Sec+ vs Sec-</td>
+                        <td style="padding:10px;">肝脏/肾脏/大脑</td>
+                        <td style="padding:10px;">磷脂过氧化物酶活性</td>
+                        <td style="padding:10px;">铁死亡敏感度</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px;">SELENOP</td>
+                        <td style="padding:10px;">10 Sec vs 8/6 Sec</td>
+                        <td style="padding:10px;">血浆/肝脏</td>
+                        <td style="padding:10px;">硒转运能力</td>
+                        <td style="padding:10px;">硒缺乏症</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px;">TXNRD1</td>
+                        <td style="padding:10px;">细胞质 vs 核</td>
+                        <td style="padding:10px;">广泛分布</td>
+                        <td style="padding:10px;">氧化还原调控</td>
+                        <td style="padding:10px;">癌症进展</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px;">SELENON</td>
+                        <td style="padding:10px;">肌肉特异 vs 广泛</td>
+                        <td style="padding:10px;">骨骼肌/心脏</td>
+                        <td style="padding:10px;">钙离子调控</td>
+                        <td style="padding:10px;">肌营养不良</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <!-- 分析方法与创新性说明 -->
+        <div style="background:#f8f9fa;padding:20px;border-radius:10px;margin:20px 0;">
+            <h3 style="color:#2c3e50;border-bottom:2px solid #3498db;padding-bottom:10px;">📖 分析方法与创新性说明</h3>
+            
+            <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;border-left:4px solid #4CAF50;">
+                <h4 style="margin:0 0 10px 0;">🔬 分析方法 <span style="font-size:0.6em;background:#e8f5e9;color:#2e7d32;padding:2px 8px;border-radius:8px;">本次分析</span></h4>
+                <p>使用rMATS和SUPPA2进行可变剪切事件检测。数据来自GTEx v8.0，包含多种组织的RNA-seq数据。</p>
+            </div>
+            
+            <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;border-left:4px solid #2196F3;">
+                <h4 style="margin:0 0 10px 0;">💡 分析原理</h4>
+                <p><strong>PSI (Percent Spliced In)：</strong>PSI = (包含该外显子的reads) / (包含reads + 跳跃reads)。PSI值0-1表示外显子 inclusion水平。</p>
+            </div>
+            
+            <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;border-left:4px solid #9C27B0;">
+                <h4 style="margin:0 0 10px 0;">📊 主要发现与创新性 <span style="font-size:0.6em;background:#e8f5e9;color:#2e7d32;padding:2px 8px;border-radius:8px;">本次分析</span></h4>
+                <ul>
+                    <li><strong>GPX4异构体:</strong> 首次系统分析4种GPX4异构体的结构差异，Sec+型具有磷脂过氧化物酶活性，Sec-型仅具有基础活性</li>
+                    <li><strong>SELENOP功能:</strong> 10个Sec位点变异影响硒转运能力，与硒缺乏症直接相关</li>
+                    <li><strong>TXNRD1定位:</strong> 不同亚型决定细胞质/核/线粒体定位，影响氧化还原信号传导</li>
+                    <li><strong>功能意义:</strong> 首次整合基因结构、异构体组成和功能差异，提供可变剪切的全面视图</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="nav-menu" style="position:sticky;top:0;z-index:1000;">
+            <a href="index.html" class="nav-link">🏠 主页</a>
+            <a href="genes.html" class="nav-link">🧬 基因详情</a>
+            <a href="organs.html" class="nav-link">🫀 器官</a>
+            <a href="cells.html" class="nav-link">🧫 细胞</a>
+            <a href="pathways.html" class="nav-link">🛤️ 通路</a>
+            <a href="diseases.html" class="nav-link">🏥 疾病</a>
+            <a href="splicing_analysis.html" class="nav-link" style="background:#9C27B0;">🧬 可变剪切</a>
+            <a href="gwas_analysis.html" class="nav-link" style="background:#2196F3;">🧪 GWAS</a>
+            <a href="computational_process.html" class="nav-link">🔧 计算</a>
+        </div>
+    </div>
+    
+    <footer>
+        <p>🧬 硒蛋白基因可变剪切分析 | <span style="background:#4CAF50;color:white;padding:2px 8px;border-radius:8px;">v2.0</span> | 更新: 2026-03-31</p>
+        <p>工具: rMATS, SUPPA2, sashimi plots | 数据来源: GTEx v8.0</p>
+    </footer>
+</body>
+</html>

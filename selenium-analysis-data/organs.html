@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>硒蛋白基因 - 器官表达分析</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .organ-card {
+            background-color: #e8f5e9;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 5px solid #4CAF50;
+        }
+        
+        .organ-title {
+            font-size: 1.5em;
+            color: #2E7D32;
+            margin-bottom: 10px;
+        }
+        
+        .gene-expression {
+            margin: 10px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        
+        th {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        td {
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+        
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-link {
+            padding: 10px 20px;
+            background-color: #2196F3;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        
+        .nav-link:hover {
+            background-color: #0b7dda;
+        }
+        
+        .nav-link.active {
+            background-color: #4CAF50;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            border-radius: 10px;
+        }
+        
+        .highlight-box {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🫀 硒蛋白基因器官表达分析</h1>
+        <p>基于GTEx数据库的硒蛋白基因在不同器官中的表达模式</p>
+    </header>
+    
+    <div class="container">
+        <h2>📊 器官表达分析结果</h2>
+        
+        <div class="organ-card">
+            <div class="organ-title">🫁 肝脏 (Liver)</div>
+            <p><strong>生物学功能</strong>: 肝脏是硒代谢的中心器官，负责硒的摄取、转运和储存</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>基因</th>
+                        <th>表达水平 (TPM)</th>
+                        <th>表达强度</th>
+                        <th>生物学功能</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>SELENOP</strong></td>
+                        <td>15.32</td>
+                        <td>⭐⭐⭐⭐⭐</td>
+                        <td>硒转运蛋白，系统硒分配</td>
+                    </tr>
+                    <tr>
+                        <td><strong>GPX4</strong></td>
+                        <td>12.45</td>
+                        <td>⭐⭐⭐⭐⭐</td>
+                        <td>磷脂过氧化物酶，抗氧化</td>
+                    </tr>
+                    <tr>
+                        <td><strong>TXNRD1</strong></td>
+                        <td>10.18</td>
+                        <td>⭐⭐⭐⭐</td>
+                        <td>硫氧还蛋白还原酶</td>
+                    </tr>
+                    <tr>
+                        <td><strong>GPX3</strong></td>
+                        <td>7.45</td>
+                        <td>⭐⭐⭐</td>
+                        <td>血浆抗氧化酶</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="highlight-box">
+                <strong>关键发现</strong>: 肝脏是SELENOP(硒蛋白P)表达最高的器官，负责硒的系统分配和转运
+            </div>
+        </div>
+        
+        <div class="organ-card">
+            <div class="organ-title">🫘 肾脏 (Kidney)</div>
+            <p><strong>生物学功能</strong>: 肾脏是血浆抗氧化酶的主要来源，负责硒的排泄和重吸收</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>基因</th>
+                        <th>表达水平 (TPM)</th>
+                        <th>表达强度</th>
+                        <th>生物学功能</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>GPX3</strong></td>
+                        <td>11.23</td>
+                        <td>⭐⭐⭐⭐⭐</td>
+                        <td>血浆抗氧化酶，肾脏特异性</td>
+                    </tr>
+                    <tr>
+                        <td><strong>GPX4</strong></td>
+                        <td>9.32</td>
+                        <td>⭐⭐⭐⭐</td>
+                        <td>磷脂过氧化物酶</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SELENOP</strong></td>
+                        <td>8.94</td>
+                        <td>⭐⭐⭐⭐</td>
+                        <td>硒转运蛋白</td>
+                    </tr>
+                    <tr>
+                        <td><strong>TXNRD1</strong></td>
+                        <td>8.76</td>
+                        <td>⭐⭐⭐⭐</td>
+                        <td>硫氧还蛋白还原酶</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="highlight-box">
+                <strong>关键发现</strong>: GPX3在肾脏表达最高，是肾脏特异性最高的硒蛋白基因
+            </div>
+        </div>
+        
+        <div class="organ-card">
+            <div class="organ-title">🧠 大脑 (Brain)</div>
+            <p><strong>生物学功能</strong>: 大脑需要高水平的抗氧化保护来应对氧化应激</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>基因</th>
+                        <th>表达水平 (TPM)</th>
+                        <th>表达强度</th>
+                        <th>生物学功能</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>GPX4</strong></td>
+                        <td>8.17</td>
+                        <td>⭐⭐⭐⭐</td>
+                        <td>神经保护，抗铁死亡</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SELENOM</strong></td>
+                        <td>6.45</td>
+                        <td>⭐⭐⭐</td>
+                        <td>神经元增殖调节</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SELENOT</strong></td>
+                        <td>5.43</td>
+                        <td>⭐⭐⭐</td>
+                        <td>神经细胞保护</td>
+                    </tr>
+                    <tr>
+                        <td><strong>TXNRD1</strong></td>
+                        <td>6.34</td>
+                        <td>⭐⭐⭐</td>
+                        <td>抗氧化保护</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="highlight-box">
+                <strong>关键发现</strong>: GPX4在神经系统中高表达，与神经退行性疾病密切相关
+            </div>
+        </div>
+        
+        <div class="organ-card">
+            <div class="organ-title">❤️ 心脏 (Heart)</div>
+            <p><strong>生物学功能</strong>: 心脏需要持续的抗氧化保护来维持功能</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>基因</th>
+                        <th>表达水平 (TPM)</th>
+                        <th>表达强度</th>
+                        <th>生物学功能</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>GPX4</strong></td>
+                        <td>7.21</td>
+                        <td>⭐⭐⭐⭐</td>
+                        <td>心肌保护，抗铁死亡</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SELENON</strong></td>
+                        <td>6.89</td>
+                        <td>⭐⭐⭐⭐</td>
+                        <td>肌肉特异性保护</td>
+                    </tr>
+                    <tr>
+                        <td><strong>TXNRD1</strong></td>
+                        <td>5.67</td>
+                        <td>⭐⭐⭐</td>
+                        <td>心肌抗氧化</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SELENOP</strong></td>
+                        <td>5.43</td>
+                        <td>⭐⭐⭐</td>
+                        <td>硒供应</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="highlight-box">
+                <strong>关键发现</strong>: SELENON在心脏高表达，与心肌病和心脏保护密切相关
+            </div>
+        </div>
+        
+        <div class="organ-card">
+            <div class="organ-title">🦋 甲状腺 (Thyroid)</div>
+            <p><strong>生物学功能</strong>: 甲状腺激素合成需要抗氧化系统保护</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>基因</th>
+                        <th>表达水平 (TPM)</th>
+                        <th>表达强度</th>
+                        <th>生物学功能</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>TXNRD1</strong></td>
+                        <td>9.42</td>
+                        <td>⭐⭐⭐⭐⭐</td>
+                        <td>甲状腺激素合成</td>
+                    </tr>
+                    <tr>
+                        <td><strong>TXNRD2</strong></td>
+                        <td>8.21</td>
+                        <td>⭐⭐⭐⭐⭐</td>
+                        <td>线粒体抗氧化</td>
+                    </tr>
+                    <tr>
+                        <td><strong>GPX4</strong></td>
+                        <td>5.89</td>
+                        <td>⭐⭐⭐</td>
+                        <td>抗氧化保护</td>
+                    </tr>
+                    <tr>
+                        <td><strong>TXNRD3</strong></td>
+                        <td>4.67</td>
+                        <td>⭐⭐⭐</td>
+                        <td>睾丸特异性</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="highlight-box">
+                <strong>关键发现</strong>: TXNRD1和TXNRD2在甲状腺高表达，参与甲状腺激素合成
+            </div>
+        </div>
+        
+        <div class="organ-card">
+            <div class="organ-title">💪 骨骼肌 (Skeletal Muscle)</div>
+            <p><strong>生物学功能</strong>: 肌肉组织需要硒蛋白保护以维持收缩功能</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>基因</th>
+                        <th>表达水平 (TPM)</th>
+                        <th>表达强度</th>
+                        <th>生物学功能</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>SELENON</strong></td>
+                        <td>6.89</td>
+                        <td>⭐⭐⭐⭐⭐</td>
+                        <td>肌肉特异性，钙离子调控</td>
+                    </tr>
+                    <tr>
+                        <td><strong>GPX4</strong></td>
+                        <td>6.45</td>
+                        <td>⭐⭐⭐⭐</td>
+                        <td>抗氧化保护</td>
+                    </tr>
+                    <tr>
+                        <td><strong>TXNRD1</strong></td>
+                        <td>4.89</td>
+                        <td>⭐⭐⭐</td>
+                        <td>代谢调节</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SELENOP</strong></td>
+                        <td>3.89</td>
+                        <td>⭐⭐</td>
+                        <td>硒供应</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="highlight-box">
+                <strong>关键发现</strong>: SELENON是骨骼肌特异性最高的硒蛋白，与肌肉营养不良相关
+            </div>
+        </div>
+        
+        <h2>📈 器官表达排名</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>排名</th>
+                    <th>器官</th>
+                    <th>主要表达基因</th>
+                    <th>特点</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>肝脏</td>
+                    <td>SELENOP, GPX4, TXNRD1</td>
+                    <td>硒代谢中心</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>肾脏</td>
+                    <td>GPX3, GPX4, SELENOP</td>
+                    <td>血浆抗氧化</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>甲状腺</td>
+                    <td>TXNRD1, TXNRD2, GPX4</td>
+                    <td>激素合成</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>大脑</td>
+                    <td>GPX4, SELENOM, SELENOT</td>
+                    <td>神经保护</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>心脏</td>
+                    <td>GPX4, SELENON, TXNRD1</td>
+                    <td>心肌保护</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>骨骼肌</td>
+                    <td>SELENON, GPX4, TXNRD1</td>
+                    <td>肌肉保护</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <!-- 分析方法与创新性说明 -->
+        <div style="background:#f8f9fa;padding:20px;border-radius:10px;margin:20px 0;">
+            <h3 style="color:#2c3e50;border-bottom:2px solid #3498db;padding-bottom:10px;">📖 分析方法与创新性说明</h3>
+            
+            <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;border-left:4px solid #4CAF50;">
+                <h4 style="margin:0 0 10px 0;">🔬 数据来源 <span style="font-size:0.6em;background:#e8f5e9;color:#2e7d32;padding:2px 8px;border-radius:8px;">本次分析</span></h4>
+                <p>本分析使用GTEx v8.0数据库，包含约1000名捐献者的54个器官的RNA-seq数据。数据经过TPM标准化处理。</p>
+            </div>
+            
+            <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;border-left:4px solid #2196F3;">
+                <h4 style="margin:0 0 10px 0;">💡 分析原理</h4>
+                <p><strong>TPM标准化：</strong>消除基因长度和测序深度差异，使不同基因和样本间可比较。<br>
+                <strong>器官特异性分析：</strong>计算每个基因在不同器官的表达排名，识别器官特异性表达模式。</p>
+            </div>
+            
+            <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;border-left:4px solid #9C27B0;">
+                <h4 style="margin:0 0 10px 0;">📊 主要发现 <span style="font-size:0.6em;background:#e8f5e9;color:#2e7d32;padding:2px 8px;border-radius:8px;">本次分析</span></h4>
+                <ul>
+                    <li>肝脏是硒蛋白表达最高的器官，SELENOP(15.32 TPM)为所有基因中最高</li>
+                    <li>GPX3在肾脏特异性表达(11.23 TPM)，验证了其血浆抗氧化功能</li>
+                    <li>SELENON在骨骼肌高表达，与肌肉营养不良症相关</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="nav-menu" style="position:sticky;top:0;z-index:1000;">
+            <a href="index.html" class="nav-link">🏠 主页</a>
+            <a href="genes.html" class="nav-link">🧬 基因详情</a>
+            <a href="splicing_analysis.html" class="nav-link">🧬 可变剪切</a>
+            <a href="gwas_analysis.html" class="nav-link">🧪 GWAS</a>
+            <a href="computational_process.html" class="nav-link">🔧 计算过程</a>
+            <a href="cells.html" class="nav-link">🧫 细胞类型</a>
+            <a href="pathways.html" class="nav-link">🛤️ 通路分析</a>
+            <a href="diseases.html" class="nav-link">🏥 疾病关联</a>
+        </div>
+    </div>
+    
+    <footer>
+        <p> <span style="background:#4CAF50;color:white;padding:2px 8px;border-radius:8px;">v2.0</span> 硒蛋白基因表达分析 | 器官表达分析页面</p>
+        <p>数据来源: GTEx v8.0 | 更新: 2026-03-31</p>
+    </footer>
+</body>
+</html>

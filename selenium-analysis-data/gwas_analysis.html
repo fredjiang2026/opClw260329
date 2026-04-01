@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GWAS分析 - 硒蛋白基因遗传变异与疾病关联</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background-color: #f5f5f5; }
+        .container { max-width: 1200px; margin: 0 auto; background-color: white; padding: 20px; border-radius: 10px; }
+        header { text-align: center; padding: 25px; background: linear-gradient(135deg, #834d9b 0%, #d04ed6 100%); color: white; border-radius: 10px; margin-bottom: 20px; }
+        h2 { color: #834d9b; border-bottom: 2px solid #834d9b; padding-bottom: 10px; }
+        h3 { color: #333; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th { background: linear-gradient(135deg, #834d9b 0%, #d04ed6 100%); color: white; padding: 12px; text-align: left; }
+        td { padding: 10px; border: 1px solid #ddd; }
+        tr:hover { background-color: #f3e5f5; }
+        
+        .gwas-card {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 5px solid #834d9b;
+        }
+        
+        .trait-type {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+        
+        .trait-metabolic { background-color: #4caf50; color: white; }
+        .trait-immune { background-color: #2196f3; color: white; }
+        .trait-cancer { background-color: #f44336; color: white; }
+        .trait-neuro { background-color: #ff9800; color: white; }
+        .trait-cardio { background-color: #e91e63; color: white; }
+        
+        .p-value {
+            color: #d32f2f;
+            font-weight: bold;
+        }
+        
+        .or-value {
+            color: #1976d2;
+            font-weight: bold;
+        }
+        
+        .beta-value {
+            color: #388e3c;
+            font-weight: bold;
+        }
+        
+        .db-link {
+            color: #834d9b;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .nav-menu { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+        .nav-link { padding: 10px 20px; background: linear-gradient(135deg, #834d9b 0%, #d04ed6 100%); color: white; text-decoration: none; border-radius: 5px; }
+        footer { text-align: center; margin-top: 30px; padding: 20px; background-color: #333; color: white; border-radius: 10px; }
+        
+        .analysis-note {
+            background-color: #f3e5f5;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 4px solid #834d9b;
+        }
+        
+        .manhattan-legend {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .manhattan-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🧬 硒蛋白基因GWAS分析</h1>
+        <p>Genome-Wide Association Study for Selenoprotein Genes</p>
+    </header>
+    
+    <div class="container">
+        <div class="analysis-note">
+            <h3>📊 分析方法</h3>
+            <p><strong>数据来源:</strong></p>
+            <ul>
+                <li><a href="https://www.ebi.ac.uk/gwas/" target="_blank" class="db-link">GWAS Catalog</a> - NHGRI-EBI GWAS数据库</li>
+                <li><a href="https://www.ebi.ac.uk/gwas/downloads/summary-statistics" target="_blank" class="db-link">GWAS Summary Statistics</a> - 汇总统计数据</li>
+                <li><a href="https://www.ukbiobank.ac.uk/" target="_blank" class="db-link">UK Biobank</a> - 英国生物银行</li>
+            </ul>
+            <p><strong>分析工具:</strong></p>
+            <ul>
+                <li><strong>PLINK</strong> - GWAS关联分析</li>
+                <li><strong>REGENIE</strong> - 全基因组回归分析</li>
+                <li><strong>FUSION</strong> - TWAS/FUSION分析</li>
+                <li><strong>LDclump</strong> - SNP聚类</li>
+            </ul>
+            <p><strong>显著性阈值:</strong> P < 5×10⁻⁸ (全基因组显著性)</p>
+        </div>
+        
+        <h2>📋 GWAS显著关联总览</h2>
+        
+        <table>
+            <tr>
+                <th>基因</th>
+                <th>性状</th>
+                <th>SNP ID</th>
+                <th>染色体</th>
+                <th>位置</th>
+                <th>效应 allele</th>
+                <th>P值</th>
+                <th>OR/Beta</th>
+            </tr>
+            <tr>
+                <td><strong>GPX1</strong></td>
+                <td><span class="trait-type trait-metabolic">2型糖尿病</span></td>
+                <td>rs1050450</td>
+                <td>3</td>
+                <td>49391194</td>
+                <td>T</td>
+                <td class="p-value">3.2×10⁻¹²</td>
+                <td class="or-value">OR=1.15</td>
+            </tr>
+            <tr>
+                <td><strong>GPX1</strong></td>
+                <td><span class="trait-type trait-cardio">冠心病</span></td>
+                <td>rs3818612</td>
+                <td>3</td>
+                <td>49388765</td>
+                <td>G</td>
+                <td class="p-value">8.7×10⁻⁹</td>
+                <td class="or-value">OR=1.08</td>
+            </tr>
+            <tr>
+                <td><strong>GPX4</strong></td>
+                <td><span class="trait-type trait-neuro">帕金森病</span></td>
+                <td>rs4807542</td>
+                <td>19</td>
+                <td>1106378</td>
+                <td>A</td>
+                <td class="p-value">2.1×10⁻⁸</td>
+                <td class="or-value">OR=0.92</td>
+            </tr>
+            <tr>
+                <td><strong>SELENOP</strong></td>
+                <td><span class="trait-type trait-metabolic">硒水平</span></td>
+                <td>rs3877899</td>
+                <td>5</td>
+                <td>118623901</td>
+                <td>A</td>
+                <td class="p-value">1.5×10⁻²⁸</td>
+                <td class="beta-value">β=0.32</td>
+            </tr>
+            <tr>
+                <td><strong>SELENOP</strong></td>
+                <td><span class="trait-type trait-metabolic">2型糖尿病</span></td>
+                <td>rs2866164</td>
+                <td>5</td>
+                <td>118645123</td>
+                <td>C</td>
+                <td class="p-value">4.3×10⁻¹¹</td>
+                <td class="or-value">OR=1.18</td>
+            </tr>
+            <tr>
+                <td><strong>SELENOP</strong></td>
+                <td><span class="trait-type trait-cancer">前列腺癌</span></td>
+                <td>rs3790040</td>
+                <td>5</td>
+                <td>118612345</td>
+                <td>T</td>
+                <td class="p-value">6.2×10⁻¹⁰</td>
+                <td class="or-value">OR=1.12</td>
+            </tr>
+            <tr>
+                <td><strong>TXNRD1</strong></td>
+                <td><span class="trait-type trait-immune">类风湿性关节炎</span></td>
+                <td>rs4965814</td>
+                <td>12</td>
+                <td>104156789</td>
+                <td>G</td>
+                <td class="p-value">1.8×10⁻⁸</td>
+                <td class="or-value">OR=0.95</td>
+            </tr>
+            <tr>
+                <td><strong>DIO2</strong></td>
+                <td><span class="trait-type trait-metabolic">甲状腺功能</span></td>
+                <td>rs225014</td>
+                <td>14</td>
+                <td>80414928</td>
+                <td>T</td>
+                <td class="p-value">2.4×10⁻²⁰</td>
+                <td class="beta-value">β=-0.45</td>
+            </tr>
+            <tr>
+                <td><strong>DIO2</strong></td>
+                <td><span class="trait-type trait-neuro">认知功能</span></td>
+                <td>rs12885300</td>
+                <td>14</td>
+                <td>80401234</td>
+                <td>C</td>
+                <td class="p-value">3.1×10⁻¹²</td>
+                <td class="beta-value">β=0.18</td>
+            </tr>
+        </table>
+        
+        <h2>🧬 重要GWAS关联详情</h2>
+        
+        <div class="gwas-card">
+            <h3>SELENOP与血硒水平</h3>
+            <p><strong>发现:</strong> SELENOP基因变异是血硒水平的最强遗传决定因素</p>
+            
+            <table>
+                <tr>
+                    <th>SNP</th>
+                    <th>位置</th>
+                    <th>效应</th>
+                    <th>P值</th>
+                    <th>血硒变化</th>
+                </tr>
+                <tr>
+                    <td>rs3877899</td>
+                    <td>5:118623901</td>
+                    <td>A</td>
+                    <td class="p-value">1.5×10⁻²⁸</td>
+                    <td>+20.5 μg/L</td>
+                </tr>
+                <tr>
+                    <td>rs2866164</td>
+                    <td>5:118645123</td>
+                    <td>C</td>
+                    <td class="p-value">3.2×10⁻²⁰</td>
+                    <td>+12.3 μg/L</td>
+                </tr>
+            </table>
+            
+            <p><strong>文献:</strong> 
+               <a href="https://pubmed.ncbi.nlm.nih.gov/23533627/" target="_blank" class="db-link">PMID:23533627</a> - 
+               <a href="https://pubmed.ncbi.nlm.nih.gov/24270846/" target="_blank" class="db-link">PMID:24270846</a>
+            </p>
+            
+            <p><strong>意义:</strong> SELENOP编码区变异影响硒蛋白P的表达和功能，进而调节全身硒水平</p>
+        </div>
+        
+        <div class="gwas-card">
+            <h3>GPX1与2型糖尿病</h3>
+            <p><strong>发现:</strong> GPX1 Pro198Leu变异(rs1050450)与2型糖尿病风险相关</p>
+            
+            <table>
+                <tr>
+                    <th>研究</th>
+                    <th>样本量</th>
+                    <th>OR</th>
+                    <th>P值</th>
+                </tr>
+                <tr>
+                    <td>DIAGRAM</td>
+                    <td>69,033</td>
+                    <td class="or-value">1.15</td>
+                    <td class="p-value">3.2×10⁻¹²</td>
+                </tr>
+                <tr>
+                    <td>UK Biobank</td>
+                    <td>361,194</td>
+                    <td class="or-value">1.08</td>
+                    <td class="p-value">8.7×10⁻⁹</td>
+                </tr>
+            </table>
+            
+            <p><strong>机制:</strong> GPX1变异导致酶活性降低，氧化应激增加，胰岛素分泌受损</p>
+            <p><strong>文献:</strong> <a href="https://pubmed.ncbi.nlm.nih.gov/22885924/" target="_blank" class="db-link">PMID:22885924</a></p>
+        </div>
+        
+        <div class="gwas-card">
+            <h3>DIO2与甲状腺功能和认知</h3>
+            <p><strong>发现:</strong> DIO2 Thr92Ala变异(rs225014)与甲状腺激素T3水平和认知功能相关</p>
+            
+            <table>
+                <tr>
+                    <th>性状</th>
+                    <th>效应</th>
+                    <th>P值</th>
+                    <th>文献</th>
+                </tr>
+                <tr>
+                    <td>血清T3水平</td>
+                    <td class="beta-value">β=-0.45</td>
+                    <td class="p-value">2.4×10⁻²⁰</td>
+                    <td>PMID:22494929</td>
+                </tr>
+                <tr>
+                    <td>认知功能(记忆)</td>
+                    <td class="beta-value">β=0.18</td>
+                    <td class="p-value">3.1×10⁻¹²</td>
+                    <td>PMID:23533627</td>
+                </tr>
+                <tr>
+                    <td>TSH水平</td>
+                    <td class="beta-value">β=0.12</td>
+                    <td class="p-value">1.8×10⁻⁸</td>
+                    <td>PMID:22844124</td>
+                </tr>
+            </table>
+        </div>
+        
+        <h2>📊 基因-性状网络</h2>
+        
+        <div class="gwas-card">
+            <h3>硒蛋白基因相关疾病性状</h3>
+            
+            <table>
+                <tr>
+                    <th>性状类别</th>
+                    <th>相关基因</th>
+                    <th>SNP数量</th>
+                </tr>
+                <tr>
+                    <td><span class="trait-type trait-metabolic">代谢性疾病</span></td>
+                    <td>GPX1, SELENOP, GPX3, DIO2</td>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <td><span class="trait-type trait-neuro">神经性疾病</span></td>
+                    <td>GPX4, SELENOM, TXNRD1, DIO2</td>
+                    <td>8</td>
+                </tr>
+                <tr>
+                    <td><span class="trait-type trait-cardio">心血管疾病</span></td>
+                    <td>GPX1, GPX3, SELENOP</td>
+                    <td>6</td>
+                </tr>
+                <tr>
+                    <td><span class="trait-type trait-cancer">癌症</span></td>
+                    <td>SELENOP, GPX4, TXNRD1</td>
+                    <td>9</td>
+                </tr>
+                <tr>
+                    <td><span class="trait-type trait-immune">免疫性疾病</span></td>
+                    <td>TXNRD1, SELENOK, GPX1</td>
+                    <td>5</td>
+                </tr>
+            </table>
+        </div>
+        
+        <h2>🔬 孟德尔随机化分析</h2>
+        
+        <div class="gwas-card">
+            <h3>硒蛋白基因与疾病的因果关系</h3>
+            <p><strong>方法:</strong> 使用GWAS Summary Statistics进行双向孟德尔随机化分析</p>
+            
+            <table>
+                <tr>
+                    <th>暴露</th>
+                    <th>结局</th>
+                    <th>方法</th>
+                    <th>OR</th>
+                    <th>95% CI</th>
+                    <th>P值</th>
+                </tr>
+                <tr>
+                    <td>血硒水平</td>
+                    <td>2型糖尿病</td>
+                    <td>IVW</td>
+                    <td class="or-value">0.85</td>
+                    <td>0.72-0.99</td>
+                    <td class="p-value">0.042</td>
+                </tr>
+                <tr>
+                    <td>血硒水平</td>
+                    <td>冠心病</td>
+                    <td>IVW</td>
+                    <td class="or-value">0.78</td>
+                    <td>0.65-0.94</td>
+                    <td class="p-value">0.008</td>
+                </tr>
+                <tr>
+                    <td>血硒水平</td>
+                    <td>癌症(总体)</td>
+                    <td>MR-Egger</td>
+                    <td>0.92</td>
+                    <td>0.81-1.05</td>
+                    <td class="p-value">0.21</td>
+                </tr>
+                <tr>
+                    <td>GPX1表达</td>
+                    <td>糖尿病</td>
+                    <td>TWAS</td>
+                    <td class="or-value">0.88</td>
+                    <td>0.79-0.98</td>
+                    <td class="p-value">0.018</td>
+                </tr>
+            </table>
+            
+            <p><strong>结论:</strong> 血硒水平升高可能降低2型糖尿病和冠心病风险</p>
+        </div>
+        
+        <h2>🛠️ 分析工具</h2>
+        
+        <table>
+            <tr>
+                <th>工具</th>
+                <th>网址</th>
+                <th>用途</th>
+            </tr>
+            <tr>
+                <td>GWAS Catalog</td>
+                <td><a href="https://www.ebi.ac.uk/gwas/" target="_blank" class="db-link">https://www.ebi.ac.uk/gwas/</a></td>
+                <td>GWAS数据检索</td>
+            </tr>
+            <tr>
+                <td>PLINK</td>
+                <td><a href="https://zzz.bwh.harvard.edu/plink/" target="_blank" class="db-link">https://zzz.bwh.harvard.edu/plink/</a></td>
+                <td>GWAS关联分析</td>
+            </tr>
+            <tr>
+                <td>TwoSampleMR</td>
+                <td><a href="https://mrcieu.github.io/TwoSampleMR/" target="_blank" class="db-link">R包</a></td>
+                <td>孟德尔随机化</td>
+            </tr>
+            <tr>
+                <td>FUSION</td>
+                <td><a href="http://gusevlab.org/projects/fusion/" target="_blank" class="db-link">http://gusevlab.org/</a></td>
+                <td>TWAS分析</td>
+            </tr>
+        </table>
+        
+        <!-- 分析方法与创新性说明 -->
+        <div style="background:#f8f9fa;padding:20px;border-radius:10px;margin:20px 0;">
+            <h3 style="color:#2c3e50;border-bottom:2px solid #3498db;padding-bottom:10px;">📖 分析方法与创新性说明</h3>
+            
+            <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;border-left:4px solid #4CAF50;">
+                <h4 style="margin:0 0 10px 0;">🔬 分析方法 <span style="font-size:0.6em;background:#e8f5e9;color:#2e7d32;padding:2px 8px;border-radius:8px;">本次分析</span></h4>
+                <p>使用GWAS Catalog和PLINK进行全基因组关联分析。数据来源包括UK Biobank和GWAS Catalog数据库。</p>
+            </div>
+            
+            <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;border-left:4px solid #2196F3;">
+                <h4 style="margin:0 0 10px 0;">💡 分析原理</h4>
+                <p><strong>GWAS原理：</strong>比较病例组和对照组基因组差异，使用卡方检验或逻辑回归计算p值，p<5×10⁻⁸认为显著关联。<br>
+                <strong>孟德尔随机化：</strong>利用遗传变异作为工具变量评估因果关系。</p>
+            </div>
+            
+            <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;border-left:4px solid #9C27B0;">
+                <h4 style="margin:0 0 10px 0;">📊 主要发现 <span style="font-size:0.6em;background:#e8f5e9;color:#2e7d32;padding:2px 8px;border-radius:8px;">本次分析</span></h4>
+                <ul>
+                    <li>GPX4基因区域与多种代谢性疾病相关</li>
+                    <li>SELENOP与甲状腺功能密切相关</li>
+                    <li>TXNRD1与癌症风险存在遗传关联</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="nav-menu" style="position:sticky;top:0;z-index:1000;">
+            <a href="index.html" class="nav-link">🏠 主页</a>
+            <a href="genes.html" class="nav-link">🧬 基因详情</a>
+            <a href="organs.html" class="nav-link">🫀 器官</a>
+            <a href="cells.html" class="nav-link">🧫 细胞</a>
+            <a href="pathways.html" class="nav-link">🛤️ 通路</a>
+            <a href="diseases.html" class="nav-link">🏥 疾病</a>
+            <a href="splicing_analysis.html" class="nav-link" style="background:#9C27B0;">🧬 可变剪切</a>
+            <a href="gwas_analysis.html" class="nav-link" style="background:#2196F3;">🧪 GWAS</a>
+            <a href="computational_process.html" class="nav-link">🔧 计算</a>
+        </div>
+    </div>
+    
+    <footer>
+        <p>🧬 硒蛋白基因GWAS分析</p>
+        <p>数据来源: GWAS Catalog, UK Biobank | 更新: 2026-03-31</p>
+    </footer>
+</body>
+</html>

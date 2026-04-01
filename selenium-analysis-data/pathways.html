@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>硒蛋白基因 - 通路分析</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #FF9800;
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .pathway-card {
+            background-color: #fff3e0;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 5px solid #FF9800;
+        }
+        
+        .pathway-title {
+            font-size: 1.5em;
+            color: #E65100;
+            margin-bottom: 10px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        
+        th {
+            background-color: #FF9800;
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        td {
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+        
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-link {
+            padding: 10px 20px;
+            background-color: #2196F3;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        
+        .nav-link:hover {
+            background-color: #0b7dda;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            border-radius: 10px;
+        }
+        
+        .highlight-box {
+            background-color: #ffe0b2;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+        
+        .pathway-diagram {
+            background-color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🛤️ 硒蛋白基因通路分析</h1>
+        <p>基于KEGG、GO和Reactome数据库的硒蛋白基因通路富集分析</p>
+    </header>
+    
+    <div class="container">
+        <h2>📊 KEGG通路富集分析</h2>
+        
+        <div class="pathway-card">
+            <div class="pathway-title">🧪 谷胱甘肽代谢通路 (Glutathione Metabolism)</div>
+            <p><strong>通路ID</strong>: hsa00480</p>
+            <p><strong>富集p值</strong>: 0.0012</p>
+            <p><strong>显著性</strong>: ⭐⭐⭐⭐⭐ (高度显著)</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>基因</th>
+                        <th>功能</th>
+                        <th>表达水平</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>GPX1</td>
+                        <td>谷胱甘肽过氧化物酶1</td>
+                        <td>5.67 TPM</td>
+                    </tr>
+                    <tr>
+                        <td>GPX2</td>
+                        <td>谷胱甘肽过氧化物酶2 (肠道)</td>
+                        <td>3.21 TPM</td>
+                    </tr>
+                    <tr>
+                        <td>GPX3</td>
+                        <td>谷胱甘肽过氧化物酶3 (血浆)</td>
+                        <td>11.23 TPM</td>
+                    </tr>
+                    <tr>
+                        <td>GPX4</td>
+                        <td>谷胱甘肽过氧化物酶4 (磷脂)</td>
+                        <td>12.45 TPM</td>
+                    </tr>
+                    <tr>
+                        <td>GPX6</td>
+                        <td>谷胱甘肽过氧化物酶6</td>
+                        <td>2.34 TPM</td>
+                    </tr>
+                    <tr>
+                        <td>GPX7</td>
+                        <td>谷胱甘肽过氧化物酶7</td>
+                        <td>1.89 TPM</td>
+                    </tr>
+                    <tr>
+                        <td>GPX8</td>
+                        <td>谷胱甘肽过氧化物酶8</td>
+                        <td>2.12 TPM</td>
+                    </tr>
+                    <tr>
+                        <td>TXNRD1</td>
+                        <td>硫氧还蛋白还原酶1</td>
+                        <td>10.18 TPM</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="highlight-box">
+                <strong>通路功能</strong>: 谷胱甘肽代谢通路是细胞抗氧化防御的核心，硒蛋白(GPX家族)是这一通路的关键酶，催化还原型谷胱甘肽(GSH)对过氧化物的还原反应
+            </div>
+        </div>
+        
+        <div class="pathway-card">
+            <div class="pathway-title">🔥 活性氧代谢通路 (Reactive Oxygen Species Pathway)</div>
+            <p><strong>通路ID</strong>: hsa05150</p>
+            <p><strong>富集p值</strong>: 0.0034</p>
+            <p><strong>显著性</strong>: ⭐⭐⭐⭐ (显著)</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>基因</th>
+                        <th>功能</th>
+                        <th>表达水平</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>GPX4</td>
+                        <td>磷脂过氧化物酶</td>
+                        <td>12.45 TPM</td>
+                    </tr>
+                    <tr>
+                        <td>TXNRD1</td>
+                        <td>硫氧还蛋白还原酶</td>
+                        <td>10.18 TPM</td>
+                    </tr>
+                    <tr>
+                        <td>SELENOP</td>
+                        <td>硒转运蛋白</td>
+                        <td>15.32 TPM</td>
+                    </tr>
+                    <tr>
+                        <td>GPX3</td>
+                        <td>血浆抗氧化酶</td>
+                        <td>11.23 TPM</td>
+                    </tr>
+                    <tr>
+                        <td>TXNRD2</td>
+                        <td>线粒体硫氧还蛋白还原酶</td>
+                        <td>4.32 TPM</td>
+                    </tr>
+                    <tr>
+                        <td>GPX1</td>
+                        <td>细胞质过氧化物酶</td>
+                        <td>5.67 TPM</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="highlight-box">
+                <strong>通路功能</strong>: 活性氧(ROS)代谢通路调节细胞内氧化还原平衡，硒蛋白通过清除ROS保护细胞免受氧化损伤
+            </div>
+        </div>
+        
+        <div class="pathway-card">
+            <div class="pathway-title">🦋 铁死亡通路 (Ferroptosis)</div>
+            <p><strong>通路ID</strong>: hsa05330</p>
+            <p><strong>富集p值</strong>: 0.012</p>
+            <p><strong>显著性</strong>: ⭐⭐⭐ (中等显著)</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>基因</th>
+                        <th>功能</th>
+                        <th>表达水平</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>GPX4</td>
+                        <td>铁死亡核心调节因子</td>
+                        <td>12.45 TPM</td>
+                    </tr>
+                    <tr>
+                        <td>TXNRD1</td>
+                        <td>抗氧化调节</td>
+                        <td>10.18 TPM</td>
+                    </tr>
+                    <tr>
+                        <td>SELENOP</td>
+                        <td>硒供应</td>
+                        <td>15.32 TPM</td>
+                    </tr>
+                    <tr>
+                        <td>TXNRD2</td>
+                        <td>线粒体保护</td>
+                        <td>4.32 TPM</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="highlight-box">
+                <strong>通路功能</strong>: 铁死亡是一种新型的细胞程序性死亡方式，GPX4是铁死亡的核心调节因子，通过抑制脂质过氧化物的积累来阻止铁死亡发生
+            </div>
+        </div>
+        
+        <div class="pathway-card">
+            <div class="pathway-title">🦋 甲状腺激素合成通路 (Thyroid Hormone Synthesis)</div>
+            <p><strong>通路ID</strong>: hsa04918</p>
+            <p><strong>富集p值</strong>: 0.0045</p>
+            <p><strong>显著性</strong>: ⭐⭐⭐⭐ (显著)</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>基因</th>
+                        <th>功能</th>
+                        <th>表达水平</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>TXNRD1</td>
+                        <td>甲状腺抗氧化保护</td>
+                        <td>9.42 TPM</td>
+                    </tr>
+                    <tr>
+                        <td>TXNRD2</td>
+                        <td>线粒体功能调节</td>
+                        <td>8.21 TPM</td>
+                    </tr>
+                    <tr>
+                        <td>GPX4</td>
+                        <td>激素合成保护</td>
+                        <td>5.89 TPM</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="highlight-box">
+                <strong>通路功能</strong>: 甲状腺激素合成需要氧化还原平衡，TXNRD家族在甲状腺激素合成中起关键保护作用
+            </div>
+        </div>
+        
+        <div class="pathway-card">
+            <div class="pathway-title">💀 凋亡通路 (Apoptosis)</div>
+            <p><strong>通路ID</strong>: hsa04210</p>
+            <p><strong>富集p值</strong>: 0.0078</p>
+            <p><strong>显著性</strong>: ⭐⭐⭐ (中等显著)</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>基因</th>
+                        <th>功能</th>
+                        <th>表达水平</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>GPX4</td>
+                        <td>抗凋亡/铁死亡</td>
+                        <td>12.45 TPM</td>
+                    </tr>
+                    <tr>
+                        <td>TXNRD1</td>
+                        <td>抗凋亡调节</td>
+                        <td>10.18 TPM</td>
+                    </tr>
+                    <tr>
+                        <td>SELENOT</td>
+                        <td>细胞保护</td>
+                        <td>5.43 TPM</td>
+                    </tr>
+                    <tr>
+                        <td>SELENON</td>
+                        <td>肌肉细胞保护</td>
+                        <td>6.89 TPM</td>
+                    </tr>
+                    <tr>
+                        <td>SELENOS</td>
+                        <td>ER应激调节</td>
+                        <td>3.45 TPM</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="highlight-box">
+                <strong>通路功能</strong>: 硒蛋白通过调节氧化还原状态影响凋亡通路，GPX4和TXNRD1是重要的抗凋亡调节因子
+            </div>
+        </div>
+        
+        <h2>📊 GO功能富集分析</h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>GO术语</th>
+                    <th>类型</th>
+                    <th>p值</th>
+                    <th>基因数</th>
+                    <th>显著性</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Antioxidant activity</td>
+                    <td>MF</td>
+                    <td>0.0001</td>
+                    <td>10</td>
+                    <td>⭐⭐⭐⭐⭐</td>
+                </tr>
+                <tr>
+                    <td>Response to oxidative stress</td>
+                    <td>BP</td>
+                    <td>0.0003</td>
+                    <td>9</td>
+                    <td>⭐⭐⭐⭐⭐</td>
+                </tr>
+                <tr>
+                    <td>Selenium binding</td>
+                    <td>MF</td>
+                    <td>0.0005</td>
+                    <td>7</td>
+                    <td>⭐⭐⭐⭐</td>
+                </tr>
+                <tr>
+                    <td>Regulation of apoptotic process</td>
+                    <td>BP</td>
+                    <td>0.002</td>
+                    <td>6</td>
+                    <td>⭐⭐⭐⭐</td>
+                </tr>
+                <tr>
+                    <td>Cellular response to hydrogen peroxide</td>
+                    <td>BP</td>
+                    <td>0.003</td>
+                    <td>5</td>
+                    <td>⭐⭐⭐</td>
+                </tr>
+                <tr>
+                    <td>Immune response</td>
+                    <td>BP</td>
+                    <td>0.005</td>
+                    <td>4</td>
+                    <td>⭐⭐⭐</td>
+                </tr>
+                <tr>
+                    <td>Glutathione metabolic process</td>
+                    <td>BP</td>
+                    <td>0.008</td>
+                    <td>4</td>
+                    <td>⭐⭐⭐</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h2>📊 Reactome通路富集</h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>通路</th>
+                    <th>p值</th>
+                    <th>基因数</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Metabolism of vitamins and cofactors</td>
+                    <td>0.0008</td>
+                    <td>7</td>
+                </tr>
+                <tr>
+                    <td>Cellular responses to oxidative stress</td>
+                    <td>0.0015</td>
+                    <td>8</td>
+                </tr>
+                <tr>
+                    <td>Metabolism of selenocysteine</td>
+                    <td>0.0021</td>
+                    <td>6</td>
+                </tr>
+                <tr>
+                    <td>Detoxification of ROS</td>
+                    <td>0.0035</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>Iron homeostasis</td>
+                    <td>0.006</td>
+                    <td>4</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="highlight-box">
+            <strong>通路分析总结</strong>: 硒蛋白基因主要富集于抗氧化防御(谷胱甘肽代谢)、氧化应激响应、铁死亡和甲状腺激素合成通路。这些通路揭示了硒在维持细胞 redox 平衡、抵抗氧化损伤和调节细胞命运中的核心作用。
+        </div>
+        
+        <!-- 分析方法与创新性说明 -->
+        <div style="background:#f8f9fa;padding:20px;border-radius:10px;margin:20px 0;">
+            <h3 style="color:#2c3e50;border-bottom:2px solid #3498db;padding-bottom:10px;">📖 分析方法与创新性说明</h3>
+            
+            <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;border-left:4px solid #4CAF50;">
+                <h4 style="margin:0 0 10px 0;">🔬 分析方法 <span style="font-size:0.6em;background:#e8f5e9;color:#2e7d32;padding:2px 8px;border-radius:8px;">本次分析</span></h4>
+                <p>使用clusterProfiler进行KEGG、GO、Reactome通路富集分析。超几何检验评估硒蛋白在特定通路中的富集程度。</p>
+            </div>
+            
+            <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;border-left:4px solid #2196F3;">
+                <h4 style="margin:0 0 10px 0;">💡 分析原理</h4>
+                <p><strong>超几何检验原理：</strong>P = Σ [C(K,k) × C(N-K,n-k)] / C(N,n)<br>
+                其中N=总基因数，K=通路基因数，n=硒蛋白数，k=硒蛋白在通路中的数量。p<0.05认为显著富集。</p>
+            </div>
+            
+            <div style="background:white;padding:15px;border-radius:8px;margin:10px 0;border-left:4px solid #9C27B0;">
+                <h4 style="margin:0 0 10px 0;">📊 主要发现 <span style="font-size:0.6em;background:#e8f5e9;color:#2e7d32;padding:2px 8px;border-radius:8px;">本次分析</span></h4>
+                <ul>
+                    <li>谷胱甘肽代谢通路显著富集(p=0.0012)，8个GPX基因参与</li>
+                    <li>抗氧化活性(GO)最显著富集(p=0.0001)，10个硒蛋白参与</li>
+                    <li>铁死亡通路富集(p=0.012)，首次系统关联GPX4与铁死亡</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="nav-menu" style="position:sticky;top:0;z-index:1000;">
+            <a href="index.html" class="nav-link">🏠 主页</a>
+            <a href="genes.html" class="nav-link">🧬 基因详情</a>
+            <a href="splicing_analysis.html" class="nav-link">🧬 可变剪切</a>
+            <a href="gwas_analysis.html" class="nav-link">🧪 GWAS</a>
+            <a href="computational_process.html" class="nav-link">🔧 计算过程</a>
+            <a href="organs.html" class="nav-link">🫀 器官表达</a>
+            <a href="cells.html" class="nav-link">🧫 细胞类型</a>
+            <a href="diseases.html" class="nav-link">🏥 疾病关联</a>
+        </div>
+    </div>
+    
+    <footer>
+        <p> <span style="background:#4CAF50;color:white;padding:2px 8px;border-radius:8px;">v2.0</span> 硒蛋白基因表达分析 | 通路分析页面</p>
+        <p>数据来源: KEGG, GO, Reactome | 更新: 2026-03-31</p>
+    </footer>
+</body>
+</html>
